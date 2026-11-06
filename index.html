@@ -9,24 +9,24 @@
     <link rel="icon" type="image/png" href="logo.png" sizes="192x192">
     <link rel="apple-touch-icon" href="logo.png">
 
-    <!-- ПОДКЛЮЧАЕМ ПРЕМИАЛЬНЫЕ ШРИФТЫ -->
+    <!-- ПОДКЛЮЧАЕМ СТРОГИЕ ПРЕМИАЛЬНЫЕ ШРИФТЫ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* --- ПРЕМИАЛЬНАЯ ЦВЕТОВАЯ ПАЛИТРА --- */
         :root {
-            --bg-color: #F9F8F6; /* Теплый кремовый */
-            --bg-alt: #EFECE6; /* Чуть темнее для блоков */
-            --text-main: #2C2C2C; /* Глубокий графит для текста */
-            --text-light: #F9F8F6; /* Светлый текст для темных блоков */
-            --text-muted: #5A5A5A; /* Сланцевый для описаний */
-            --accent: #B87333; /* Благородная медь */
+            --bg-color: #F9F8F6; 
+            --bg-alt: #EFECE6; 
+            --text-main: #2C2C2C; 
+            --text-light: #F9F8F6; 
+            --text-muted: #5A5A5A; 
+            --accent: #B87333; 
             --accent-hover: #9C5F2A; 
             --border-color: #D1CEC5;
             --card-bg: #FFFFFF;
-            --header-footer-bg: #1A1A1A; /* Темный графит */
+            --header-footer-bg: #1A1A1A; 
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,11 +34,10 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', sans-serif; /* Строгий шрифт для текста */
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            /* Очень бледная инженерная клетка */
             background-image: linear-gradient(to right, rgba(44, 44, 44, 0.04) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(44, 44, 44, 0.04) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -48,15 +47,15 @@
 
         .anchor { position: relative; top: -100px; visibility: hidden; }
 
-        /* Заголовки с засечками (Премиальность) */
-        h1, h2, h3, .logo-title {
-            font-family: 'Playfair Display', serif;
+        /* Заголовки с засечками (Инженерная классика) */
+        h1, h2, h3 {
+            font-family: 'PT Serif', serif;
         }
 
-        /* --- ШАПКА (ТЕМНАЯ) --- */
+        /* --- ШАПКА --- */
         header {
             padding: 15px 0; 
-            border-bottom: 2px solid var(--accent); /* Медная полоса */
+            border-bottom: 2px solid var(--accent); 
             background-color: var(--header-footer-bg); 
             color: var(--text-light);
             position: sticky; top: 0; z-index: 100;
@@ -65,13 +64,16 @@
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 15px; }
         
         .logo { display: flex; align-items: center; text-decoration: none; color: var(--text-light); }
-        .logo-title { font-size: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
-        .logo-title span { color: var(--accent); font-family: 'Montserrat', sans-serif;}
-        .logo-subtitle { font-size: 11px; letter-spacing: 4px; color: #A0A0A0; margin-left: 18px; border-left: 1px solid #444; padding-left: 18px; text-transform: uppercase; line-height: 1.3; font-family: 'Montserrat', sans-serif;}
+        .logo-title { 
+            font-family: 'Montserrat', sans-serif; /* Логотип строгий */
+            font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; line-height: 1; 
+        }
+        .logo-title span { color: var(--accent); }
+        .logo-subtitle { font-size: 10px; letter-spacing: 3px; color: #A0A0A0; margin-left: 15px; border-left: 1px solid #444; padding-left: 15px; text-transform: uppercase; line-height: 1.3;}
 
         .nav-container { display: flex; align-items: center; gap: 20px; }
         nav { display: flex; gap: 20px; align-items: center; }
-        nav a { text-decoration: none; color: var(--text-light); font-weight: 600; font-size: 14px; transition: color 0.3s; white-space: nowrap; letter-spacing: 0.5px;}
+        nav a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 14px; transition: color 0.3s; white-space: nowrap;}
         nav a:hover { color: var(--accent); }
 
         .header-actions { display: flex; align-items: center; gap: 15px; }
@@ -82,19 +84,18 @@
             display: inline-block; padding: 12px 24px; background-color: var(--accent);
             color: #fff; text-decoration: none; font-weight: 600; border: 2px solid var(--accent);
             transition: all 0.3s ease; cursor: pointer; font-size: 14px; text-align: center;
-            white-space: nowrap; text-transform: uppercase; letter-spacing: 1px;
+            white-space: nowrap; text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;
         }
         .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
         
-        /* Кнопка на темном фоне (в шапке) */
         .btn-outline-dark { background-color: transparent; color: var(--text-light); border-color: var(--text-light); }
         .btn-outline-dark:hover { background-color: var(--text-light); color: var(--header-footer-bg); }
         
-        .btn-buy { padding: 8px 15px; font-size: 13px; }
+        .btn-buy { padding: 8px 15px; font-size: 12px; }
 
         /* --- Главный экран --- */
         .hero { padding: 100px 0; text-align: center; border-bottom: 1px dashed var(--border-color); }
-        .hero h1 { font-size: 48px; margin-bottom: 25px; line-height: 1.2; color: var(--text-main); }
+        .hero h1 { font-size: 46px; margin-bottom: 25px; line-height: 1.2; color: var(--text-main); }
         .hero p { font-size: 18px; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; font-weight: 400; }
         .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
@@ -110,11 +111,11 @@
         .gallery-item { position: relative; overflow: hidden; border-radius: 2px; border: 1px solid var(--border-color); cursor: pointer; }
         .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.6s ease; }
         .gallery-item:hover img { transform: scale(1.03); }
-        .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(26, 26, 26, 0.9); color: #fff; padding: 12px; text-align: center; font-weight: 600; font-size: 14px;}
+        .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(26, 26, 26, 0.9); color: #fff; padding: 12px; text-align: center; font-weight: 500; font-size: 14px;}
         .gallery-item::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('logo.png'); background-size: 40%; background-position: center; background-repeat: no-repeat; opacity: 0.1; pointer-events: none; }
         .gallery-action { text-align: center; margin-bottom: 40px; }
 
-        /* --- УМНЫЙ КАТАЛОГ --- */
+        /* --- КАТАЛОГ --- */
         .catalog-accordion { max-width: 1000px; margin: 0 auto 60px; }
         .accordion-group { background: var(--card-bg); border: 1px solid var(--border-color); margin-bottom: 15px; border-radius: 2px; overflow: hidden; }
         .accordion-header { 
@@ -129,16 +130,12 @@
         
         .accordion-content { 
             display: none; padding: 20px; 
-            max-height: 550px; /* Внутренний скролл для ПК */
+            max-height: 550px; 
             overflow-y: auto; 
         }
         .accordion-group.active .accordion-content { display: block; }
 
-        .product-list { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 20px; 
-        }
+        .product-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
         .product-card {
             display: flex; flex-direction: column;
@@ -160,11 +157,16 @@
         }
         
         .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .product-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; font-family: 'PT Serif', serif;}
         .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
         
         .product-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px dashed var(--border-color); padding-top: 15px;}
-        .product-price { font-size: 22px; font-weight: 700; color: var(--accent); font-family: 'Playfair Display', serif;}
+        
+        /* Строгий шрифт для цен */
+        .product-price { 
+            font-size: 22px; font-weight: 700; color: var(--accent); 
+            font-family: 'Montserrat', sans-serif; letter-spacing: -0.5px;
+        }
 
         /* --- Скелетон --- */
         .skeleton { background: #e0e0e0; border-radius: 2px; animation: pulse 1.5s infinite ease-in-out; }
@@ -188,9 +190,15 @@
         .scenarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 20px; }
         .scenario-card { background: var(--card-bg); padding: 40px; border: 1px solid var(--border-color); border-radius: 2px;}
         .scenario-card h3 { text-align: center; color: var(--text-main); margin-bottom: 30px; font-size: 24px; }
-        .step-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px; }
-        .step-number { width: 36px; height: 36px; flex-shrink: 0; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; font-family: 'Playfair Display', serif;}
-        .step-item strong { display: block; margin-bottom: 5px; font-size: 16px;}
+        .step-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 25px; }
+        
+        /* Исправленные цифры: белый строгий шрифт в медном кружке */
+        .step-number { 
+            width: 40px; height: 40px; flex-shrink: 0; background: var(--accent); color: #fff; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 18px; font-weight: 700; font-family: 'Montserrat', sans-serif;
+        }
+        .step-item strong { display: block; margin-bottom: 5px; font-size: 16px; font-family: 'PT Serif', serif;}
         .step-item div { font-size: 14px; color: var(--text-muted); }
 
         /* --- Преимущества и Отзывы --- */
@@ -200,7 +208,7 @@
         .feature-card p { font-size: 14px; color: var(--text-muted); }
         
         .review-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--border-color); position: relative; border-radius: 2px;}
-        .review-card::before { content: '“'; font-family: 'Playfair Display', serif; font-size: 80px; color: var(--border-color); position: absolute; top: 0px; right: 20px; line-height: 1; }
+        .review-card::before { content: '“'; font-family: 'PT Serif', serif; font-size: 80px; color: var(--border-color); position: absolute; top: 0px; right: 20px; line-height: 1; }
         .review-text { font-style: italic; color: var(--text-muted); margin-bottom: 20px; position: relative; z-index: 1; font-size: 15px;}
         .review-author { font-weight: bold; font-size: 16px; color: var(--text-main); }
         .review-location { font-size: 13px; color: #888; }
@@ -213,21 +221,27 @@
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { color: var(--accent); }
 
-        /* --- ПОДВАЛ (ТЕМНЫЙ) --- */
+        /* --- ПОДВАЛ --- */
         footer { 
             background-color: var(--header-footer-bg); 
             color: var(--text-light); 
-            padding: 70px 0 30px; 
-            border-top: 2px solid var(--accent); /* Медная полоса */
+            padding: 80px 0 30px; /* Увеличен отступ, чтобы логотип не прятался под шапкой */
+            border-top: 2px solid var(--accent); 
         }
         .footer-main { display: flex; gap: 60px; margin-bottom: 50px; }
-        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;}
-        .footer-left img { width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; opacity: 0.9; filter: grayscale(100%) brightness(150%); /* Делаем логотип светлым для темного фона */}
+        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+        
+        /* ПРИМЕНЯЕМ МЕДНЫЙ ФИЛЬТР К ЛОГОТИПУ В ПОДВАЛЕ */
+        .footer-left img { 
+            width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; 
+            filter: sepia(1) hue-rotate(-15deg) saturate(2.5) brightness(0.9); /* Делаем логотип медным */
+            opacity: 0.9;
+        }
 
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .footer-block h4 { font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600;}
         
-        .contact-list p { margin-bottom: 15px; font-size: 18px; font-weight: 600; color: #fff; }
+        .contact-list p { margin-bottom: 15px; font-size: 18px; font-weight: 500; color: #fff; }
         .contact-list a { color: #fff; text-decoration: none; transition: color 0.3s; }
         .contact-list a:hover { color: var(--accent); }
         .footer-address { font-size: 15px; font-weight: normal; color: #A0A0A0; }
@@ -236,7 +250,7 @@
         .social-btn { 
             display: inline-block; padding: 10px 20px; background-color: #2A2A2A; 
             color: #fff !important; border-radius: 2px; font-size: 13px; 
-            font-weight: 600; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
+            font-weight: 500; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
         }
         .social-btn:hover { background-color: var(--accent); }
 
@@ -257,7 +271,7 @@
         .modal-content { background: var(--bg-color); padding: 40px; width: 100%; max-width: 500px; border: 2px solid var(--accent); position: relative; border-radius: 2px; max-height: 90vh; overflow-y: auto;}
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; background: none; border: none; cursor: pointer; color: var(--text-main); z-index: 10;}
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;}
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;}
         .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid var(--border-color); background: #fff; font-size: 16px; font-family: inherit; border-radius: 2px;}
         .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 25px; font-size: 12px; color: var(--text-muted); }
         .checkbox-group input { width: auto; margin-top: 3px; }
@@ -274,14 +288,14 @@
         .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
         .product-details { width: 50%; padding: 40px; display: flex; flex-direction: column; }
         .product-details h2 { font-size: 32px; margin-bottom: 15px; line-height: 1.3; color: var(--text-main); }
-        .product-details .price { font-size: 36px; font-weight: 700; color: var(--accent); margin-bottom: 20px; font-family: 'Playfair Display', serif;}
+        .product-details .price { font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 20px; font-family: 'Montserrat', sans-serif;}
         .product-details .desc { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.8; }
         
         /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; } 
             .footer-main { flex-direction: column; text-align: center; gap: 40px; }
-            .footer-left { flex: auto; align-items: center; }
+            .footer-left { flex: auto; align-items: center; margin-bottom: 20px;}
             .footer-right { grid-template-columns: 1fr; gap: 30px; }
             .footer-block h4 { display: block; border-bottom: none; }
             .footer-socials { justify-content: center; }
