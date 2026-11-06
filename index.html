@@ -13,7 +13,7 @@
         /* --- ЦВЕТОВАЯ ПАЛИТРА --- */
         :root {
             --bg-color: #f7f5f0; /* Теплый кремовый */
-            --bg-alt: #edeae3; /* Светло-серый для чередования блоков */
+            --bg-alt: #edeae3; /* Светло-серый для чередования */
             --text-main: #2c2c2c; /* Графит */
             --accent: #b86b35; /* Медь */
             --accent-hover: #9c5829; 
@@ -33,7 +33,8 @@
             background-size: 40px 40px;
             scroll-behavior: smooth;
             overflow-x: hidden;
-            scroll-padding-top: 100px; 
+            /* Исправление наезда шапки */
+            scroll-padding-top: 120px; 
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -81,26 +82,50 @@
         /* --- Чередование фонов --- */
         .bg-alt { background-color: var(--bg-alt); padding: 60px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 
-        /* --- Каталог --- */
-        .filter-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
-        .filter-btn { padding: 10px 20px; border: 1px solid var(--border-color); background: transparent; color: var(--text-main); cursor: pointer; font-weight: 600; transition: all 0.3s; }
-        .filter-btn.active, .filter-btn:hover { background: var(--text-main); color: #fff; border-color: var(--text-main); }
+        /* --- Каталог-Аккордеон --- */
+        .catalog-accordion { max-width: 900px; margin: 0 auto 60px; }
+        .accordion-group { background: var(--card-bg); border: 1px solid var(--border-color); margin-bottom: 20px; border-radius: 4px; overflow: hidden; }
+        .accordion-header { 
+            padding: 20px 30px; font-size: 22px; font-weight: 700; color: var(--text-main); 
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            background-color: var(--card-bg); transition: background-color 0.3s;
+        }
+        .accordion-header:hover { background-color: #f9f9f9; }
+        .accordion-header span { font-size: 24px; color: var(--accent); font-weight: normal; transition: transform 0.3s; }
+        .accordion-group.active .accordion-header { border-bottom: 1px solid var(--border-color); }
+        .accordion-group.active .accordion-header span { transform: rotate(45deg); }
+        
+        .accordion-content { display: none; padding: 30px; }
+        .accordion-group.active .accordion-content { display: block; }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
-
-        .product-card { background: var(--card-bg); border: 1px solid var(--border-color); display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); }
+        /* --- Карточки товаров (внутри аккордеона) --- */
+        .product-list { display: flex; flex-direction: column; gap: 20px; }
+        .product-card {
+            display: flex; gap: 20px; align-items: center;
+            background: var(--bg-color); border: 1px solid var(--border-color);
+            padding: 15px; border-radius: 4px; transition: transform 0.3s;
+        }
+        .product-card:hover { transform: translateX(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         
-        .product-image { height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999; border-bottom: 1px dashed var(--border-color); overflow: hidden; }
-        .product-image img { width: 100%; height: 100%; object-fit: cover; }
+        /* Водяной знак на картинках */
+        .product-image { 
+            width: 150px; height: 100px; flex-shrink: 0; background: #eee; border-radius: 4px; overflow: hidden; position: relative;
+            display: flex; align-items: center; justify-content: center; color: #999;
+        }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .product-image::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('logo.png'); /* Водяной знак */
+            background-size: 60%; background-position: center; background-repeat: no-repeat;
+            opacity: 0.15; pointer-events: none; /* Делаем его прозрачным и не кликабельным */
+        }
         
-        .product-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-        .product-tag { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-        .product-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-        .product-desc { font-size: 14px; color: #666; margin-bottom: 20px; flex-grow: 1; }
+        .product-info { flex-grow: 1; }
+        .product-title { font-size: 18px; font-weight: 700; margin-bottom: 5px; }
+        .product-desc { font-size: 14px; color: #666; margin-bottom: 10px; }
+        .product-price { font-size: 20px; font-weight: 700; color: var(--text-main); }
         
-        .product-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; border-top: 1px dashed var(--border-color); }
-        .product-price { font-size: 20px; font-weight: 700; }
+        .product-action { flex-shrink: 0; }
 
         /* --- Блок индивидуального заказа --- */
         .custom-order-block { background-color: var(--text-main); color: #fff; padding: 60px 40px; margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; border-radius: 4px; }
@@ -109,7 +134,7 @@
         .custom-order-block .btn { border-color: var(--accent); background-color: var(--accent); color: #fff; white-space: nowrap; }
         .custom-order-block .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
 
-        /* --- Этапы работы (2 сценария) --- */
+        /* --- Этапы работы --- */
         .scenarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 20px; }
         .scenario-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--border-color); }
         .scenario-card h3 { text-align: center; color: var(--accent); margin-bottom: 20px; font-size: 22px; }
@@ -122,6 +147,12 @@
         .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease; }
         .gallery-item:hover img { transform: scale(1.05); }
         .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(44, 44, 44, 0.8); color: #fff; padding: 10px; text-align: center; font-weight: 600; }
+        /* Водяной знак для галереи */
+        .gallery-item::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('logo.png'); background-size: 50%; background-position: center; background-repeat: no-repeat;
+            opacity: 0.15; pointer-events: none;
+        }
 
         /* --- Преимущества --- */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
@@ -178,18 +209,20 @@
         .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 12px; color: #666; }
         .checkbox-group input { width: auto; margin-top: 3px; }
 
-        /* --- Лоадер --- */
-        .loader { text-align: center; font-size: 18px; color: var(--accent); margin: 50px 0; display: none; }
-
-        /* --- АДАПТИВНОСТЬ (Для телефонов) --- */
+        /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
-            .scenarios-grid { grid-template-columns: 1fr; } /* Сценарии в столбик */
+            .scenarios-grid { grid-template-columns: 1fr; } 
             .footer-main { flex-direction: column; text-align: center; gap: 30px; }
             .footer-left { flex: auto; align-items: center; }
             .footer-right { grid-template-columns: 1fr; gap: 30px; }
             .footer-block h4 { display: block; border-bottom: none; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
+            
+            /* Карточки в каталоге на телефоне в столбик */
+            .product-card { flex-direction: column; text-align: center; }
+            .product-image { width: 100%; height: 150px; }
+            .product-action { margin-top: 15px; width: 100%; }
         }
 
         @media (max-width: 768px) {
@@ -200,10 +233,7 @@
             .hero h1 { font-size: 32px; }
             .custom-order-block { flex-direction: column; text-align: center; }
             
-            /* Списком на телефоне */
-            .features-grid, .reviews-grid, .gallery-grid {
-                grid-template-columns: 1fr; /* В одну колонку */
-            }
+            .features-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -239,7 +269,7 @@
         </div>
     </section>
 
-    <!-- SEO Блок (Белый фон) -->
+    <!-- SEO Блок -->
     <div class="container">
         <h2 class="section-title">Надежная документация для строительства</h2>
         <p class="section-subtitle">
@@ -248,19 +278,14 @@
         </p>
     </div>
 
-    <!-- Каталог (Белый фон) -->
+    <!-- Каталог-Аккордеон -->
     <div class="container" id="catalog">
         <h2 class="section-title">Готовые проекты</h2>
         
-        <div class="filter-bar">
-            <button class="filter-btn active" onclick="filterProducts('all', this)">Все</button>
-            <button class="filter-btn" onclick="filterProducts('besedki', this)">Беседки</button>
-            <button class="filter-btn" onclick="filterProducts('lestnicy', this)">Лестницы</button>
-            <button class="filter-btn" onclick="filterProducts('mebel', this)">Мебель</button>
+        <div class="catalog-accordion" id="catalog-accordion">
+            <!-- Сюда скрипт будет вставлять группы -->
+            <div class="loader" id="loader">Загрузка каталога...</div>
         </div>
-
-        <div class="loader" id="loader">Загрузка каталога...</div>
-        <div class="grid-3" id="product-grid"></div>
 
         <div style="text-align: center; margin-bottom: 80px;">
             <p style="margin-bottom: 15px; font-size: 18px; color: #666;">Не нашли нужный размер или конфигурацию?</p>
@@ -268,7 +293,7 @@
         </div>
     </div>
 
-    <!-- Блок индивидуального заказа (Темный фон) -->
+    <!-- Блок индивидуального заказа -->
     <div class="container" id="custom">
         <div class="custom-order-block">
             <div>
@@ -279,13 +304,11 @@
         </div>
     </div>
 
-    <!-- Как мы работаем (Серый фон) -->
+    <!-- Как мы работаем -->
     <div class="bg-alt" id="how-we-work">
         <div class="container">
             <h2 class="section-title">Как мы работаем</h2>
-            
             <div class="scenarios-grid">
-                <!-- Сценарий 1: Готовые чертежи -->
                 <div class="scenario-card">
                     <h3>Покупка готового чертежа</h3>
                     <div class="step-item">
@@ -297,8 +320,6 @@
                         <div><strong>Мгновенное получение.</strong> Сразу после оплаты на вашу почту приходят PDF-файлы и файлы для ЧПУ.</div>
                     </div>
                 </div>
-
-                <!-- Сценарий 2: Индивидуальный проект -->
                 <div class="scenario-card" style="border-top: 4px solid var(--accent);">
                     <h3>Заказ индивидуального проекта</h3>
                     <div class="step-item">
@@ -318,13 +339,12 @@
         </div>
     </div>
 
-    <!-- Наши работы (Белый фон) -->
+    <!-- Наши работы -->
     <div class="container" id="gallery">
         <h2 class="section-title">Наши работы</h2>
-        <p class="section-subtitle">Примеры изделий, созданных по нашим проектам. (Замените картинки на свои реальные фото)</p>
+        <p class="section-subtitle">Примеры изделий, созданных по нашим проектам.</p>
         
         <div class="gallery-grid">
-            <!-- Вставьте свои ссылки на картинки вместо заглушек -->
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1590066305644-1539177b4566?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Беседка">
                 <div class="gallery-caption">Беседка 3х4 с мангальной зоной</div>
@@ -340,7 +360,7 @@
         </div>
     </div>
 
-    <!-- Преимущества (Серый фон) -->
+    <!-- Преимущества -->
     <div class="bg-alt" id="features">
         <div class="container">
             <h2 class="section-title">Почему нам доверяют</h2>
@@ -365,29 +385,29 @@
         </div>
     </div>
 
-    <!-- Отзывы (Белый фон) -->
+    <!-- Отзывы -->
     <div class="container" id="reviews">
         <h2 class="section-title">Отзывы клиентов</h2>
         <div class="reviews-grid">
             <div class="review-card">
-                <div class="review-text">Строил беседку первый раз в жизни. Боялся, что в чертежах будет куча непонятных узлов. Но тут всё оказалось настолько подробно расписано (особенно спецификация по доскам — я просто поехал в магазин и купил всё по списку), что собрал за 4 выходных. Отдельное спасибо за схему крепления стропил.</div>
+                <div class="review-text">Строил беседку первый раз в жизни. Боялся, что в чертежах будет куча непонятных узлов. Но тут всё оказалось настолько подробно расписано, что собрал за 4 выходных. Отдельное спасибо за схему крепления стропил.</div>
                 <div class="review-author">Сергей</div>
-                <div class="review-location">Московская область</div>
+                <div class="review-location">г. Томск</div>
             </div>
             <div class="review-card">
-                <div class="review-text">Беру проекты на заказ, часто нужны готовые решения. Здесь понравилась деталировка — всё в миллиметрах, нет никаких «примерно» и «на глаз». Скачал чертеж маршевой лестницы, отдал своим ребятам в цех, сделали без единой переделки. Рекомендую.</div>
+                <div class="review-text">Беру проекты на заказ, часто нужны готовые решения. Здесь понравилась деталировка — всё в миллиметрах, нет никаких «примерно». Скачал чертеж маршевой лестницы, отдал в цех, сделали без переделок.</div>
                 <div class="review-author">Дмитрий</div>
-                <div class="review-location">Столярная мастерская, г. Тверь</div>
+                <div class="review-location">Столярная мастерская, г. Новосибирск</div>
             </div>
             <div class="review-card">
-                <div class="review-text">Раньше тратила кучу времени на пересчеты вручную или искала бесплатные обрывки чертежей. Купила здесь проект шкафа. Дорого? Нет, это копейки по сравнению с тем временем, которое я сэкономила. Теперь клиенту показываю 3D-модель и точный раскрой.</div>
+                <div class="review-text">Раньше тратила кучу времени на пересчеты вручную. Купила здесь проект шкафа. Дорого? Нет, это копейки по сравнению с тем временем, которое я сэкономила. Теперь клиенту показываю 3D-модель и точный раскрой.</div>
                 <div class="review-author">Анна</div>
-                <div class="review-location">Дизайнер интерьера, г. Сочи</div>
+                <div class="review-location">Дизайнер интерьера, г. Кемерово</div>
             </div>
         </div>
     </div>
 
-    <!-- FAQ (Серый фон) -->
+    <!-- FAQ -->
     <div class="bg-alt">
         <div class="container">
             <h2 class="section-title">Оплата и получение</h2>
@@ -426,7 +446,7 @@
                         <div class="contact-list">
                             <p><a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
                             <p><a href="mailto:info@stolyar-proekt.ru">info@stolyar-proekt.ru</a></p>
-                            <p style="font-size: 16px; font-weight: normal; color: #555;">г. Москва, ул. Строителей, д. 1</p>
+                            <p style="font-size: 16px; font-weight: normal; color: #555;">г. Томск, ул. Строителей, д. 1</p>
                         </div>
                         <div class="footer-socials">
                             <a href="https://t.me/ваш_ник" target="_blank" class="social-btn">Telegram</a>
@@ -440,7 +460,7 @@
                             <p>ИП Александров Александр Анатольевич</p>
                             <p>ИНН: 000000000000</p>
                             <p>ОГРНИП: 000000000000000</p>
-                            <p>Юр. адрес: 123456, г. Томск, ул. Строителей, д. 1</p>
+                            <p>Юр. адрес: 634000, г. Томск, ул. Строителей, д. 1</p>
                         </div>
                     </div>
                 </div>
@@ -456,7 +476,7 @@
         </div>
     </footer>
 
-    <!-- Модальное окно (Умная форма) -->
+    <!-- Модальное окно -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -467,10 +487,9 @@
                 <div class="form-group"><label>Ваше имя</label><input type="text" required></div>
                 <div class="form-group"><label>Телефон или Email</label><input type="text" required></div>
                 
-                <!-- Поле для ТЗ -->
                 <div class="form-group" id="customProjectDesc" style="display: none;">
                     <label>Опишите вашу задачу (размеры, материал, пожелания)</label>
-                    <textarea rows="4" placeholder="Например: нужна беседка 4х5 из бруса 150х150 с мангальной зоной..."></textarea>
+                    <textarea rows="4" placeholder="Например: нужна беседка 4х5 из бруса 150х150..."></textarea>
                 </div>
 
                 <div class="checkbox-group">
@@ -485,7 +504,6 @@
 
     <!-- Скрипт -->
     <script>
-        // --- ВАША ССЫЛКА НА ТАБЛИЦУ ---
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAHnEYoeQDMfEoHQgH5Wa0S54gd2Ff4G8bkSEGCgTC6WxAg50v4Xgul-SFIJqTyVC37Np1gM0HCy6-/pub?gid=0&single=true&output=csv";
         
         let allProducts = [];
@@ -511,8 +529,9 @@
 
         async function loadProducts() {
             const loader = document.getElementById('loader');
-            const grid = document.getElementById('product-grid');
+            const accordion = document.getElementById('catalog-accordion');
             loader.style.display = 'block';
+            
             try {
                 const url = GOOGLE_SHEET_URL + "&t=" + new Date().getTime();
                 const response = await fetch(url);
@@ -529,49 +548,82 @@
                     };
                 }).filter(item => item && item.title);
 
-                renderProducts(allProducts);
+                renderAccordion(allProducts);
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
-                grid.innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>Не удалось загрузить каталог. Проверьте интернет.</p>";
+                accordion.innerHTML = "<p style='text-align:center;'>Не удалось загрузить каталог. Проверьте интернет.</p>";
             } finally { loader.style.display = 'none'; }
         }
 
-        function renderProducts(products) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = ''; 
+        function renderAccordion(products) {
+            const accordion = document.getElementById('catalog-accordion');
+            accordion.innerHTML = ''; 
+
             if (products.length === 0) {
-                grid.innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>В этой категории пока нет проектов.</p>";
+                accordion.innerHTML = "<p style='text-align:center;'>В каталоге пока нет проектов.</p>";
                 return;
             }
-            products.forEach(product => {
-                const rawPrice = parseFloat(product.price.replace(/[^\d.]/g, ''));
-                const formattedPrice = isNaN(rawPrice) ? (product.price || 'Цена по запросу') : (rawPrice.toLocaleString('ru-RU') + ' ₽');
-                const imgHtml = product.image ? `<img src="${product.image}" alt="${product.title}" onerror="this.style.display='none'; this.parentElement.innerText='Нет фото';">` : 'Фото чертежа';
+
+            // Группируем по категориям
+            const categories = {};
+            products.forEach(p => {
+                if (!categories[p.category]) categories[p.category] = { name: p.tag || p.category, items: [] };
+                categories[p.category].items.push(p);
+            });
+
+            // Создаем аккордеон
+            Object.keys(categories).forEach(catKey => {
+                const cat = categories[catKey];
                 
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.dataset.category = product.category;
-                card.innerHTML = `
-                    <div class="product-image">${imgHtml}</div>
-                    <div class="product-info">
-                        <div class="product-tag">${product.tag}</div>
-                        <div class="product-title">${product.title}</div>
-                        <div class="product-desc">${product.desc}</div>
-                        <div class="product-bottom">
+                const group = document.createElement('div');
+                group.className = 'accordion-group';
+                
+                // Заголовок группы
+                const header = document.createElement('div');
+                header.className = 'accordion-header';
+                header.innerHTML = `${cat.name} <span>+</span>`;
+                header.onclick = () => {
+                    group.classList.toggle('active');
+                };
+
+                // Контент группы
+                const content = document.createElement('div');
+                content.className = 'accordion-content';
+                
+                const list = document.createElement('div');
+                list.className = 'product-list';
+
+                // Карточки товаров
+                cat.items.forEach(product => {
+                    const rawPrice = parseFloat(product.price.replace(/[^\d.]/g, ''));
+                    const formattedPrice = isNaN(rawPrice) ? (product.price || 'Цена по запросу') : (rawPrice.toLocaleString('ru-RU') + ' ₽');
+                    
+                    // Если картинки нет, показываем заглушку
+                    const imgHtml = product.image 
+                        ? `<img src="${product.image}" alt="${product.title}" onerror="this.style.display='none'; this.parentElement.innerText='Нет фото';">` 
+                        : 'Нет фото';
+
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-image">${imgHtml}</div>
+                        <div class="product-info">
+                            <div class="product-title">${product.title}</div>
+                            <div class="product-desc">${product.desc}</div>
                             <div class="product-price">${formattedPrice}</div>
+                        </div>
+                        <div class="product-action">
                             <button onclick="openModal('${product.title}')" class="btn btn-buy">Купить</button>
                         </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
+                    `;
+                    list.appendChild(card);
+                });
 
-        function filterProducts(category, btnElement) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-            if (category === 'all') { renderProducts(allProducts); } 
-            else { renderProducts(allProducts.filter(p => p.category === category)); }
+                content.appendChild(list);
+                group.appendChild(header);
+                group.appendChild(content);
+                accordion.appendChild(group);
+            });
         }
 
         const modal = document.getElementById('orderModal');
@@ -579,15 +631,12 @@
 
         function openModal(productName) {
             selectedProductText.textContent = productName;
-            
-            // Логика: показываем поле ТЗ для индивидуального проекта
             const descField = document.getElementById('customProjectDesc');
             if (productName === 'Индивидуальный проект') {
                 descField.style.display = 'block';
             } else {
                 descField.style.display = 'none';
             }
-
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; 
         }
@@ -597,7 +646,6 @@
             document.body.style.overflow = ''; 
         }
 
-        // Аккордеон FAQ
         function toggleFaq(element) {
             const item = element.parentElement;
             const span = element.querySelector('span');
@@ -605,7 +653,6 @@
             span.textContent = item.classList.contains('active') ? '-' : '+';
         }
 
-        // Параллакс фона
         document.body.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) * 10;
             const y = (e.clientY / window.innerHeight) * 10;
