@@ -6,7 +6,6 @@
     <meta name="description" content="Профессиональные чертежи беседок, лестниц и мебели. Скачивайте готовые проекты или заказывайте индивидуальное проектирование деревянных конструкций.">
     <title>Столяр-Проект | Чертежи и проектирование</title>
     
-    <!-- Иконка сайта (Favicon) -->
     <link rel="icon" type="image/png" href="logo.png" sizes="192x192">
     <link rel="apple-touch-icon" href="logo.png">
 
@@ -25,7 +24,6 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            /* Инженерная клетка на фоне с параллаксом */
             background-image: linear-gradient(to right, rgba(139, 90, 43, 0.05) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(139, 90, 43, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -45,7 +43,7 @@
             flex-wrap: wrap; gap: 15px;
         }
         
-        /* Увеличенный текстовый логотип */
+        /* Текстовый логотип */
         .logo { display: flex; align-items: center; text-decoration: none; color: var(--text-main); }
         .logo-title {
             font-size: 32px; font-weight: 900; text-transform: uppercase;
@@ -134,55 +132,69 @@
         .custom-order-block .btn { border-color: var(--bg-color); background-color: var(--bg-color); color: var(--text-main); white-space: nowrap; }
         .custom-order-block .btn:hover { background-color: transparent; color: var(--bg-color); }
 
-        /* --- Подвал --- */
+        /* --- НОВЫЙ ПОДВАЛ --- */
         footer { 
             border-top: 2px solid var(--border-color); 
-            padding: 50px 0 30px; 
-            background-color: rgba(252, 250, 245, 0.8);
-            position: relative;
+            padding: 60px 0 20px; 
+            background-color: rgba(252, 250, 245, 0.9);
         }
         
-        /* Логотип-печать в подвале */
-        .footer-logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .footer-logo img {
-            width: 120px; /* Размер логотипа в подвале */
-            height: auto;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        .footer-logo img:hover {
-            opacity: 1;
+        .footer-main {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 40px;
         }
 
-        .footer-grid {
+        /* Левая колонка с логотипом */
+        .footer-left {
+            flex: 0 0 300px; /* Фиксированная ширина для логотипа */
+        }
+        .footer-left img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            display: block;
+        }
+
+        /* Правая колонка с контактами и реквизитами */
+        .footer-right {
+            flex: 1;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin-bottom: 30px;
         }
-        .footer-col h4 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: var(--text-main);
+
+        .footer-block h4 {
+            font-size: 16px;
+            color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            display: inline-block;
         }
-        .footer-col p, .footer-col a {
-            font-size: 15px;
-            color: #555;
+
+        /* Крупные контакты */
+        .contact-list p {
+            margin-bottom: 10px;
+            font-size: 18px; /* Крупный шрифт для контактов */
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        .contact-list a {
+            color: var(--text-main);
             text-decoration: none;
-            line-height: 1.8;
+            transition: color 0.3s;
         }
-        .footer-col a:hover {
+        .contact-list a:hover {
             color: var(--accent);
         }
+        
         .footer-socials {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
         .social-btn {
             display: inline-block;
@@ -194,8 +206,36 @@
             font-weight: 600;
             transition: opacity 0.3s;
         }
-        .social-btn:hover {
-            opacity: 0.8;
+        .social-btn:hover { opacity: 0.8; }
+
+        /* Мелкие реквизиты */
+        .requisites-list p {
+            font-size: 13px; /* Мелкий шрифт для реквизитов */
+            color: #666;
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        /* Юридическая линия внизу */
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 13px;
+            color: #888;
+        }
+        .legal-links a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+        .legal-links a:hover {
+            color: var(--accent);
         }
 
         /* --- Модальное окно --- */
@@ -219,6 +259,15 @@
         .loader { text-align: center; font-size: 18px; color: var(--accent); margin: 50px 0; display: none; }
 
         /* --- Адаптивность --- */
+        @media (max-width: 900px) {
+            .footer-main { flex-direction: column; text-align: center; gap: 30px; }
+            .footer-left { flex: auto; display: flex; justify-content: center; }
+            .footer-right { grid-template-columns: 1fr; gap: 30px; }
+            .footer-block h4 { display: block; border-bottom: none; } /* Убираем полоску под заголовком */
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .legal-links a { margin: 0 10px; }
+        }
+
         @media (max-width: 768px) {
             .header-content { flex-direction: column; text-align: center; }
             .logo { flex-direction: column; gap: 10px; }
@@ -226,8 +275,6 @@
             nav { margin-top: 10px; flex-wrap: wrap; justify-content: center; }
             .hero h1 { font-size: 32px; }
             .custom-order-block { flex-direction: column; text-align: center; }
-            .footer-grid { grid-template-columns: 1fr; gap: 20px; text-align: center; }
-            .footer-socials { justify-content: center; }
         }
     </style>
 </head>
@@ -235,7 +282,7 @@
 
     <header>
         <div class="container header-content">
-            <!-- Увеличенный текстовый логотип -->
+            <!-- Текстовый логотип -->
             <a href="#top" class="logo">
                 <div class="logo-title">Столяр<span>-</span>Проект</div>
                 <div class="logo-subtitle">Чертежи<br>и проектирование</div>
@@ -327,37 +374,57 @@
         </div>
     </div>
 
-    <!-- Подвал с контактами -->
+    <!-- НОВЫЙ ПОДВАЛ -->
     <footer>
         <div class="container">
             
-            <!-- Логотип-печать в подвале -->
-            <div class="footer-logo">
-                <img src="logo.png" alt="Логотип Столяр-Проект">
-            </div>
+            <div class="footer-main">
+                <!-- Левая колонка: Логотип -->
+                <div class="footer-left">
+                    <img src="logo.png" alt="Столяр-Проект">
+                </div>
 
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Свяжитесь с нами</h4>
-                    <p style="margin-bottom: 5px;"><strong>Телефон:</strong> <a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
-                    <p style="margin-bottom: 5px;"><strong>Email:</strong> <a href="mailto:info@stolyar-proekt.ru">info@stolyar-proekt.ru</a></p>
-                    <p style="margin-bottom: 15px;"><strong>Адрес:</strong> г. Москва, ул. Строителей, д. 1 (офис 5)</p>
+                <!-- Правая колонка: Информация -->
+                <div class="footer-right">
                     
-                    <div class="footer-socials">
-                        <a href="https://t.me/ваш_ник" target="_blank" class="social-btn">Telegram</a>
-                        <a href="https://wa.me/79000000000" target="_blank" class="social-btn">WhatsApp</a>
+                    <!-- Контакты (крупно) -->
+                    <div class="footer-block">
+                        <h4>Свяжитесь с нами</h4>
+                        <div class="contact-list">
+                            <p><a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
+                            <p><a href="mailto:info@stolyar-proekt.ru">info@stolyar-proekt.ru</a></p>
+                            <p style="font-size: 16px; font-weight: normal; color: #555;">г. Москва, ул. Строителей, д. 1</p>
+                        </div>
+                        <div class="footer-socials">
+                            <a href="https://t.me/ваш_ник" target="_blank" class="social-btn">Telegram</a>
+                            <a href="https://wa.me/79000000000" target="_blank" class="social-btn">WhatsApp</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="footer-col">
-                    <h4>Реквизиты</h4>
-                    <p style="margin-bottom: 5px;">ИП Рубатинкин Александр Валерьевич</p>
-                    <p style="margin-bottom: 5px;">ИНН: 000000000000</p>
-                    <p style="margin-bottom: 5px;">ОГРНИП: 000000000000000</p>
-                    <p style="margin-bottom: 15px;">Юр. адрес: 123456, г. Москва, ул. Строителей, д. 1</p>
-                    <p style="font-size: 12px; color: #999;">© 2024 Столяр-Проект. Все права защищены.</p>
+                    <!-- Реквизиты (мелко) -->
+                    <div class="footer-block">
+                        <h4>Реквизиты</h4>
+                        <div class="requisites-list">
+                            <p>ИП Рубатинкин Александр Валерьевич</p>
+                            <p>ИНН: 000000000000</p>
+                            <p>ОГРНИП: 000000000000000</p>
+                            <p>Юр. адрес: 123456, г. Москва, ул. Строителей, д. 1</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
+            <!-- Юридическая линия (самый низ) -->
+            <div class="footer-bottom">
+                <div>&copy; 2024 Столяр-Проект. Все права защищены.</div>
+                <div class="legal-links">
+                    <!-- Сюда потом вставите ссылки на реальные страницы с документами -->
+                    <a href="#">Договор-оферта</a>
+                    <a href="#">Сбор персональных данных</a>
+                </div>
+            </div>
+
         </div>
     </footer>
 
