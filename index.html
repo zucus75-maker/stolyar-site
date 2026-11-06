@@ -23,6 +23,10 @@
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
@@ -31,12 +35,12 @@
             background-image: linear-gradient(to right, rgba(44, 44, 44, 0.03) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(44, 44, 44, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
-            scroll-behavior: smooth;
             overflow-x: hidden;
-            /* ИСПРАВЛЕНИЕ НАЕЗДА ШАПКИ */
-            scroll-padding-top: 150px; 
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Невидимые якоря для точной прокрутки под шапку */
+        .anchor { position: relative; top: -100px; visibility: hidden; }
 
         /* --- Шапка и Меню --- */
         header {
@@ -323,6 +327,9 @@
         </div>
     </div>
 
+    <!-- Якорь для точной прокрутки -->
+    <div class="anchor" id="custom-anchor"></div>
+
     <div class="container" id="custom">
         <div class="custom-order-block">
             <div>
@@ -548,65 +555,6 @@
             return rows;
         }
 
-        async function loadProducts() {
-            const accordion = document.getElementById('catalog-accordion');
-            const skeleton = document.getElementById('skeleton-loader');
-            
-            // 1. Пытаемся взять данные из кэша браузера (мгновенно)
-            const cachedData = localStorage.getItem('catalogData');
-            if (cachedData) {
-                try {
-                    allProducts = JSON.parse(cachedData);
-                    skeleton.style.display = 'none'; // Скрываем скелетон
-                    renderAccordion(allProducts);
-                    // В фоне проверяем обновления
-                    fetchFromGoogle(accordion, true);
-                    return;
-                } catch (e) {
-                    console.warn('Ошибка кэша', e);
-                }
-            }
-
-            // 2. Если кэша нет, качаем с Google
-            skeleton.style.display = 'block';
-            fetchFromGoogle(accordion, false);
-        }
-
-        async function fetchFromGoogle(accordion, isBackground) {
-            try {
-                const url = GOOGLE_SHEET_URL + "&t=" + new Date().getTime();
-                const response = await fetch(url);
-                const data = await response.text();
-                const rows = parseCSV(data).slice(1);
-
-                const newProducts = rows.map(cols => {
-                    if (!cols[0] || cols.length < 4) return null;
-                    return {
-                        id: (cols[0] || '').trim(), category: (cols[1] || '').trim(),
-                        tag: (cols[2] || '').trim(), title: (cols[3] || '').trim(),
-                        desc: (cols[4] || '').trim(), price: (cols[5] || '').trim(),
-                        image: (cols[6] || '').trim()
-                    };
-                }).filter(item => item && item.title);
-
-                // Если данные изменились, обновляем кэш и перерисовываем
-                if (JSON.stringify(newProducts) !== JSON.stringify(allProducts) || !isBackground) {
-                    allProducts = newProducts;
-                    localStorage.setItem('catalogData', JSON.stringify(allProducts));
-                    renderAccordion(allProducts);
-                }
-
-            } catch (error) {
-                console.error('Ошибка загрузки:', error);
-                if (!isBackground) {
-                    document.getElementById('skeleton-loader').style.display = 'none';
-                    accordion.innerHTML = "<p style='text-align:center;'>Не удалось загрузить каталог. Проверьте интернет.</p>";
-                }
-            } finally {
-                if (!isBackground) document.getElementById('skeleton-loader').style.display = 'none';
-            }
-        }
-
         function renderAccordion(products) {
             const accordion = document.getElementById('catalog-accordion');
             accordion.innerHTML = ''; 
@@ -665,6 +613,58 @@
             });
         }
 
+        async function fetchData() {
+            const skeleton = document.getElementById('skeleton-loader');
+            const accordion = document.getElementById('catalog-accordion');
+
+            // 1. МГНОВЕННО показываем кэш, если он есть
+            const cachedData = localStorage.getItem('catalogData');
+            if (cachedData) {
+                try {
+                    allProducts = JSON.parse(cachedData);
+                    skeleton.style.display = 'none';
+                    renderAccordion(allProducts);
+                } catch (e) {
+                    console.warn('Ошибка кэша', e);
+                }
+            } else {
+                skeleton.style.display = 'block';
+            }
+
+            // 2. В ФОНЕ запрашиваем свежие данные из Google
+            try {
+                const url = GOOGLE_SHEET_URL + "&t=" + new Date().getTime();
+                const response = await fetch(url);
+                const data = await response.text();
+                const rows = parseCSV(data).slice(1);
+
+                const newProducts = rows.map(cols => {
+                    if (!cols[0] || cols.length < 4) return null;
+                    return {
+                        id: (cols[0] || '').trim(), category: (cols[1] || '').trim(),
+                        tag: (cols[2] || '').trim(), title: (cols[3] || '').trim(),
+                        desc: (cols[4] || '').trim(), price: (cols[5] || '').trim(),
+                        image: (cols[6] || '').trim()
+                    };
+                }).filter(item => item && item.title);
+
+                // Если данные изменились, обновляем сайт и кэш
+                if (JSON.stringify(newProducts) !== JSON.stringify(allProducts)) {
+                    allProducts = newProducts;
+                    localStorage.setItem('catalogData', JSON.stringify(allProducts));
+                    renderAccordion(allProducts);
+                }
+            } catch (error) {
+                console.error('Ошибка фоновой загрузки:', error);
+                if (!cachedData) {
+                    skeleton.style.display = 'none';
+                    accordion.innerHTML = "<p style='text-align:center;'>Не удалось загрузить каталог. Проверьте интернет.</p>";
+                }
+            } finally {
+                skeleton.style.display = 'none';
+            }
+        }
+
         const modal = document.getElementById('orderModal');
         const selectedProductText = document.getElementById('selectedProduct');
         const formProductInput = document.getElementById('formProduct');
@@ -701,7 +701,7 @@
             document.body.style.backgroundPosition = `${x}px ${y}px`;
         });
 
-        window.onload = loadProducts;
+        window.onload = fetchData;
     </script>
 </body>
 </html>
