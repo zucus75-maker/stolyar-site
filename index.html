@@ -14,11 +14,13 @@
             --card-bg: #ffffff;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
+            /* Инженерная клетка на фоне */
             background-image: linear-gradient(to right, rgba(139, 90, 43, 0.05) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(139, 90, 43, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -26,7 +28,7 @@
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Шапка и Меню */
+        /* --- Шапка и Меню --- */
         header {
             padding: 15px 0; border-bottom: 2px solid var(--border-color);
             background-color: rgba(252, 250, 245, 0.95); position: sticky; top: 0; z-index: 100;
@@ -34,8 +36,6 @@
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         
         .logo { display: flex; align-items: center; text-decoration: none; }
-        /* Стиль для картинки логотипа. Если картинки нет, покажется текст */
-        .logo img { height: 45px; width: auto; margin-right: 10px; display: none; /* Поменяем на block, когда добавите картинку */ }
         .logo-text {
             font-size: 24px; font-weight: 800; text-transform: uppercase;
             letter-spacing: 2px; color: var(--text-main); line-height: 1.1;
@@ -46,7 +46,7 @@
         nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; transition: color 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        /* Кнопки */
+        /* --- Кнопки --- */
         .btn {
             display: inline-block; padding: 12px 24px; background-color: var(--text-main);
             color: #fff; text-decoration: none; font-weight: 600; border: 2px solid var(--text-main);
@@ -57,13 +57,13 @@
         .btn-outline:hover { background-color: var(--text-main); color: #fff; }
         .btn-buy { padding: 8px 15px; font-size: 14px; }
 
-        /* Главный экран (Hero) */
+        /* --- Главный экран (Hero) --- */
         .hero { padding: 80px 0; text-align: center; border-bottom: 1px dashed var(--border-color); }
         .hero h1 { font-size: 42px; margin-bottom: 20px; line-height: 1.2; }
         .hero p { font-size: 20px; color: #5a4535; max-width: 700px; margin: 0 auto 40px; }
         .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-        /* Секции */
+        /* --- Секции --- */
         .section-title { text-align: center; font-size: 32px; margin: 60px 0 40px; }
         .section-title::after {
             content: ''; display: block; width: 80px; height: 3px;
@@ -71,13 +71,13 @@
         }
         .section-subtitle { text-align: center; font-size: 18px; color: #666; max-width: 800px; margin: -20px auto 40px; }
 
-        /* Преимущества */
+        /* --- Преимущества --- */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 80px; }
         .feature-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--border-color); text-align: center; }
         .feature-card h3 { font-size: 20px; margin-bottom: 15px; color: var(--accent); }
         .feature-card p { font-size: 14px; color: #555; }
 
-        /* Каталог */
+        /* --- Каталог --- */
         .filter-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
         .filter-btn {
             padding: 10px 20px; border: 1px solid var(--border-color); background: transparent;
@@ -107,7 +107,7 @@
         .product-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; border-top: 1px dashed var(--border-color); }
         .product-price { font-size: 20px; font-weight: 700; }
 
-        /* Блок индивидуального заказа */
+        /* --- Блок индивидуального заказа --- */
         .custom-order-block {
             background-color: var(--text-main); color: var(--bg-color); padding: 60px 40px;
             margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px;
@@ -118,10 +118,54 @@
         .custom-order-block .btn { border-color: var(--bg-color); background-color: var(--bg-color); color: var(--text-main); white-space: nowrap; }
         .custom-order-block .btn:hover { background-color: transparent; color: var(--bg-color); }
 
-        /* Подвал */
-        footer { border-top: 2px solid var(--border-color); padding: 40px 0; text-align: center; color: #888; }
+        /* --- Подвал --- */
+        footer { 
+            border-top: 2px solid var(--border-color); 
+            padding: 50px 0 30px; 
+            background-color: rgba(252, 250, 245, 0.8);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer-col p, .footer-col a {
+            font-size: 15px;
+            color: #555;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .social-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--text-main);
+            color: #fff !important;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        .social-btn:hover {
+            opacity: 0.8;
+        }
 
-        /* Модальное окно */
+        /* --- Модальное окно --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000;
@@ -138,15 +182,17 @@
             width: 100%; padding: 12px; border: 1px solid var(--border-color); background: #fff; font-size: 16px;
         }
 
-        /* Лоадер */
+        /* --- Лоадер --- */
         .loader { text-align: center; font-size: 18px; color: var(--accent); margin: 50px 0; display: none; }
 
-        /* Адаптивность */
+        /* --- Адаптивность --- */
         @media (max-width: 768px) {
-            .header-content { flex-direction: column; }
-            nav { margin-top: 10px; }
+            .header-content { flex-direction: column; text-align: center; }
+            nav { margin-top: 10px; flex-wrap: wrap; justify-content: center; }
             .hero h1 { font-size: 32px; }
             .custom-order-block { flex-direction: column; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+            .footer-socials { justify-content: center; }
         }
     </style>
 </head>
@@ -154,9 +200,7 @@
 
     <header>
         <div class="container header-content">
-            <!-- Логотип: Чтобы добавить картинку, загрузите logo.png в папку и уберите display:none в CSS для .logo img, а .logo-text скройте -->
             <a href="#top" class="logo">
-                <!-- <img src="logo.png" alt="Столяр-Проект"> -->
                 <div class="logo-text">Столяр-Проект<span>Чертежи и проектирование</span></div>
             </a>
             
@@ -182,7 +226,7 @@
         </div>
     </section>
 
-    <!-- SEO Блок / Решение проблемы -->
+    <!-- SEO Блок -->
     <div class="container">
         <h2 class="section-title">Надежная документация для строительства</h2>
         <p class="section-subtitle">
@@ -213,7 +257,7 @@
         </div>
     </div>
 
-    <!-- Блок индивидуального заказа (Высокий чек) -->
+    <!-- Блок индивидуального заказа -->
     <div class="container" id="custom">
         <div class="custom-order-block">
             <div>
@@ -247,10 +291,34 @@
         </div>
     </div>
 
+    <!-- Подвал с контактами -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Столяр-Проект. Все права защищены.</p>
-            <p style="margin-top: 10px; font-size: 14px;">ИП Рубатинкин А.В. | ИНН 000000000000</p>
+            <div class="footer-grid">
+                <!-- Колонка 1: Контакты -->
+                <div class="footer-col">
+                    <h4>Свяжитесь с нами</h4>
+                    <!-- ЗАМЕНИТЕ НА ВАШИ ДАННЫЕ -->
+                    <p style="margin-bottom: 5px;"><strong>Телефон:</strong> <a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
+                    <p style="margin-bottom: 5px;"><strong>Email:</strong> <a href="mailto:info@stolyar-proekt.ru">info@stolyar-proekt.ru</a></p>
+                    <p style="margin-bottom: 15px;"><strong>Адрес:</strong> г. Москва, ул. Строителей, д. 1 (офис 5)</p>
+                    
+                    <div class="footer-socials">
+                        <a href="https://t.me/ваш_ник" target="_blank" class="social-btn">Telegram</a>
+                        <a href="https://wa.me/79000000000" target="_blank" class="social-btn">WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Колонка 2: Реквизиты -->
+                <div class="footer-col">
+                    <h4>Реквизиты</h4>
+                    <p style="margin-bottom: 5px;">ИП Рубатинкин Александр Валерьевич</p>
+                    <p style="margin-bottom: 5px;">ИНН: 000000000000</p>
+                    <p style="margin-bottom: 5px;">ОГРНИП: 000000000000000</p>
+                    <p style="margin-bottom: 15px;">Юр. адрес: 123456, г. Москва, ул. Строителей, д. 1</p>
+                    <p style="font-size: 12px; color: #999;">© 2024 Столяр-Проект. Все права защищены.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -268,8 +336,9 @@
         </div>
     </div>
 
+    <!-- Скрипт каталога -->
     <script>
-        // --- ВАША ССЫЛКА НА ТАБЛИЦУ ---
+        // --- ССЫЛКА НА ВАШУ ТАБЛИЦУ ---
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAHnEYoeQDMfEoHQgH5Wa0S54gd2Ff4G8bkSEGCgTC6WxAg50v4Xgul-SFIJqTyVC37Np1gM0HCy6-/pub?gid=0&single=true&output=csv";
         
         let allProducts = [];
@@ -316,7 +385,7 @@
                 renderProducts(allProducts);
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
-                grid.innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>Не удалось загрузить каталог. Проверьте интернет и правильность ссылки.</p>";
+                grid.innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>Не удалось загрузить каталог. Проверьте интернет.</p>";
             } finally { loader.style.display = 'none'; }
         }
 
@@ -331,6 +400,7 @@
                 const rawPrice = parseFloat(product.price.replace(/[^\d.]/g, ''));
                 const formattedPrice = isNaN(rawPrice) ? (product.price || 'Цена по запросу') : (rawPrice.toLocaleString('ru-RU') + ' ₽');
                 const imgHtml = product.image ? `<img src="${product.image}" alt="${product.title}" onerror="this.style.display='none'; this.parentElement.innerText='Нет фото';">` : 'Фото чертежа';
+                
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.dataset.category = product.category;
