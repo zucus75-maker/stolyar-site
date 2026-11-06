@@ -33,7 +33,8 @@
             background-size: 40px 40px;
             scroll-behavior: smooth;
             overflow-x: hidden;
-            scroll-padding-top: 120px; 
+            /* ИСПРАВЛЕНИЕ НАЕЗДА ШАПКИ */
+            scroll-padding-top: 150px; 
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -124,6 +125,23 @@
         .product-price { font-size: 20px; font-weight: 700; color: var(--text-main); }
         
         .product-action { flex-shrink: 0; }
+
+        /* --- Скелетон загрузки --- */
+        .skeleton { background: #e0e0e0; border-radius: 4px; animation: pulse 1.5s infinite ease-in-out; }
+        .skeleton-card { display: flex; gap: 20px; padding: 15px; border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 20px; }
+        .skeleton-img { width: 150px; height: 100px; background: #e0e0e0; border-radius: 4px; flex-shrink: 0; }
+        .skeleton-text { flex-grow: 1; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+        .skeleton-line { height: 15px; background: #e0e0e0; border-radius: 4px; }
+        .skeleton-line.title { width: 60%; height: 20px; }
+        .skeleton-line.desc { width: 80%; }
+        .skeleton-line.price { width: 30%; height: 20px; margin-top: 10px; }
+        .skeleton-btn { width: 100px; height: 40px; background: #e0e0e0; border-radius: 4px; align-self: center; }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
 
         /* --- Блок индивидуального заказа --- */
         .custom-order-block { background-color: var(--text-main); color: #fff; padding: 60px 40px; margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; border-radius: 4px; }
@@ -228,6 +246,10 @@
             .hero h1 { font-size: 32px; }
             .custom-order-block { flex-direction: column; text-align: center; }
             .features-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr; }
+            
+            .skeleton-card { flex-direction: column; }
+            .skeleton-img { width: 100%; height: 150px; }
+            .skeleton-btn { width: 100%; }
         }
     </style>
 </head>
@@ -273,7 +295,27 @@
     <div class="container" id="catalog">
         <h2 class="section-title">Готовые проекты</h2>
         <div class="catalog-accordion" id="catalog-accordion">
-            <div class="loader" id="loader">Загрузка каталога...</div>
+            <!-- Скелетон загрузки -->
+            <div id="skeleton-loader">
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton-text">
+                        <div class="skeleton skeleton-line title"></div>
+                        <div class="skeleton skeleton-line desc"></div>
+                        <div class="skeleton skeleton-line price"></div>
+                    </div>
+                    <div class="skeleton skeleton-btn"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton-text">
+                        <div class="skeleton skeleton-line title"></div>
+                        <div class="skeleton skeleton-line desc"></div>
+                        <div class="skeleton skeleton-line price"></div>
+                    </div>
+                    <div class="skeleton skeleton-btn"></div>
+                </div>
+            </div>
         </div>
         <div style="text-align: center; margin-bottom: 80px;">
             <p style="margin-bottom: 15px; font-size: 18px; color: #666;">Не нашли нужный размер или конфигурацию?</p>
@@ -507,16 +549,37 @@
         }
 
         async function loadProducts() {
-            const loader = document.getElementById('loader');
             const accordion = document.getElementById('catalog-accordion');
-            loader.style.display = 'block';
+            const skeleton = document.getElementById('skeleton-loader');
+            
+            // 1. Пытаемся взять данные из кэша браузера (мгновенно)
+            const cachedData = localStorage.getItem('catalogData');
+            if (cachedData) {
+                try {
+                    allProducts = JSON.parse(cachedData);
+                    skeleton.style.display = 'none'; // Скрываем скелетон
+                    renderAccordion(allProducts);
+                    // В фоне проверяем обновления
+                    fetchFromGoogle(accordion, true);
+                    return;
+                } catch (e) {
+                    console.warn('Ошибка кэша', e);
+                }
+            }
+
+            // 2. Если кэша нет, качаем с Google
+            skeleton.style.display = 'block';
+            fetchFromGoogle(accordion, false);
+        }
+
+        async function fetchFromGoogle(accordion, isBackground) {
             try {
                 const url = GOOGLE_SHEET_URL + "&t=" + new Date().getTime();
                 const response = await fetch(url);
                 const data = await response.text();
                 const rows = parseCSV(data).slice(1);
 
-                allProducts = rows.map(cols => {
+                const newProducts = rows.map(cols => {
                     if (!cols[0] || cols.length < 4) return null;
                     return {
                         id: (cols[0] || '').trim(), category: (cols[1] || '').trim(),
@@ -526,16 +589,28 @@
                     };
                 }).filter(item => item && item.title);
 
-                renderAccordion(allProducts);
+                // Если данные изменились, обновляем кэш и перерисовываем
+                if (JSON.stringify(newProducts) !== JSON.stringify(allProducts) || !isBackground) {
+                    allProducts = newProducts;
+                    localStorage.setItem('catalogData', JSON.stringify(allProducts));
+                    renderAccordion(allProducts);
+                }
+
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
-                accordion.innerHTML = "<p style='text-align:center;'>Не удалось загрузить каталог. Проверьте интернет.</p>";
-            } finally { loader.style.display = 'none'; }
+                if (!isBackground) {
+                    document.getElementById('skeleton-loader').style.display = 'none';
+                    accordion.innerHTML = "<p style='text-align:center;'>Не удалось загрузить каталог. Проверьте интернет.</p>";
+                }
+            } finally {
+                if (!isBackground) document.getElementById('skeleton-loader').style.display = 'none';
+            }
         }
 
         function renderAccordion(products) {
             const accordion = document.getElementById('catalog-accordion');
             accordion.innerHTML = ''; 
+
             if (products.length === 0) {
                 accordion.innerHTML = "<p style='text-align:center;'>В каталоге пока нет проектов.</p>";
                 return;
@@ -596,7 +671,7 @@
 
         function openModal(productName) {
             selectedProductText.textContent = productName;
-            formProductInput.value = productName; // Передаем название в скрытое поле формы
+            formProductInput.value = productName; 
             
             const descField = document.getElementById('customProjectDesc');
             if (productName === 'Индивидуальный проект') {
