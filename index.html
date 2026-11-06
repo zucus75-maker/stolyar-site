@@ -6,7 +6,7 @@
     <meta name="description" content="Профессиональные чертежи беседок, лестниц и мебели. Скачивайте готовые проекты или заказывайте индивидуальное проектирование деревянных конструкций.">
     <title>Столяр-Проект | Чертежи и проектирование</title>
     
-    <!-- Иконка сайта (Favicon). Если вы переименовали картинку в logo.png, то браузер подхватит её -->
+    <!-- Иконка сайта (Favicon) -->
     <link rel="icon" type="image/png" href="logo.png">
 
     <style>
@@ -24,10 +24,12 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
+            /* Инженерная клетка на фоне (с эффектом параллакса через JS) */
             background-image: linear-gradient(to right, rgba(139, 90, 43, 0.05) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(139, 90, 43, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -35,10 +37,23 @@
         header {
             padding: 15px 0; border-bottom: 2px solid var(--border-color);
             background-color: rgba(252, 250, 245, 0.95); position: sticky; top: 0; z-index: 100;
+            overflow: hidden; /* Важно для скрытия выходящего за края водяного знака */
         }
-        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         
-        /* --- Стильный текстовый логотип --- */
+        /* Водяной знак с логотипом на фоне шапки */
+        .header-watermark {
+            position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+            opacity: 0.06; z-index: 0; pointer-events: none; /* Отключаем клики по картинке */
+            width: 400px;
+        }
+        .header-watermark img { width: 100%; height: auto; }
+
+        .header-content { 
+            display: flex; justify-content: space-between; align-items: center; 
+            flex-wrap: wrap; gap: 15px; position: relative; z-index: 1; /* Контент поверх водяного знака */
+        }
+        
+        /* Стильный текстовый логотип */
         .logo { display: flex; align-items: center; text-decoration: none; color: var(--text-main); }
         .logo-title {
             font-size: 26px; font-weight: 800; text-transform: uppercase;
@@ -199,6 +214,7 @@
             .header-content { flex-direction: column; text-align: center; }
             .logo { flex-direction: column; gap: 10px; }
             .logo-subtitle { border-left: none; border-top: 2px solid var(--accent); padding-left: 0; padding-top: 5px; margin-left: 0; }
+            .header-watermark { width: 250px; top: 10px; }
             nav { margin-top: 10px; flex-wrap: wrap; justify-content: center; }
             .hero h1 { font-size: 32px; }
             .custom-order-block { flex-direction: column; text-align: center; }
@@ -210,8 +226,13 @@
 <body id="top">
 
     <header>
+        <!-- Водяной знак с логотипом на фоне -->
+        <div class="header-watermark">
+            <img src="logo.png" alt="">
+        </div>
+
         <div class="container header-content">
-            <!-- Стильный текстовый логотип -->
+            <!-- Текстовый логотип -->
             <a href="#top" class="logo">
                 <div class="logo-title">Столяр<span>-</span>Проект</div>
                 <div class="logo-subtitle">Чертежи<br>и проектирование</div>
@@ -448,6 +469,13 @@
             modal.classList.remove('active');
             document.body.style.overflow = ''; 
         }
+
+        // Эффект легкого движения фона (клетки) за мышкой
+        document.body.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 10;
+            const y = (e.clientY / window.innerHeight) * 10;
+            document.body.style.backgroundPosition = `${x}px ${y}px`;
+        });
 
         window.onload = loadProducts;
     </script>
