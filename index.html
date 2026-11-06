@@ -15,12 +15,12 @@
             --bg-color: #f7f5f0; 
             --bg-alt: #edeae3; 
             --text-main: #2c2c2c; 
-            --text-light: #e0e0e0; /* Для темного подвала */
+            --text-light: #e0e0e0; 
             --accent: #b86b35; 
             --accent-hover: #9c5829; 
             --border-color: #dcd3c6;
             --card-bg: #ffffff;
-            --footer-bg: #1a1a1a; /* Графитовый цвет */
+            --footer-bg: #1a1a1a; 
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,9 +54,12 @@
         .logo-title span { color: var(--accent); }
         .logo-subtitle { font-size: 12px; letter-spacing: 4px; color: #777; margin-left: 18px; border-left: 2px solid var(--border-color); padding-left: 18px; text-transform: uppercase; line-height: 1.3; }
 
-        nav { display: flex; gap: 20px; }
+        nav { display: flex; gap: 20px; align-items: center; }
         nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; transition: color 0.3s; }
         nav a:hover { color: var(--accent); }
+
+        /* Кнопка бургер-меню (скрыта на ПК) */
+        .burger-menu { display: none; font-size: 30px; background: none; border: none; cursor: pointer; color: var(--text-main); }
 
         /* --- Кнопки --- */
         .btn {
@@ -84,6 +87,15 @@
 
         /* --- Чередование фонов --- */
         .bg-alt { background-color: var(--bg-alt); padding: 60px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+
+        /* --- Галерея (Наши работы) --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-color); cursor: pointer; }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(44, 44, 44, 0.8); color: #fff; padding: 10px; text-align: center; font-weight: 600; }
+        .gallery-item::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('logo.png'); background-size: 50%; background-position: center; background-repeat: no-repeat; opacity: 0.15; pointer-events: none; }
+        .gallery-action { text-align: center; margin-bottom: 40px; }
 
         /* --- Каталог-Аккордеон --- */
         .catalog-accordion { max-width: 900px; margin: 0 auto 60px; }
@@ -156,14 +168,6 @@
         .step-item { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
         .step-number { width: 30px; height: 30px; flex-shrink: 0; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold; }
 
-        /* --- Галерея --- */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px; }
-        .gallery-item { position: relative; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-color); cursor: pointer; }
-        .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease; }
-        .gallery-item:hover img { transform: scale(1.05); }
-        .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(44, 44, 44, 0.8); color: #fff; padding: 10px; text-align: center; font-weight: 600; }
-        .gallery-item::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('logo.png'); background-size: 50%; background-position: center; background-repeat: no-repeat; opacity: 0.15; pointer-events: none; }
-
         /* --- Преимущества --- */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         .feature-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--border-color); text-align: center; }
@@ -195,8 +199,9 @@
         }
         
         .footer-main { display: flex; gap: 50px; margin-bottom: 40px; }
-        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: space-between; }
-        .footer-left img { width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; filter: brightness(0) invert(1); /* Делаем логотип белым, если он темный */ opacity: 0.8;}
+        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;}
+        /* Фикс логотипа: делаем его видимым на темном фоне */
+        .footer-left img { width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; opacity: 0.9; }
 
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         
@@ -212,12 +217,13 @@
         
         .footer-address { font-size: 16px; font-weight: normal; color: #aaa; }
 
-        .footer-socials { display: flex; gap: 10px; margin-top: 20px; }
+        /* Центрирование кнопок в подвале */
+        .footer-socials { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
         .social-btn { 
             display: inline-block; padding: 8px 15px; background-color: #333; 
             color: #fff !important; border-radius: 4px; font-size: 14px; 
             font-weight: 600; transition: background-color 0.3s; text-decoration: none; 
-        }
+2        }
         .social-btn:hover { background-color: var(--accent); }
 
         .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
@@ -272,7 +278,7 @@
         .product-details h2 { font-size: 28px; margin-bottom: 15px; line-height: 1.3; color: var(--text-main); }
         .product-details .price { font-size: 32px; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
         .product-details .desc { font-size: 16px; color: #555; margin-bottom: 30px; line-height: 1.7; }
-        
+
         /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; } 
@@ -292,11 +298,25 @@
             .product-details { width: 100%; padding: 20px; }
         }
 
+        /* Мобильное меню (бургер) */
         @media (max-width: 768px) {
-            .header-content { flex-direction: column; text-align: center; }
-            .logo { flex-direction: column; gap: 10px; }
-            .logo-subtitle { border-left: none; border-top: 2px solid var(--border-color); padding-left: 0; padding-top: 5px; margin-left: 0; }
-            nav { margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+            .header-content { flex-wrap: nowrap; justify-content: space-between; align-items: center;}
+            .logo { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .logo-title { font-size: 22px; }
+            .logo-subtitle { border-left: none; border-top: 1px solid var(--border-color); padding-left: 0; padding-top: 3px; margin-left: 0; font-size: 9px; letter-spacing: 2px;}
+            
+            /* Скрываем меню по умолчанию */
+            nav { 
+                display: none; flex-direction: column; width: 100%; position: absolute; 
+                top: 100%; left: 0; background: var(--bg-color); padding: 20px; 
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1); gap: 15px; border-bottom: 2px solid var(--border-color);
+            }
+            nav.active { display: flex; } /* Показываем при клике */
+            .burger-menu { display: block; } /* Показываем кнопку */
+            
+            /* Кнопка "Связаться" в мобильном меню */
+            .header-btn-mobile { display: none; } 
+            
             .hero h1 { font-size: 32px; }
             .custom-order-block { flex-direction: column; text-align: center; }
             .features-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr; }
@@ -311,22 +331,30 @@
 
     <header>
         <div class="container header-content">
+            <!-- Логотип и бургер -->
             <a href="#top" class="logo">
                 <div class="logo-title">Столяр<span>-</span>Проект</div>
                 <div class="logo-subtitle">Чертежи<br>и проектирование</div>
             </a>
             
-            <nav>
+            <!-- Кнопка бургер-меню -->
+            <button class="burger-menu" onclick="toggleMenu()">☰</button>
+
+            <!-- Само меню -->
+            <nav id="mobileMenu">
                 <a href="#catalog">Готовые проекты</a>
                 <a href="#custom">На заказ</a>
                 <a href="#how-we-work">Как мы работаем</a>
                 <a href="#contacts">Контакты</a>
+                <button onclick="openModal('Общая заявка'); toggleMenu();" class="btn btn-outline" style="display: none;" id="mobileContactBtn">Связаться</button>
             </nav>
-            
-            <button onclick="openModal('Общая заявка')" class="btn btn-outline">Связаться</button>
+
+            <!-- Кнопка на ПК -->
+            <button onclick="openModal('Общая заявка')" class="btn btn-outline header-btn-desktop" style="display: block;">Связаться</button>
         </div>
     </header>
 
+    <!-- 1. Главный экран -->
     <section class="hero">
         <div class="container">
             <h1>Готовые чертежи и проектирование столярных изделий</h1>
@@ -338,6 +366,7 @@
         </div>
     </section>
 
+    <!-- 2. SEO Блок -->
     <div class="container">
         <h2 class="section-title">Надежная документация для строительства</h2>
         <p class="section-subtitle">
@@ -346,6 +375,32 @@
         </p>
     </div>
 
+    <!-- 3. Наши работы -->
+    <div class="bg-alt" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Наши работы</h2>
+            <p class="section-subtitle">Примеры изделий, созданных по нашим проектам.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1590066305644-1539177b4566?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Беседка">
+                    <div class="gallery-caption">Беседка 3х4 с мангальной зоной</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Лестница">
+                    <div class="gallery-caption">Маршевая лестница из дуба</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Мебель">
+                    <div class="gallery-caption">Корпусная мебель на заказ</div>
+                </div>
+            </div>
+            <div class="gallery-action">
+                <a href="#catalog" class="btn">Смотреть все проекты</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Каталог -->
     <div class="container" id="catalog">
         <h2 class="section-title">Готовые проекты</h2>
         <div class="catalog-accordion" id="catalog-accordion">
@@ -376,6 +431,7 @@
         </div>
     </div>
 
+    <!-- 5. Блок индивидуального заказа -->
     <div class="anchor" id="custom-anchor"></div>
     <div class="container" id="custom">
         <div class="custom-order-block">
@@ -387,6 +443,7 @@
         </div>
     </div>
 
+    <!-- 6. Этапы работы -->
     <div class="bg-alt" id="how-we-work">
         <div class="container">
             <h2 class="section-title">Как мы работаем</h2>
@@ -421,95 +478,77 @@
         </div>
     </div>
 
-    <div class="container" id="gallery">
-        <h2 class="section-title">Наши работы</h2>
-        <p class="section-subtitle">Примеры изделий, созданных по нашим проектам.</p>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1590066305644-1539177b4566?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Беседка">
-                <div class="gallery-caption">Беседка 3х4 с мангальной зоной</div>
+    <!-- 7. Преимущества -->
+    <div class="container" id="features">
+        <h2 class="section-title">Почему нам доверяют</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Точность до мм</h3>
+                <p>Все чертежи создаются в профессиональных САПР-программах инженерами-проектировщиками.</p>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Лестница">
-                <div class="gallery-caption">Маршевая лестница из дуба</div>
+            <div class="feature-card">
+                <h3>Полная деталировка</h3>
+                <p>Вы получаете не просто картинку, а спецификацию всех досок, крепежа и материалов.</p>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Мебель">
-                <div class="gallery-caption">Корпусная мебель на заказ</div>
+            <div class="feature-card">
+                <h3>Защита файлов</h3>
+                <p>Передаем файлы только в форматах PDF и для ЧПУ. Редактирование проектов запрещено.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Поддержка</h3>
+                <p>Отвечаем на вопросы по чертежам даже после покупки.</p>
             </div>
         </div>
     </div>
 
-    <div class="bg-alt" id="features">
+    <!-- 8. Отзывы -->
+    <div class="bg-alt" id="reviews">
         <div class="container">
-            <h2 class="section-title">Почему нам доверяют</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Точность до мм</h3>
-                    <p>Все чертежи создаются в профессиональных САПР-программах инженерами-проектировщиками.</p>
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-text">Строил беседку первый раз в жизни. Боялся, что в чертежах будет куча непонятных узлов. Но тут всё оказалось настолько подробно расписано, что собрал за 4 выходных. Отдельное спасибо за схему крепления стропил.</div>
+                    <div class="review-author">Сергей</div>
+                    <div class="review-location">г. Томск</div>
                 </div>
-                <div class="feature-card">
-                    <h3>Полная деталировка</h3>
-                    <p>Вы получаете не просто картинку, а спецификацию всех досок, крепежа и материалов.</p>
+                <div class="review-card">
+                    <div class="review-text">Беру проекты на заказ, часто нужны готовые решения. Здесь понравилась деталировка — всё в миллиметрах, нет никаких «примерно». Скачал чертеж маршевой лестницы, отдал в цех, сделали без переделок.</div>
+                    <div class="review-author">Дмитрий</div>
+                    <div class="review-location">Столярная мастерская, г. Новосибирск</div>
                 </div>
-                <div class="feature-card">
-                    <h3>Защита файлов</h3>
-                    <p>Передаем файлы только в форматах PDF и для ЧПУ. Редактирование проектов запрещено.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Поддержка</h3>
-                    <p>Отвечаем на вопросы по чертежам даже после покупки.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container" id="reviews">
-        <h2 class="section-title">Отзывы клиентов</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="review-text">Строил беседку первый раз в жизни. Боялся, что в чертежах будет куча непонятных узлов. Но тут всё оказалось настолько подробно расписано, что собрал за 4 выходных. Отдельное спасибо за схему крепления стропил.</div>
-                <div class="review-author">Сергей</div>
-                <div class="review-location">г. Томск</div>
-            </div>
-            <div class="review-card">
-                <div class="review-text">Беру проекты на заказ, часто нужны готовые решения. Здесь понравилась деталировка — всё в миллиметрах, нет никаких «примерно». Скачал чертеж маршевой лестницы, отдал в цех, сделали без переделок.</div>
-                <div class="review-author">Дмитрий</div>
-                <div class="review-location">Столярная мастерская, г. Новосибирск</div>
-            </div>
-            <div class="review-card">
-                <div class="review-text">Раньше тратила кучу времени на пересчеты вручную. Купила здесь проект шкафа. Дорого? Нет, это копейки по сравнению с тем временем, которое я сэкономила. Теперь клиенту показываю 3D-модель и точный раскрой.</div>
-                <div class="review-author">Анна</div>
-                <div class="review-location">Дизайнер интерьера, г. Кемерово</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-alt">
-        <div class="container">
-            <h2 class="section-title">Оплата и получение</h2>
-            <div class="faq-block">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">Как происходит оплата? <span>+</span></div>
-                    <div class="faq-answer">Вы оставляете заявку на сайте. Мы связываемся с вами, высылаем ссылку на оплату (СБП, карта, счет для юрлиц). После оплаты файлы приходят на вашу почту.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">Что я получу после оплаты? <span>+</span></div>
-                    <div class="faq-answer">Вы получите письмо со ссылками: 1. Чертежи в формате PDF (высокое качество для печати). 2. Файлы для ЧПУ (только для станка, без редактирования). 3. Подробная спецификация материалов.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">Могу ли я отредактировать файлы под свои размеры? <span>+</span></div>
-                    <div class="faq-answer">Нет. Мы передаем файлы исключительно в формате PDF (для печати) и для ЧПУ (для станков). Если нужны другие размеры — закажите индивидуальный проект.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">А если я не разберусь в чертеже? <span>+</span></div>
-                    <div class="faq-answer">К каждому проекту прилагается пошаговая инструкция. Если возникнут вопросы — напишите нам в мессенджер, мы объясним.</div>
+                <div class="review-card">
+                    <div class="review-text">Раньше тратила кучу времени на пересчеты вручную. Купила здесь проект шкафа. Дорого? Нет, это копейки по сравнению с тем временем, которое я сэкономила. Теперь клиенту показываю 3D-модель и точный раскрой.</div>
+                    <div class="review-author">Анна</div>
+                    <div class="review-location">Дизайнер интерьера, г. Кемерово</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ТЕМНЫЙ ПОДВАЛ -->
+    <!-- 9. FAQ -->
+    <div class="container">
+        <h2 class="section-title">Оплата и получение</h2>
+        <div class="faq-block">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Как происходит оплата? <span>+</span></div>
+                <div class="faq-answer">Вы оставляете заявку на сайте. Мы связываемся с вами, высылаем ссылку на оплату (СБП, карта, счет для юрлиц). После оплаты файлы приходят на вашу почту.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Что я получу после оплаты? <span>+</span></div>
+                <div class="faq-answer">Вы получите письмо со ссылками: 1. Чертежи в формате PDF (высокое качество для печати). 2. Файлы для ЧПУ (только для станка, без редактирования). 3. Подробная спецификация материалов.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Могу ли я отредактировать файлы под свои размеры? <span>+</span></div>
+                <div class="faq-answer">Нет. Мы передаем файлы исключительно в формате PDF (для печати) и для ЧПУ (для станков). Если нужны другие размеры — закажите индивидуальный проект.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">А если я не разберусь в чертеже? <span>+</span></div>
+                <div class="faq-answer">К каждому проекту прилагается пошаговая инструкция. Если возникнут вопросы — напишите нам в мессенджер, мы объясним.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. Темный подвал -->
     <footer id="contacts">
         <div class="container">
             <div class="footer-main">
@@ -603,6 +642,26 @@
         
         let allProducts = [];
         let currentProductForBuy = "";
+
+        // --- МОБИЛЬНОЕ МЕНЮ ---
+        function toggleMenu() {
+            const nav = document.getElementById('mobileMenu');
+            const contactBtn = document.getElementById('mobileContactBtn');
+            const desktopBtn = document.querySelector('.header-btn-desktop');
+            
+            nav.classList.toggle('active');
+
+            // Если меню открыто (на телефоне), показываем кнопку "Связаться" внутри меню
+            if (nav.classList.contains('active') && window.innerWidth <= 768) {
+                contactBtn.style.display = 'block';
+                desktopBtn.style.display = 'none';
+            } else {
+                contactBtn.style.display = 'none';
+                if (window.innerWidth > 768) {
+                    desktopBtn.style.display = 'block';
+                }
+            }
+        }
 
         function parseCSV(text) {
             const rows = []; let currentRow = []; let currentCell = ''; let inQuotes = false;
@@ -821,9 +880,11 @@
         }
 
         document.body.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) * 10;
-            const y = (e.clientY / window.innerHeight) * 10;
-            document.body.style.backgroundPosition = `${x}px ${y}px`;
+            if (window.innerWidth > 768) {
+                const x = (e.clientX / window.innerWidth) * 10;
+                const y = (e.clientY / window.innerHeight) * 10;
+                document.body.style.backgroundPosition = `${x}px ${y}px`;
+            }
         });
 
         window.onload = fetchData;
