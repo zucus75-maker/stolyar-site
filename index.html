@@ -15,10 +15,12 @@
             --bg-color: #f7f5f0; 
             --bg-alt: #edeae3; 
             --text-main: #2c2c2c; 
+            --text-light: #e0e0e0; /* Для темного подвала */
             --accent: #b86b35; 
             --accent-hover: #9c5829; 
             --border-color: #dcd3c6;
             --card-bg: #ffffff;
+            --footer-bg: #1a1a1a; /* Графитовый цвет */
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,7 +39,6 @@
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Невидимые якоря для точной прокрутки */
         .anchor { position: relative; top: -100px; visibility: hidden; }
 
         /* --- Шапка и Меню --- */
@@ -106,11 +107,10 @@
             display: flex; gap: 20px; align-items: center;
             background: var(--bg-color); border: 1px solid var(--border-color);
             padding: 15px; border-radius: 4px; transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer; /* Курсор-рука, чтобы клиент понял, что можно нажать */
+            cursor: pointer;
         }
         .product-card:hover { transform: translateX(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         
-        /* Водяной знак на картинках */
         .product-image { 
             width: 150px; height: 100px; flex-shrink: 0; background: #eee; border-radius: 4px; overflow: hidden; position: relative;
             display: flex; align-items: center; justify-content: center; color: #999;
@@ -186,33 +186,54 @@
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { color: var(--accent); }
 
-        /* --- ПОДВАЛ --- */
-        footer { border-top: 2px solid var(--border-color); padding: 60px 0 20px; background-color: #f0eee9; }
+        /* --- ТЕМНЫЙ ПОДВАЛ --- */
+        footer { 
+            background-color: var(--footer-bg); 
+            color: var(--text-light); 
+            padding: 60px 0 20px; 
+            border-top: 4px solid var(--accent);
+        }
+        
         .footer-main { display: flex; gap: 50px; margin-bottom: 40px; }
         .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: space-between; }
-        .footer-left img { width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; }
+        .footer-left img { width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; filter: brightness(0) invert(1); /* Делаем логотип белым, если он темный */ opacity: 0.8;}
 
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .footer-block h4 { font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; display: inline-block; }
         
-        .contact-list p { margin-bottom: 10px; font-size: 18px; color: var(--text-main); font-weight: 600; }
-        .contact-list a { color: var(--text-main); text-decoration: none; transition: color 0.3s; }
+        .footer-block h4 { 
+            font-size: 16px; color: var(--accent); text-transform: uppercase; 
+            letter-spacing: 1px; margin-bottom: 15px; border-bottom: 1px solid #333; 
+            padding-bottom: 5px; display: inline-block; 
+        }
+        
+        .contact-list p { margin-bottom: 10px; font-size: 18px; font-weight: 600; color: #fff; }
+        .contact-list a { color: #fff; text-decoration: none; transition: color 0.3s; }
         .contact-list a:hover { color: var(--accent); }
+        
+        .footer-address { font-size: 16px; font-weight: normal; color: #aaa; }
+
         .footer-socials { display: flex; gap: 10px; margin-top: 20px; }
-        .social-btn { display: inline-block; padding: 8px 15px; background-color: var(--text-main); color: #fff !important; border-radius: 4px; font-size: 14px; font-weight: 600; transition: opacity 0.3s; text-decoration: none; }
-        .social-btn:hover { opacity: 0.8; }
+        .social-btn { 
+            display: inline-block; padding: 8px 15px; background-color: #333; 
+            color: #fff !important; border-radius: 4px; font-size: 14px; 
+            font-weight: 600; transition: background-color 0.3s; text-decoration: none; 
+        }
+        .social-btn:hover { background-color: var(--accent); }
 
-        .requisites-list p { font-size: 13px; color: #666; margin-bottom: 5px; line-height: 1.5; }
+        .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
 
-        .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #888; }
-        .legal-links a { color: #888; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
+        .footer-bottom { 
+            border-top: 1px solid #333; padding-top: 20px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; 
+        }
+        .legal-links a { color: #777; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
         .legal-links a:hover { color: var(--accent); }
 
         /* --- Модальные окна --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;}
         .modal-overlay.active { display: flex; }
         
-        /* Окно заявки */
         .modal-content { background: var(--bg-color); padding: 40px; width: 100%; max-width: 500px; border: 2px solid var(--text-main); position: relative; border-radius: 4px; max-height: 90vh; overflow-y: auto;}
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; background: none; border: none; cursor: pointer; color: var(--text-main); z-index: 10;}
         .form-group { margin-bottom: 15px; }
@@ -221,14 +242,13 @@
         .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 12px; color: #666; }
         .checkbox-group input { width: auto; margin-top: 3px; }
 
-        /* --- КАРТОЧКА ТОВАРА (БОЛЬШОЕ ОКНО) --- */
+        /* --- КАРТОЧКА ТОВАРА --- */
         .product-modal {
             background: var(--bg-color);
             width: 100%; max-width: 1000px; border-radius: 8px; overflow: hidden;
             position: relative; display: flex; flex-wrap: wrap; max-height: 90vh; overflow-y: auto;
         }
         
-        /* Левая часть (Галерея) */
         .product-gallery { width: 50%; padding: 30px; background: #fff; display: flex; flex-direction: column; }
         .main-image-container {
             width: 100%; height: 400px; background: #f4f4f4; border-radius: 4px; overflow: hidden;
@@ -247,9 +267,7 @@
         }
         .thumbnail.active { border-color: var(--accent); }
         .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
-        .thumbnail.no-img { display: flex; align-items: center; justify-content: center; font-size: 10px; color: #999; }
 
-        /* Правая часть (Информация) */
         .product-details { width: 50%; padding: 40px; display: flex; flex-direction: column; }
         .product-details h2 { font-size: 28px; margin-bottom: 15px; line-height: 1.3; color: var(--text-main); }
         .product-details .price { font-size: 32px; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
@@ -268,7 +286,6 @@
             .product-image { width: 100%; height: 150px; }
             .product-action { margin-top: 15px; width: 100%; }
             
-            /* Карточка товара на телефоне */
             .product-modal { flex-direction: column; }
             .product-gallery { width: 100%; padding: 20px; }
             .main-image-container { height: 250px; }
@@ -332,7 +349,6 @@
     <div class="container" id="catalog">
         <h2 class="section-title">Готовые проекты</h2>
         <div class="catalog-accordion" id="catalog-accordion">
-            <!-- Скелетон загрузки -->
             <div id="skeleton-loader">
                 <div class="skeleton-card">
                     <div class="skeleton skeleton-img"></div>
@@ -493,6 +509,7 @@
         </div>
     </div>
 
+    <!-- ТЕМНЫЙ ПОДВАЛ -->
     <footer id="contacts">
         <div class="container">
             <div class="footer-main">
@@ -505,7 +522,7 @@
                         <div class="contact-list">
                             <p><a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
                             <p><a href="mailto:info@stolyar-proekt.ru">info@stolyar-proekt.ru</a></p>
-                            <p style="font-size: 16px; font-weight: normal; color: #555;">г. Томск, ул. Строителей, д. 1</p>
+                            <p class="footer-address">г. Томск, ул. Строителей, д. 1</p>
                         </div>
                         <div class="footer-socials">
                             <a href="https://t.me/ваш_ник" target="_blank" class="social-btn">Telegram</a>
@@ -540,7 +557,6 @@
             <h2>Оформление заявки</h2>
             <p style="margin-bottom: 20px; font-size: 14px; color: #666;">Вы выбрали: <strong id="selectedProduct" style="color: var(--text-main);"></strong></p>
             
-            <!-- ВАЖНО: Замените ВАШ_ID на ваш код из Formspree -->
             <form action="https://formspree.io/f/ВАШ_ID" method="POST">
                 <input type="hidden" name="product" id="formProduct" value="">
                 
@@ -562,22 +578,16 @@
         </div>
     </div>
 
-    <!-- КАРТОЧКА ТОВАРА (БОЛЬШОЕ ОКНО) -->
+    <!-- Карточка товара -->
     <div class="modal-overlay" id="productModal">
         <div class="product-modal">
             <button class="close-btn" onclick="closeProductModal()">&times;</button>
             
-            <!-- Левая часть: Галерея -->
             <div class="product-gallery">
-                <div class="main-image-container" id="mainImageContainer">
-                    <!-- Сюда вставляется главная картинка -->
-                </div>
-                <div class="thumbnails" id="thumbnailContainer">
-                    <!-- Сюда вставляются миниатюры -->
-                </div>
+                <div class="main-image-container" id="mainImageContainer"></div>
+                <div class="thumbnails" id="thumbnailContainer"></div>
             </div>
 
-            <!-- Правая часть: Информация -->
             <div class="product-details">
                 <h2 id="prodTitle">Название</h2>
                 <div class="price" id="prodPrice">0 ₽</div>
@@ -650,9 +660,7 @@
 
                     const card = document.createElement('div');
                     card.className = 'product-card';
-                    // При клике на карточку открываем подробное окно
                     card.onclick = (e) => {
-                        // Если кликнули на кнопку "Купить", не открываем карточку дважды
                         if(e.target.tagName !== 'BUTTON') {
                             openProductModal(product);
                         }
@@ -701,14 +709,10 @@
 
                 const newProducts = rows.map(cols => {
                     if (!cols[0] || cols.length < 4) return null;
-                    // Читаем новые колонки (индексы 7 и 8)
                     return {
-                        id: (cols[0] || '').trim(), 
-                        category: (cols[1] || '').trim(),
-                        tag: (cols[2] || '').trim(), 
-                        title: (cols[3] || '').trim(),
-                        desc: (cols[4] || '').trim(), 
-                        price: (cols[5] || '').trim(),
+                        id: (cols[0] || '').trim(), category: (cols[1] || '').trim(),
+                        tag: (cols[2] || '').trim(), title: (cols[3] || '').trim(),
+                        desc: (cols[4] || '').trim(), price: (cols[5] || '').trim(),
                         image: (cols[6] || '').trim(),
                         imageChertezh: (cols[7] || '').trim(),
                         imageDetail: (cols[8] || '').trim()
@@ -731,11 +735,9 @@
             }
         }
 
-        // --- ЛОГИКА ОКОН ---
         const orderModal = document.getElementById('orderModal');
         const productModal = document.getElementById('productModal');
         
-        // Открытие формы заявки
         function openModal(productName) {
             document.getElementById('selectedProduct').textContent = productName;
             document.getElementById('formProduct').value = productName; 
@@ -757,9 +759,7 @@
             }
         }
 
-        // Открытие карточки товара
         function openProductModal(product) {
-            // Заполняем тексты
             document.getElementById('prodTitle').textContent = product.title;
             document.getElementById('prodDesc').textContent = product.desc;
             
@@ -769,12 +769,10 @@
 
             currentProductForBuy = product.title;
 
-            // Формируем галерею
             const imgContainer = document.getElementById('mainImageContainer');
             const thumbContainer = document.getElementById('thumbnailContainer');
             thumbContainer.innerHTML = '';
 
-            // Собираем все доступные картинки в массив
             let images = [];
             if(product.image) images.push(product.image);
             if(product.imageChertezh) images.push(product.imageChertezh);
@@ -783,16 +781,13 @@
             if (images.length === 0) {
                 imgContainer.innerHTML = '<span style="color:#999;">Нет фото</span>';
             } else {
-                // Ставим первую картинку
                 imgContainer.innerHTML = `<img src="${images[0]}" alt="${product.title}">`;
 
-                // Генерируем миниатюры
                 images.forEach((imgSrc, index) => {
                     const thumb = document.createElement('div');
                     thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
                     thumb.innerHTML = `<img src="${imgSrc}" alt="Фото ${index+1}">`;
                     
-                    // Клик по миниатюре меняет главную картинку
                     thumb.onclick = () => {
                         imgContainer.innerHTML = `<img src="${imgSrc}" alt="${product.title}">`;
                         document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
@@ -813,10 +808,9 @@
             }
         }
 
-        // Кнопка "Купить" внутри карточки товара
         function buyFromProduct() {
-            closeProductModal(); // Закрываем карточку
-            setTimeout(() => openModal(currentProductForBuy), 300); // Открываем форму заявки (с задержкой для анимации)
+            closeProductModal();
+            setTimeout(() => openModal(currentProductForBuy), 300);
         }
 
         function toggleFaq(element) {
