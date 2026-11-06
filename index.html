@@ -47,25 +47,30 @@
             background-color: rgba(247, 245, 240, 0.95); position: sticky; top: 0; z-index: 100;
         }
         
-        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 15px; }
         
         .logo { display: flex; align-items: center; text-decoration: none; color: var(--text-main); }
         .logo-title { font-size: 30px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; line-height: 1; }
         .logo-title span { color: var(--accent); }
         .logo-subtitle { font-size: 12px; letter-spacing: 4px; color: #777; margin-left: 18px; border-left: 2px solid var(--border-color); padding-left: 18px; text-transform: uppercase; line-height: 1.3; }
 
+        .nav-container { display: flex; align-items: center; gap: 20px; }
+        
         nav { display: flex; gap: 20px; align-items: center; }
-        nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; transition: color 0.3s; }
+        nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; transition: color 0.3s; white-space: nowrap; }
         nav a:hover { color: var(--accent); }
 
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+
         /* Кнопка бургер-меню (скрыта на ПК) */
-        .burger-menu { display: none; font-size: 30px; background: none; border: none; cursor: pointer; color: var(--text-main); }
+        .burger-menu { display: none; font-size: 30px; background: none; border: none; cursor: pointer; color: var(--text-main); padding: 0; line-height: 1; }
 
         /* --- Кнопки --- */
         .btn {
             display: inline-block; padding: 12px 24px; background-color: var(--accent);
             color: #fff; text-decoration: none; font-weight: 600; border: 2px solid var(--accent);
             transition: all 0.3s ease; cursor: pointer; font-size: 16px; text-align: center;
+            white-space: nowrap;
         }
         .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
         
@@ -200,7 +205,6 @@
         
         .footer-main { display: flex; gap: 50px; margin-bottom: 40px; }
         .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;}
-        /* Фикс логотипа: делаем его видимым на темном фоне */
         .footer-left img { width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; opacity: 0.9; }
 
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -217,13 +221,12 @@
         
         .footer-address { font-size: 16px; font-weight: normal; color: #aaa; }
 
-        /* Центрирование кнопок в подвале */
         .footer-socials { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
         .social-btn { 
             display: inline-block; padding: 8px 15px; background-color: #333; 
             color: #fff !important; border-radius: 4px; font-size: 14px; 
             font-weight: 600; transition: background-color 0.3s; text-decoration: none; 
-2        }
+        }
         .social-btn:hover { background-color: var(--accent); }
 
         .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
@@ -300,22 +303,20 @@
 
         /* Мобильное меню (бургер) */
         @media (max-width: 768px) {
-            .header-content { flex-wrap: nowrap; justify-content: space-between; align-items: center;}
-            .logo { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .header-content { gap: 10px; }
+            .logo { flex-direction: column; align-items: flex-start; gap: 3px; }
             .logo-title { font-size: 22px; }
             .logo-subtitle { border-left: none; border-top: 1px solid var(--border-color); padding-left: 0; padding-top: 3px; margin-left: 0; font-size: 9px; letter-spacing: 2px;}
             
-            /* Скрываем меню по умолчанию */
-            nav { 
-                display: none; flex-direction: column; width: 100%; position: absolute; 
-                top: 100%; left: 0; background: var(--bg-color); padding: 20px; 
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1); gap: 15px; border-bottom: 2px solid var(--border-color);
-            }
-            nav.active { display: flex; } /* Показываем при клике */
-            .burger-menu { display: block; } /* Показываем кнопку */
+            /* Кнопка "Связаться" на телефоне уменьшается */
+            .header-actions .btn { padding: 8px 12px; font-size: 14px; }
             
-            /* Кнопка "Связаться" в мобильном меню */
-            .header-btn-mobile { display: none; } 
+            /* Скрываем ПК-меню */
+            .nav-container { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-color); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); border-bottom: 2px solid var(--border-color); flex-direction: column; gap: 15px; }
+            .nav-container.active { display: flex; }
+            
+            nav { flex-direction: column; width: 100%; gap: 15px; }
+            .burger-menu { display: block; } 
             
             .hero h1 { font-size: 32px; }
             .custom-order-block { flex-direction: column; text-align: center; }
@@ -331,26 +332,26 @@
 
     <header>
         <div class="container header-content">
-            <!-- Логотип и бургер -->
             <a href="#top" class="logo">
                 <div class="logo-title">Столяр<span>-</span>Проект</div>
                 <div class="logo-subtitle">Чертежи<br>и проектирование</div>
             </a>
             
-            <!-- Кнопка бургер-меню -->
-            <button class="burger-menu" onclick="toggleMenu()">☰</button>
+            <!-- Выпадающее меню (на мобильных) -->
+            <div class="nav-container" id="mobileMenu">
+                <nav>
+                    <a href="#catalog" onclick="toggleMenu()">Готовые проекты</a>
+                    <a href="#custom" onclick="toggleMenu()">На заказ</a>
+                    <a href="#how-we-work" onclick="toggleMenu()">Как мы работаем</a>
+                    <a href="#contacts" onclick="toggleMenu()">Контакты</a>
+                </nav>
+            </div>
 
-            <!-- Само меню -->
-            <nav id="mobileMenu">
-                <a href="#catalog">Готовые проекты</a>
-                <a href="#custom">На заказ</a>
-                <a href="#how-we-work">Как мы работаем</a>
-                <a href="#contacts">Контакты</a>
-                <button onclick="openModal('Общая заявка'); toggleMenu();" class="btn btn-outline" style="display: none;" id="mobileContactBtn">Связаться</button>
-            </nav>
-
-            <!-- Кнопка на ПК -->
-            <button onclick="openModal('Общая заявка')" class="btn btn-outline header-btn-desktop" style="display: block;">Связаться</button>
+            <!-- Кнопки в шапке -->
+            <div class="header-actions">
+                <button onclick="openModal('Общая заявка')" class="btn btn-outline">Связаться</button>
+                <button class="burger-menu" onclick="toggleMenu()">☰</button>
+            </div>
         </div>
     </header>
 
@@ -643,24 +644,10 @@
         let allProducts = [];
         let currentProductForBuy = "";
 
-        // --- МОБИЛЬНОЕ МЕНЮ ---
+        // Функция открытия/закрытия мобильного меню
         function toggleMenu() {
             const nav = document.getElementById('mobileMenu');
-            const contactBtn = document.getElementById('mobileContactBtn');
-            const desktopBtn = document.querySelector('.header-btn-desktop');
-            
             nav.classList.toggle('active');
-
-            // Если меню открыто (на телефоне), показываем кнопку "Связаться" внутри меню
-            if (nav.classList.contains('active') && window.innerWidth <= 768) {
-                contactBtn.style.display = 'block';
-                desktopBtn.style.display = 'none';
-            } else {
-                contactBtn.style.display = 'none';
-                if (window.innerWidth > 768) {
-                    desktopBtn.style.display = 'block';
-                }
-            }
         }
 
         function parseCSV(text) {
