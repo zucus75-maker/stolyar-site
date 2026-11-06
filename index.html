@@ -36,11 +36,8 @@
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         
         .logo { display: flex; align-items: center; text-decoration: none; }
-        .logo-text {
-            font-size: 24px; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--text-main); line-height: 1.1;
-        }
-        .logo-text span { display: block; font-size: 10px; letter-spacing: 4px; color: var(--accent); }
+        .logo img { height: 60px; width: auto; transition: opacity 0.3s; }
+        .logo img:hover { opacity: 0.8; }
 
         nav { display: flex; gap: 20px; }
         nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; transition: color 0.3s; }
@@ -200,8 +197,9 @@
 
     <header>
         <div class="container header-content">
+            <!-- Логотип -->
             <a href="#top" class="logo">
-                <div class="logo-text">Столяр-Проект<span>Чертежи и проектирование</span></div>
+                <img src="logo.png" alt="Столяр-Проект">
             </a>
             
             <nav>
