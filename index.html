@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Столяр-Проект | Чертежи</title>
+    <meta name="description" content="Профессиональные чертежи беседок, лестниц и мебели. Скачивайте готовые проекты или заказывайте индивидуальное проектирование деревянных конструкций.">
+    <title>Столяр-Проект | Чертежи и проектирование</title>
     <style>
         :root {
             --bg-color: #fcfaf5;
@@ -25,18 +26,25 @@
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Шапка */
+        /* Шапка и Меню */
         header {
-            padding: 20px 0; border-bottom: 2px solid var(--border-color);
+            padding: 15px 0; border-bottom: 2px solid var(--border-color);
             background-color: rgba(252, 250, 245, 0.95); position: sticky; top: 0; z-index: 100;
         }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        /* Стиль для картинки логотипа. Если картинки нет, покажется текст */
+        .logo img { height: 45px; width: auto; margin-right: 10px; display: none; /* Поменяем на block, когда добавите картинку */ }
         .logo-text {
             font-size: 24px; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--text-main); text-decoration: none;
-            display: flex; flex-direction: column; line-height: 1.1;
+            letter-spacing: 2px; color: var(--text-main); line-height: 1.1;
         }
-        .logo-text span { font-size: 12px; letter-spacing: 4px; color: var(--accent); }
+        .logo-text span { display: block; font-size: 10px; letter-spacing: 4px; color: var(--accent); }
+
+        nav { display: flex; gap: 20px; }
+        nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; transition: color 0.3s; }
+        nav a:hover { color: var(--accent); }
 
         /* Кнопки */
         .btn {
@@ -49,17 +57,25 @@
         .btn-outline:hover { background-color: var(--text-main); color: #fff; }
         .btn-buy { padding: 8px 15px; font-size: 14px; }
 
-        /* Главный экран */
+        /* Главный экран (Hero) */
         .hero { padding: 80px 0; text-align: center; border-bottom: 1px dashed var(--border-color); }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
+        .hero h1 { font-size: 42px; margin-bottom: 20px; line-height: 1.2; }
         .hero p { font-size: 20px; color: #5a4535; max-width: 700px; margin: 0 auto 40px; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-        /* Заголовки */
+        /* Секции */
         .section-title { text-align: center; font-size: 32px; margin: 60px 0 40px; }
         .section-title::after {
             content: ''; display: block; width: 80px; height: 3px;
             background-color: var(--accent); margin: 10px auto 0;
         }
+        .section-subtitle { text-align: center; font-size: 18px; color: #666; max-width: 800px; margin: -20px auto 40px; }
+
+        /* Преимущества */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .feature-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--border-color); text-align: center; }
+        .feature-card h3 { font-size: 20px; margin-bottom: 15px; color: var(--accent); }
+        .feature-card p { font-size: 14px; color: #555; }
 
         /* Каталог */
         .filter-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
@@ -69,7 +85,7 @@
         }
         .filter-btn.active, .filter-btn:hover { background: var(--text-main); color: #fff; }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
 
         .product-card {
             background: var(--card-bg); border: 1px solid var(--border-color);
@@ -90,6 +106,17 @@
         
         .product-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; border-top: 1px dashed var(--border-color); }
         .product-price { font-size: 20px; font-weight: 700; }
+
+        /* Блок индивидуального заказа */
+        .custom-order-block {
+            background-color: var(--text-main); color: var(--bg-color); padding: 60px 40px;
+            margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px;
+            border-radius: 4px;
+        }
+        .custom-order-block h2 { font-size: 36px; margin-bottom: 20px; }
+        .custom-order-block p { font-size: 18px; opacity: 0.9; margin-bottom: 0; }
+        .custom-order-block .btn { border-color: var(--bg-color); background-color: var(--bg-color); color: var(--text-main); white-space: nowrap; }
+        .custom-order-block .btn:hover { background-color: transparent; color: var(--bg-color); }
 
         /* Подвал */
         footer { border-top: 2px solid var(--border-color); padding: 40px 0; text-align: center; color: #888; }
@@ -113,27 +140,58 @@
 
         /* Лоадер */
         .loader { text-align: center; font-size: 18px; color: var(--accent); margin: 50px 0; display: none; }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; }
+            nav { margin-top: 10px; }
+            .hero h1 { font-size: 32px; }
+            .custom-order-block { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body id="top">
 
     <header>
         <div class="container header-content">
-            <a href="#top" class="logo-text">Столяр-Проект<span>Чертежи и проектирование</span></a>
-            <button onclick="openModal('Общая заявка')" class="btn btn-outline">Оставить заявку</button>
+            <!-- Логотип: Чтобы добавить картинку, загрузите logo.png в папку и уберите display:none в CSS для .logo img, а .logo-text скройте -->
+            <a href="#top" class="logo">
+                <!-- <img src="logo.png" alt="Столяр-Проект"> -->
+                <div class="logo-text">Столяр-Проект<span>Чертежи и проектирование</span></div>
+            </a>
+            
+            <nav>
+                <a href="#catalog">Готовые проекты</a>
+                <a href="#custom">На заказ</a>
+                <a href="#features">Почему мы</a>
+            </nav>
+            
+            <button onclick="openModal('Общая заявка')" class="btn btn-outline">Связаться</button>
         </div>
     </header>
 
+    <!-- Главный экран -->
     <section class="hero">
         <div class="container">
-            <h1>Профессиональные чертежи для столярных изделий</h1>
-            <p>Готовые проекты беседок, лестниц и мебели. А также индивидуальное проектирование любой сложности.</p>
-            <div style="display: flex; gap: 20px; justify-content: center;">
-                <a href="#catalog" class="btn">Смотреть каталог</a>
+            <h1>Готовые чертежи и проектирование столярных изделий</h1>
+            <p>Экономьте недели на расчетах. Скачивайте готовые проекты беседок, лестниц и мебели или закажите разработку под ваши размеры.</p>
+            <div class="hero-buttons">
+                <a href="#catalog" class="btn">Купить готовый чертеж</a>
+                <a href="#custom" class="btn btn-outline">Заказать свой проект</a>
             </div>
         </div>
     </section>
 
+    <!-- SEO Блок / Решение проблемы -->
+    <div class="container">
+        <h2 class="section-title">Надежная документация для строительства</h2>
+        <p class="section-subtitle">
+            Поиск чертежей в интернете часто заканчивается разочарованием: размеры не сходятся, нет спецификации материалов, непонятно, как крепить узлы. 
+            Мы создаем полные комплекты документации, по которым можно строить с первого раза без переделок и лишних затрат.
+        </p>
+    </div>
+
+    <!-- Каталог -->
     <div class="container" id="catalog">
         <h2 class="section-title">Готовые проекты</h2>
         
@@ -146,8 +204,47 @@
 
         <div class="loader" id="loader">Загрузка каталога...</div>
         
-        <!-- Сюда скрипт будет вставлять карточки -->
         <div class="grid-3" id="product-grid"></div>
+
+        <!-- Переходник к индивидуальному заказу -->
+        <div style="text-align: center; margin-bottom: 80px;">
+            <p style="margin-bottom: 15px; font-size: 18px; color: #666;">Не нашли нужный размер или конфигурацию?</p>
+            <a href="#custom" class="btn">Мы спроектируем под вас</a>
+        </div>
+    </div>
+
+    <!-- Блок индивидуального заказа (Высокий чек) -->
+    <div class="container" id="custom">
+        <div class="custom-order-block">
+            <div>
+                <h2>Уникальный проект под ваши задачи</h2>
+                <p>Сложный рельеф участка? Нестандартный проем для лестницы? Нужна мебель под конкретную нишу? Мы разработаем проект с нуля. Вы получите 3D-модель, полную деталировку и точную смету материалов.</p>
+            </div>
+            <button onclick="openModal('Индивидуальный проект')" class="btn">Обсудить задачу</button>
+        </div>
+    </div>
+
+    <!-- Преимущества -->
+    <div class="container" id="features">
+        <h2 class="section-title">Почему нам доверяют</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Точность до мм</h3>
+                <p>Все чертежи создаются в профессиональных САПР-программах (AutoCAD и др.).</p>
+            </div>
+            <div class="feature-card">
+                <h3>Полная деталировка</h3>
+                <p>Вы получаете не просто картинку, а спецификацию всех досок, крепежа и материалов.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Учтены технологии</h3>
+                <p>Проекты адаптированы под свойства дерева и стандартный столярный инструмент.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Поддержка</h3>
+                <p>Отвечаем на вопросы по чертежам даже после покупки.</p>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -157,6 +254,7 @@
         </div>
     </footer>
 
+    <!-- Модальное окно -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -164,87 +262,53 @@
             <p style="margin-bottom: 20px; font-size: 14px; color: #666;">Вы выбрали: <strong id="selectedProduct" style="color: var(--text-main);"></strong></p>
             <form action="#" method="POST">
                 <div class="form-group"><label>Ваше имя</label><input type="text" required></div>
-                <div class="form-group"><label>Телефон</label><input type="text" required></div>
+                <div class="form-group"><label>Телефон или Email</label><input type="text" required></div>
                 <button type="submit" class="btn" style="width:100%;" onclick="event.preventDefault(); alert('Заявка отправлена!'); closeModal();">Отправить</button>
             </form>
         </div>
     </div>
 
     <script>
-        // --- ВСТАВЛЕНА ВАША ССЫЛКА ---
+        // --- ВАША ССЫЛКА НА ТАБЛИЦУ ---
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAHnEYoeQDMfEoHQgH5Wa0S54gd2Ff4G8bkSEGCgTC6WxAg50v4Xgul-SFIJqTyVC37Np1gM0HCy6-/pub?gid=0&single=true&output=csv";
         
         let allProducts = [];
 
-        // Надежный парсер CSV (обрабатывает кавычки и запятые внутри текста)
         function parseCSV(text) {
-            const rows = [];
-            let currentRow = [];
-            let currentCell = '';
-            let inQuotes = false;
-
+            const rows = []; let currentRow = []; let currentCell = ''; let inQuotes = false;
             for (let i = 0; i < text.length; i++) {
-                const char = text[i];
-                const nextChar = text[i + 1];
-
+                const char = text[i]; const nextChar = text[i + 1];
                 if (char === '"') {
-                    if (inQuotes && nextChar === '"') {
-                        currentCell += '"'; // Экранированная кавычка
-                        i++;
-                    } else {
-                        inQuotes = !inQuotes; // Вход/выход из кавычек
-                    }
+                    if (inQuotes && nextChar === '"') { currentCell += '"'; i++; } else { inQuotes = !inQuotes; }
                 } else if (char === ',' && !inQuotes) {
-                    currentRow.push(currentCell);
-                    currentCell = '';
+                    currentRow.push(currentCell); currentCell = '';
                 } else if ((char === '\n' || char === '\r') && !inQuotes) {
                     if (currentCell !== '' || currentRow.length > 0) {
-                        currentRow.push(currentCell);
-                        rows.push(currentRow);
-                        currentRow = [];
-                        currentCell = '';
+                        currentRow.push(currentCell); rows.push(currentRow); currentRow = []; currentCell = '';
                     }
-                    if (char === '\r' && nextChar === '\n') i++; // Пропускаем \r\n
-                } else {
-                    currentCell += char;
-                }
+                    if (char === '\r' && nextChar === '\n') i++;
+                } else { currentCell += char; }
             }
-            if (currentCell !== '' || currentRow.length > 0) {
-                currentRow.push(currentCell);
-                rows.push(currentRow);
-            }
+            if (currentCell !== '' || currentRow.length > 0) { currentRow.push(currentCell); rows.push(currentRow); }
             return rows;
         }
 
-        // Функция загрузки данных
         async function loadProducts() {
             const loader = document.getElementById('loader');
             const grid = document.getElementById('product-grid');
-
             loader.style.display = 'block';
             try {
-                // Добавляем параметр для обхода кэша браузера
                 const url = GOOGLE_SHEET_URL + "&t=" + new Date().getTime();
                 const response = await fetch(url);
                 const data = await response.text();
-                
-                // Парсим данные
-                const rows = parseCSV(data);
-                
-                // Первая строка - заголовки, пропускаем её
-                const dataRows = rows.slice(1);
+                const rows = parseCSV(data).slice(1);
 
-                allProducts = dataRows.map(cols => {
-                    // Если строка пустая, пропускаем
+                allProducts = rows.map(cols => {
                     if (!cols[0] || cols.length < 4) return null;
-
                     return {
-                        id: (cols[0] || '').trim(),
-                        category: (cols[1] || '').trim(),
-                        tag: (cols[2] || '').trim(),
-                        title: (cols[3] || '').trim(),
-                        desc: (cols[4] || '').trim(),
-                        price: (cols[5] || '').trim(),
+                        id: (cols[0] || '').trim(), category: (cols[1] || '').trim(),
+                        tag: (cols[2] || '').trim(), title: (cols[3] || '').trim(),
+                        desc: (cols[4] || '').trim(), price: (cols[5] || '').trim(),
                         image: (cols[6] || '').trim()
                     };
                 }).filter(item => item && item.title);
@@ -253,29 +317,20 @@
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
                 grid.innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>Не удалось загрузить каталог. Проверьте интернет и правильность ссылки.</p>";
-            } finally {
-                loader.style.display = 'none';
-            }
+            } finally { loader.style.display = 'none'; }
         }
 
-        // Функция отрисовки карточек
         function renderProducts(products) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = ''; 
-
             if (products.length === 0) {
                 grid.innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>В этой категории пока нет проектов.</p>";
                 return;
             }
-
             products.forEach(product => {
                 const rawPrice = parseFloat(product.price.replace(/[^\d.]/g, ''));
                 const formattedPrice = isNaN(rawPrice) ? (product.price || 'Цена по запросу') : (rawPrice.toLocaleString('ru-RU') + ' ₽');
-                
-                const imgHtml = product.image 
-                    ? `<img src="${product.image}" alt="${product.title}" onerror="this.style.display='none'; this.parentElement.innerText='Нет фото';">` 
-                    : 'Фото чертежа';
-
+                const imgHtml = product.image ? `<img src="${product.image}" alt="${product.title}" onerror="this.style.display='none'; this.parentElement.innerText='Нет фото';">` : 'Фото чертежа';
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.dataset.category = product.category;
@@ -295,20 +350,13 @@
             });
         }
 
-        // Фильтрация
         function filterProducts(category, btnElement) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
-
-            if (category === 'all') {
-                renderProducts(allProducts);
-            } else {
-                const filtered = allProducts.filter(p => p.category === category);
-                renderProducts(filtered);
-            }
+            if (category === 'all') { renderProducts(allProducts); } 
+            else { renderProducts(allProducts.filter(p => p.category === category)); }
         }
 
-        // Модальное окно
         const modal = document.getElementById('orderModal');
         const selectedProductText = document.getElementById('selectedProduct');
 
@@ -323,7 +371,6 @@
             document.body.style.overflow = ''; 
         }
 
-        // Запускаем загрузку при открытии страницы
         window.onload = loadProducts;
     </script>
 </body>
