@@ -83,7 +83,6 @@
             background-image: linear-gradient(to right, rgba(44,44,44,0.04) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(44,44,44,0.04) 1px, transparent 1px);
             background-size: 40px 40px;
-            /* Flex-раскладка: страница минимум на весь экран, футер прилипает к низу */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -94,16 +93,12 @@
 
         *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
 
-        /* Отступ прокрутки для якорных секций под sticky-шапкой.
-           ВАЖНО: футер #contacts исключён — он должен прилипать к низу без отступа,
-           иначе нижние ссылки уходят за экран. */
         [id]:not(#contacts) { scroll-margin-top: 90px; }
         #contacts { scroll-margin-top: 0; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
         h1, h2, h3 { font-family: 'PT Serif', serif; }
 
-        /* --- ШАПКА --- */
         header {
             padding: 15px 0;
             border-bottom: 2px solid var(--accent);
@@ -142,7 +137,6 @@
         .header-actions { display: flex; align-items: center; gap: 15px; }
         .burger-menu { display: none; font-size: 30px; background: none; border: none; cursor: pointer; color: var(--text-light); padding: 0; line-height: 1; }
 
-        /* --- Кнопки --- */
         .btn {
             display: inline-block; padding: 12px 24px; background-color: var(--accent);
             color: #fff; text-decoration: none; font-weight: 600; border: 2px solid var(--accent);
@@ -274,10 +268,9 @@
 
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { color: var(--accent); }
-        .faq-item.active .faq-question span { transform: rotate(45deg); }
+        .faq-item.active .faq-question span { transform: rotate(45deg); color: var(--accent); }
         .faq-question span { font-size: 24px; transition: transform 0.3s; color: var(--accent); }
 
-        /* --- ПОДВАЛ --- */
         footer {
             background-color: var(--header-footer-bg);
             color: var(--text-light);
@@ -307,7 +300,6 @@
         .legal-links a { color: #777; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
         .legal-links a:hover { color: var(--accent); }
 
-        /* --- МОДАЛЬНЫЕ ОКНА --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;}
         .modal-overlay.active { display: flex; }
         .modal-content { background: var(--bg-color); padding: 40px; width: 100%; max-width: 500px; border: 2px solid var(--accent); position: relative; border-radius: 2px; max-height: 90vh; overflow-y: auto;}
@@ -367,7 +359,6 @@
         .included-block li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
         .sample-link { display: inline-block; margin-bottom: 20px; font-size: 14px; color: var(--accent); font-weight: 600; text-decoration: underline; cursor: pointer; }
 
-        /* ===== B2B РАСШИРЕННЫЙ ===== */
         .b2b-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -426,7 +417,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* ===== ИНЖЕНЕРНЫЕ УСЛУГИ ===== */
         .engineering-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -475,7 +465,6 @@
             font-size: 15px;
         }
 
-        /* ===== ПАРТНЕРАМ (лид-магнит) ===== */
         .partner-magnet {
             margin-bottom: 60px;
         }
@@ -483,7 +472,6 @@
             display: none;
         }
 
-        /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; }
             .footer-main { flex-direction: column; text-align: center; gap: 30px; }
@@ -510,6 +498,9 @@
         }
 
         @media (max-width: 768px) {
+            /* УВЕЛИЧЕН ОТСТУП ДЛЯ ЯКОРЕЙ, ЧТОБЫ ЗАГОЛОВКИ НЕ ПРЯТАЛИСЬ ПОД ШАПКОЙ */
+            [id]:not(#contacts) { scroll-margin-top: 110px; }
+
             .header-content { gap: 10px; }
             .logo { flex-direction: column; align-items: flex-start; gap: 4px; }
             .logo-title { font-size: 24px; }
@@ -665,7 +656,6 @@
         </div>
     </div>
 
-    <!-- ===== БЛОК 1. B2B РАСШИРЕННЫЙ ===== -->
     <section class="container" id="b2b">
         <h2 class="section-title">Для организаций и бизнеса</h2>
         <p class="section-subtitle">Работаем с юрлицами и ИП по договору: закрывающие документы, оплата по счёту, пакетные условия. Для разовых задач под частное лицо — см. «Индивидуальный чертёж».</p>
@@ -695,7 +685,6 @@
         </div>
     </section>
 
-    <!-- ===== БЛОК 2. ИНЖЕНЕРНЫЕ УСЛУГИ ===== -->
     <section class="container" id="engineering">
         <h2 class="section-title">Инженерные услуги по договору</h2>
         <p class="section-subtitle">Выступаем подрядчиком по разработке КД и техническому контролю. Оказываем услуги по счёту-оферте с оплатой на расчётный счёт ИП.</p>
@@ -857,7 +846,6 @@
         </div>
     </div>
 
-    <!-- ===== БЛОК 3. ПАРТНЕРАМ И ПРОФЕССИОНАЛАМ ===== -->
     <section class="container">
         <div class="lead-magnet partner-magnet">
             <h3>Полезные материалы для мастерских и дизайнеров</h3>
@@ -911,7 +899,6 @@
         </div>
     </footer>
 
-    <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -947,7 +934,6 @@
         </div>
     </div>
 
-    <!-- КАРТОЧКА ТОВАРА -->
     <div class="modal-overlay" id="productModal">
         <div class="product-modal">
             <button class="close-btn" onclick="closeProductModal()">&times;</button>
@@ -983,12 +969,6 @@
         let currentProductForBuy = "";
         let scrollTimeout;
 
-        /* ============================================================
-           «НАМЁК» ОДИН РАЗ
-           Первая вкладка каталога / первый FAQ остаются открытыми,
-           пока пользователь сам не кликал по вкладкам. После первого
-           клика — флаг в sessionStorage, и больше мы ничего не трогаем.
-           ============================================================ */
         const HINT_SEEN_KEY = 'hintSeen_v1';
         function markHintSeen() {
             try { sessionStorage.setItem(HINT_SEEN_KEY, '1'); } catch(e) {}
@@ -997,9 +977,6 @@
             try { return sessionStorage.getItem(HINT_SEEN_KEY) === '1'; } catch(e) { return false; }
         }
 
-        /* ============================================================
-           ОБЪЕКТНЫЙ API ДЛЯ openModal
-           ============================================================ */
         const MODAL_PRESETS = {
             'Индивидуальный проект':   { title: 'Индивидуальный проект',   needsDescription: true,  goal: 'modal_custom' },
             'B2B-запрос':              { title: 'B2B-запрос',              needsDescription: true,  goal: 'modal_b2b' },
@@ -1046,9 +1023,6 @@
             trackGoal(config.goal);
         }
 
-        /* ============================================================
-           INLINE-УВЕДОМЛЕНИЯ
-           ============================================================ */
         function showFormError(form, message) {
             const box = form.querySelector('.form-error');
             if (!box) {
@@ -1216,13 +1190,17 @@
             }
         }
 
-        /* Закрываем мобильное меню при скролле. Аккордеоны и FAQ НЕ схлопываем. */
         window.addEventListener('scroll', () => {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
                 const mobileMenu = document.getElementById('mobileMenu');
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
+                }
+
+                const faqBlock = document.querySelector('.faq-block');
+                if (faqBlock && faqBlock.getBoundingClientRect().bottom < 0) {
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
                 }
             }, 30);
         });
@@ -1357,9 +1335,8 @@
             btn.textContent = 'Отправляем...';
 
             try {
-                const formData = new FormData();
-                formData.append('email', form.email.value);
-                formData.append('product', 'База партнеров B2B');
+                // product уже передан через hidden input в HTML-форме
+                const formData = new FormData(form);
 
                 const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
                     method: 'POST',
@@ -1392,7 +1369,14 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', fetchData);
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchData();
+
+            // Если пользователь уже кликал по вкладкам ранее в этой сессии — снимаем "стартовое" открытие FAQ
+            if (isHintSeen()) {
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            }
+        });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
