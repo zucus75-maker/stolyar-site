@@ -69,11 +69,11 @@
             --header-footer-bg: #1A1A1A;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
 
-        /* Отступ прокрутки для якорных секций под sticky-шапкой */
-        [id] { scroll-margin-top: 90px; }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -83,9 +83,26 @@
             background-image: linear-gradient(to right, rgba(44,44,44,0.04) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(44,44,44,0.04) 1px, transparent 1px);
             background-size: 40px 40px;
-            overflow-x: hidden;
+            /* Flex-раскладка: страница минимум на весь экран, футер прилипает к низу */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Все прямые потомки body не сжимаются — секции сохраняют свою высоту */
+        body > * { flex-shrink: 0; }
+        /* Футер прижимается к низу, если контента меньше экрана */
+        body > footer { margin-top: auto; }
+
+        *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
+
+        /* Отступ прокрутки для якорных секций под sticky-шапкой.
+           ВАЖНО: футер #contacts исключён — он должен прилипать к низу без отступа,
+           иначе нижние ссылки уходят за экран. */
+        [id]:not(#contacts) { scroll-margin-top: 90px; }
+        #contacts { scroll-margin-top: 0; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
         h1, h2, h3 { font-family: 'PT Serif', serif; }
 
         /* --- ШАПКА --- */
@@ -95,26 +112,26 @@
             background-color: var(--header-footer-bg);
             color: var(--text-light);
             position: -webkit-sticky;
-            position: sticky; 
-            top: 0; 
+            position: sticky;
+            top: 0;
             z-index: 1000;
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 15px; }
-        
+
         .logo { display: flex; flex-direction: column; text-decoration: none; color: var(--text-light); gap: 5px; align-items: flex-start; }
         .logo-title { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
         .logo-title span { color: var(--accent); }
-        
+
         .logo-divider { width: 100%; height: 1px; background-color: var(--accent); opacity: 0.5; }
-        
-        .logo-subtitle { 
+
+        .logo-subtitle {
             display: block;
-            width: 100%; 
-            font-size: 8.5px; 
-            letter-spacing: 2px; 
-            color: #A0A0A0; 
-            text-transform: uppercase; 
-            line-height: 1; 
+            width: 100%;
+            font-size: 8.5px;
+            letter-spacing: 2px;
+            color: #A0A0A0;
+            text-transform: uppercase;
+            line-height: 1;
             font-weight: 400;
             white-space: nowrap;
         }
@@ -256,7 +273,7 @@
         .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); margin-bottom: 10px; border-radius: 2px;}
         .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 16px;}
         .faq-answer { padding: 0 20px 20px; color: var(--text-muted); font-size: 15px; display: none; }
-        
+
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { color: var(--accent); }
         .faq-item.active .faq-question span { transform: rotate(45deg); }
@@ -482,7 +499,7 @@
             .footer-socials { justify-content: center; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
-            
+
             .product-modal { flex-direction: column; max-height: 95vh; position: relative; }
             .product-gallery { width: 100%; padding: 20px; background: #fff; }
             .main-image-container { height: 250px; margin-bottom: 15px; }
@@ -502,9 +519,9 @@
             .header-content { gap: 10px; }
             .logo { flex-direction: column; align-items: flex-start; gap: 4px; }
             .logo-title { font-size: 24px; }
-            
+
             .logo-subtitle { font-size: 7.5px; letter-spacing: 1.5px; }
-            
+
             .header-actions .btn { padding: 8px 12px; font-size: 12px; }
             .nav-container { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--header-footer-bg); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); border-bottom: 2px solid var(--accent); flex-direction: column; gap: 15px; }
             .nav-container.active { display: flex; }
@@ -515,21 +532,21 @@
             .custom-order-block { flex-direction: column; text-align: center; padding: 40px 20px;}
             .custom-order-features li { justify-content: center; text-align: left; }
             .features-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr; }
-            
+
             .accordion-content { max-height: none; overflow-y: hidden; padding: 15px 0; }
             .product-list { display: flex; flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 15px 20px 15px; gap: 15px; -webkit-overflow-scrolling: touch; }
             .product-list::-webkit-scrollbar { display: none; }
             .product-card { flex: 0 0 85%; scroll-snap-align: center; }
-            
+
             .skeleton-card { display: none; }
 
             .footer-left img { max-width: 220px; margin-bottom: 15px; }
             .footer-left { padding-top: 10px; }
             .footer-main { margin-bottom: 25px; }
             .footer-bottom { padding-top: 15px; }
-            
+
             .seo-block, .lead-magnet { padding: 25px 20px; }
-            
+
             .accordion-header { font-size: 20px; padding: 15px 20px; }
             .product-title { font-size: 18px; }
 
@@ -905,7 +922,7 @@
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
-            
+
             <div id="formContainer">
                 <h2 style="margin-bottom: 20px;">Оформление заявки</h2>
                 <p style="margin-bottom: 25px; font-size: 14px; color: var(--text-muted);">Вы выбрали: <strong id="selectedProduct" style="color: var(--text-main);"></strong></p>
@@ -966,18 +983,15 @@
 
     <script>
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAHnEYoeQDMfEoHQgH5Wa0S54gd2Ff4G8bkSEGCgTC6WxAg50v4Xgul-SFIJqTyVC37Np1gM0HCy6-/pub?gid=0&single=true&output=csv";
-        const FORMSPREE_ID = "ВАШ_ID"; 
-        const METRIKA_ID = null; 
+        const FORMSPREE_ID = "ВАШ_ID";
+        const METRIKA_ID = null;
 
         let allProducts = [];
         let currentProductForBuy = "";
         let scrollTimeout;
 
         /* ============================================================
-           РЕФАКТОРИНГ openModal НА ОБЪЕКТНЫЙ API
-           ------------------------------------------------------------
-           Вместо сравнения строк — описание через объект.
-           Для обратной совместимости принимает и строку (старые вызовы).
+           ОБЪЕКТНЫЙ API ДЛЯ openModal
            ============================================================ */
         const MODAL_PRESETS = {
             'Индивидуальный проект':   { title: 'Индивидуальный проект',   needsDescription: true,  goal: 'modal_custom' },
@@ -989,17 +1003,11 @@
             'Общая заявка':            { title: 'Общая заявка',            needsDescription: false, goal: 'modal_general' }
         };
 
-        /**
-         * Открывает модалку заявки.
-         * @param {string|{title:string, needsDescription?:boolean, goal?:string}} product
-         *   Строка (старый API) или объект с настройками.
-         */
         function openModal(product) {
             let config;
             if (typeof product === 'string') {
                 config = MODAL_PRESETS[product] || {
                     title: product,
-                    // эвристика для неизвестных строк, чтобы не потерять прежнее поведение
                     needsDescription: product === 'Индивидуальный проект'
                         || product.startsWith('B2B:')
                         || product === 'B2B-запрос'
@@ -1032,12 +1040,11 @@
         }
 
         /* ============================================================
-           INLINE-УВЕДОМЛЕНИЯ ВМЕСТО alert()
+           INLINE-УВЕДОМЛЕНИЯ
            ============================================================ */
         function showFormError(form, message) {
             const box = form.querySelector('.form-error');
             if (!box) {
-                // fallback, если контейнера нет — хотя он есть в разметке
                 console.warn('[form-error]', message);
                 return;
             }
@@ -1133,7 +1140,6 @@
                     card.onclick = (e) => {
                         if (!e.target.closest('button')) openProductModal(product);
                     };
-                    // Для кнопки «Купить» передаём объект явно — название товара подставляется как есть
                     card.innerHTML = `
                         <div class="product-image">${imgHtml}</div>
                         <div class="product-info">
@@ -1381,9 +1387,9 @@
         function toggleFaq(element) {
             const item = element.parentElement;
             const isActive = item.classList.contains('active');
-            
+
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-            
+
             if (!isActive) {
                 item.classList.add('active');
             }
