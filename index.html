@@ -94,7 +94,7 @@
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 15px; }
         
-        /* Логотип: Название, разделитель, подпись */
+        /* Логотип в колонку */
         .logo { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; color: var(--text-light); gap: 6px; }
         .logo-title { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
         .logo-title span { color: var(--accent); }
@@ -102,16 +102,17 @@
         /* Тонкий медный разделитель под названием */
         .logo-divider { width: 100%; height: 1px; background-color: var(--accent); opacity: 0.5; }
         
-        /* Подпись, растянутая по ширине */
+        /* Подпись, растянутая по ширине (УВЕЛИЧЕНА И РАЗРЯЖЕНА) */
         .logo-subtitle { 
             display: flex; 
             justify-content: space-between; 
             width: 100%; 
-            font-size: 8.5px; 
-            letter-spacing: 2px; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
             color: #A0A0A0; 
             text-transform: uppercase; 
             line-height: 1; 
+            font-weight: 400;
         }
 
         .nav-container { display: flex; align-items: center; gap: 20px; }
@@ -373,6 +374,9 @@
             .logo { flex-direction: column; align-items: flex-start; gap: 4px; }
             .logo-title { font-size: 24px; }
             
+            /* УВЕЛИЧЕННАЯ ПОДПИСЬ НА ТЕЛЕФОНЕ */
+            .logo-subtitle { font-size: 11px; letter-spacing: 5px; }
+            
             .header-actions .btn { padding: 8px 12px; font-size: 12px; }
             .nav-container { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--header-footer-bg); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); border-bottom: 2px solid var(--accent); flex-direction: column; gap: 15px; }
             .nav-container.active { display: flex; }
@@ -391,7 +395,6 @@
             
             .skeleton-card { display: none; }
 
-            /* УВЕЛИЧЕННЫЙ ЛОГОТИП В ПОДВАЛЕ НА ТЕЛЕФОНЕ */
             .footer-left img { max-width: 220px; margin-bottom: 15px; }
             .footer-left { padding-top: 10px; }
             .footer-main { margin-bottom: 25px; }
@@ -899,7 +902,6 @@
             }
         }
 
-        // Логика для скролла (Каталог и FAQ)
         window.addEventListener('scroll', () => {
             const catalogSection = document.getElementById('catalog');
             if (catalogSection.getBoundingClientRect().bottom < 0) {
