@@ -104,17 +104,17 @@
         
         .logo-divider { width: 100%; height: 1px; background-color: var(--accent); opacity: 0.5; }
         
-        /* ИСПРАВЛЕННЫЙ ШРИФТ ПОДПИСИ */
+        /* Подпись (выровнена, без разрывов) */
         .logo-subtitle { 
             display: block;
             width: 100%; 
-            font-size: 9px; 
+            font-size: 8.5px; 
             letter-spacing: 2px; 
             color: #A0A0A0; 
             text-transform: uppercase; 
             line-height: 1; 
             font-weight: 400;
-            white-space: nowrap; /* Запрещаем перенос строк */
+            white-space: nowrap;
         }
 
         .nav-container { display: flex; align-items: center; gap: 20px; }
@@ -296,6 +296,7 @@
         .legal-links a { color: #777; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
         .legal-links a:hover { color: var(--accent); }
 
+        /* --- МОДАЛЬНЫЕ ОКНА --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;}
         .modal-overlay.active { display: flex; }
         .modal-content { background: var(--bg-color); padding: 40px; width: 100%; max-width: 500px; border: 2px solid var(--accent); position: relative; border-radius: 2px; max-height: 90vh; overflow-y: auto;}
@@ -306,13 +307,14 @@
         .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 25px; font-size: 12px; color: var(--text-muted); }
         .checkbox-group input { width: auto; margin-top: 3px; }
 
-        /* СТИЛИ ДЛЯ ОКНА "СПАСИБО" */
+        /* Окно "Спасибо" */
         .success-screen { text-align: center; padding: 30px 10px; }
         .success-screen svg { width: 60px; height: 60px; color: var(--accent); margin-bottom: 20px; }
         .success-screen h2 { color: var(--accent); margin-bottom: 15px; font-size: 24px;}
         .success-screen p { margin-bottom: 25px; color: var(--text-muted); font-size: 15px; line-height: 1.6;}
         .success-screen .btn { width: 100%; }
 
+        /* Карточка товара */
         .product-modal { background: var(--bg-color); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; position: relative; display: flex; flex-wrap: wrap; max-height: 90vh; overflow-y: auto; border-top: 4px solid var(--accent);}
         .product-gallery { width: 50%; padding: 40px; background: #fff; display: flex; flex-direction: column; }
         .main-image-container { width: 100%; height: 400px; background: #f8f8f8; border-radius: 2px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative; }
@@ -336,6 +338,122 @@
         .included-block li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
         .sample-link { display: inline-block; margin-bottom: 20px; font-size: 14px; color: var(--accent); font-weight: 600; text-decoration: underline; cursor: pointer; }
 
+        /* ===== B2B РАСШИРЕННЫЙ ===== */
+        .b2b-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+        .b2b-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--accent);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border-radius: 2px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .b2b-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .b2b-card h3 {
+            font-size: 22px;
+            color: var(--text-main);
+        }
+        .b2b-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            flex-grow: 1;
+            margin-bottom: 5px;
+        }
+        .b2b-card .btn {
+            align-self: flex-start;
+            font-size: 13px;
+            padding: 12px 20px;
+        }
+
+        .b2b-guarantees {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            padding: 25px 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent);
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            border-radius: 2px;
+        }
+        .b2b-guarantees span {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== ИНЖЕНЕРНЫЕ УСЛУГИ ===== */
+        .engineering-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+        .engineering-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px 30px;
+            border-radius: 2px;
+            position: relative;
+            transition: border-color 0.3s;
+        }
+        .engineering-card:hover {
+            border-color: var(--accent);
+        }
+        .engineering-icon {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            display: inline-block;
+        }
+        .engineering-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+        .engineering-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .engineering-action {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .engineering-action .btn {
+            padding: 15px 32px;
+            font-size: 15px;
+        }
+
+        /* ===== ПАРТНЕРАМ (лид-магнит) ===== */
+        .partner-magnet {
+            margin-bottom: 60px;
+        }
+        .partner-magnet input[type="hidden"] {
+            display: none;
+        }
+
         /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; }
@@ -355,6 +473,11 @@
             .product-details h2 { font-size: 24px; margin-bottom: 10px; }
             .product-details .price { font-size: 26px; margin-bottom: 15px; }
             .product-details .desc { font-size: 14px; margin-bottom: 15px; }
+
+            .b2b-cards,
+            .engineering-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -362,7 +485,7 @@
             .logo { flex-direction: column; align-items: flex-start; gap: 4px; }
             .logo-title { font-size: 24px; }
             
-            /* УМЕНЬШЕННЫЙ ШРИФТ ПОДПИСИ НА ТЕЛЕФОНЕ */
+            /* Уменьшенный шрифт подписи на телефоне */
             .logo-subtitle { font-size: 7.5px; letter-spacing: 1.5px; }
             
             .header-actions .btn { padding: 8px 12px; font-size: 12px; }
@@ -395,6 +518,39 @@
             .product-title { font-size: 18px; }
 
             .product-modal .close-btn { position: absolute; top: 10px; right: 10px; background: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 24px; z-index: 100; }
+
+            /* ===== Адаптив новых блоков ===== */
+            .b2b-cards,
+            .engineering-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .b2b-card,
+            .engineering-card {
+                padding: 30px 22px;
+            }
+            .b2b-card .btn {
+                width: 100%;
+                align-self: stretch;
+            }
+            .engineering-action .btn {
+                width: 100%;
+                padding: 14px 20px;
+            }
+            .b2b-guarantees {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 20px;
+                margin-bottom: 40px;
+            }
+            .partner-magnet form {
+                flex-direction: column;
+            }
+            .partner-magnet form input[type="email"],
+            .partner-magnet form .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -482,15 +638,63 @@
         </div>
     </div>
 
-    <div class="container" id="b2b">
-        <div class="b2b-block">
-            <div>
-                <h3>Застройщикам, мастерским и дизайнерам</h3>
-                <p>Нужны проекты под серию, адаптация под ваши материалы или регулярные чертежи для цеха? Работаем по договору с юрлицами и ИП, предоставляем закрывающие документы. Специальные условия на пакеты проектов.</p>
+    <!-- ===== БЛОК 1. B2B РАСШИРЕННЫЙ ===== -->
+    <section class="container" id="b2b">
+        <h2 class="section-title">Для организаций и бизнеса</h2>
+        <p class="section-subtitle">Работаем с юрлицами и ИП по договору. Предоставляем закрывающие документы, оплата на расчетный счет.</p>
+
+        <div class="b2b-cards">
+            <div class="b2b-card">
+                <h3>Мастерским и цехам</h3>
+                <p>Готовые DXF-файлы для ЧПУ, адаптация под ваш станок, пакетные скидки от 3 проектов.</p>
+                <button onclick="openModal('B2B: Мастерская')" class="btn">Запросить прайс</button>
             </div>
-            <button onclick="openModal('B2B-запрос')" class="btn">Обсудить сотрудничество</button>
+            <div class="b2b-card">
+                <h3>Застройщикам</h3>
+                <p>Типовые проекты беседок и лестниц для серийного строительства. Разработка под ваши материалы.</p>
+                <button onclick="openModal('B2B: Застройщик')" class="btn">Обсудить серию</button>
+            </div>
+            <div class="b2b-card">
+                <h3>Дизайнерам интерьера</h3>
+                <p>3D-модели, PDF-чертежи и раскрой для ваших клиентов. Быстрые сроки.</p>
+                <button onclick="openModal('B2B: Дизайнер')" class="btn">Заказать проект</button>
+            </div>
         </div>
-    </div>
+
+        <div class="b2b-guarantees">
+            <span>✓ Договор и счет</span>
+            <span>✓ Закрывающие документы (акт)</span>
+            <span>✓ Оплата на р/с ИП</span>
+        </div>
+    </section>
+
+    <!-- ===== БЛОК 2. ИНЖЕНЕРНЫЕ УСЛУГИ ===== -->
+    <section class="container" id="engineering">
+        <h2 class="section-title">Инженерные услуги по договору</h2>
+        <p class="section-subtitle">Выступаем как партнер по проектированию и техническому контролю. Оказываем услуги по счету-оферте с оплатой на расчетный счет ИП.</p>
+
+        <div class="engineering-grid">
+            <div class="engineering-card">
+                <div class="engineering-icon">01</div>
+                <h3>Агентские услуги</h3>
+                <p>Поиск и привлечение клиентов для вашего производства.</p>
+            </div>
+            <div class="engineering-card">
+                <div class="engineering-icon">02</div>
+                <h3>Конструкторские услуги</h3>
+                <p>Разработка КД, адаптация чертежей, подготовка файлов для станков.</p>
+            </div>
+            <div class="engineering-card">
+                <div class="engineering-icon">03</div>
+                <h3>Технический контроль</h3>
+                <p>Сопровождение проектов, проверка узлов и контроль качества сборки.</p>
+            </div>
+        </div>
+
+        <div class="engineering-action">
+            <button onclick="openModal('Инженерные услуги')" class="btn">Обсудить условия сотрудничества</button>
+        </div>
+    </section>
 
     <div class="bg-alt" id="how-we-work">
         <div class="container">
@@ -625,6 +829,19 @@
         </div>
     </div>
 
+    <!-- ===== БЛОК 3. ПАРТНЕРАМ И ПРОФЕССИОНАЛАМ ===== -->
+    <section class="container">
+        <div class="lead-magnet partner-magnet">
+            <h3>Полезные материалы для мастерских и дизайнеров</h3>
+            <p>Оставьте email — раз в месяц будем присылать новые шаблоны DXF для ЧПУ, обзоры материалов и чек-листы по проектированию. Без спама.</p>
+            <form onsubmit="submitPartnerForm(event)">
+                <input type="email" name="email" placeholder="Ваш email" required>
+                <input type="hidden" name="product" value="База партнеров B2B">
+                <button type="submit" class="btn">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
     <footer id="contacts">
         <div class="container">
             <div class="footer-main">
@@ -670,7 +887,6 @@
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
             
-            <!-- Форма -->
             <div id="formContainer">
                 <h2 style="margin-bottom: 20px;">Оформление заявки</h2>
                 <p style="margin-bottom: 25px; font-size: 14px; color: var(--text-muted);">Вы выбрали: <strong id="selectedProduct" style="color: var(--text-main);"></strong></p>
@@ -690,7 +906,6 @@
                 </form>
             </div>
 
-            <!-- Экран "Спасибо" -->
             <div id="successContainer" class="success-screen" style="display: none;">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 <h2>Заявка отправлена!</h2>
@@ -735,7 +950,7 @@
 
         let allProducts = [];
         let currentProductForBuy = "";
-        let scrollTimeout; // Переменная для задержки скролла
+        let scrollTimeout;
 
         function trackGoal(name) {
             if (typeof ym === 'function' && METRIKA_ID) {
@@ -885,26 +1100,20 @@
             }
         }
 
-        // --- ЛОГИКА СКРОЛЛА С ЗАДЕРЖКОЙ ---
+        // Задержка 30 мс для скролла
         window.addEventListener('scroll', () => {
-            // Очищаем предыдущий таймер (если пользователь скроллит быстро)
             clearTimeout(scrollTimeout);
-
-            // Запускаем новый таймер на 40 мс
             scrollTimeout = setTimeout(() => {
-                // 1. Закрываем мобильное меню
                 const mobileMenu = document.getElementById('mobileMenu');
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                 }
 
-                // 2. Сворачиваем каталог
                 const catalogSection = document.getElementById('catalog');
                 if (catalogSection.getBoundingClientRect().bottom < 0) {
                     document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
                 }
 
-                // 3. Сворачиваем FAQ
                 const faqSection = document.querySelector('.faq-block');
                 if (faqSection) {
                     const faqRect = faqSection.getBoundingClientRect();
@@ -912,7 +1121,7 @@
                         document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
                     }
                 }
-            }, 40); // Задержка 40 миллисекунд
+            }, 30);
         });
 
         const orderModal = document.getElementById('orderModal');
@@ -926,7 +1135,11 @@
             document.getElementById('orderForm').reset();
 
             const descField = document.getElementById('customProjectDesc');
-            descField.style.display = (productName === 'Индивидуальный проект' || productName === 'B2B-запрос') ? 'block' : 'none';
+            const needsDesc = productName === 'Индивидуальный проект'
+                || productName === 'B2B-запрос'
+                || productName === 'Инженерные услуги'
+                || productName.startsWith('B2B:');
+            descField.style.display = needsDesc ? 'block' : 'none';
 
             orderModal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1042,6 +1255,38 @@
                 alert('Не удалось отправить. Попробуйте позже.');
                 btn.disabled = false;
                 btn.textContent = original;
+            }
+        }
+
+        async function submitPartnerForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Отправляем...';
+
+            try {
+                const formData = new FormData();
+                formData.append('email', form.email.value);
+                formData.append('product', 'База партнеров B2B');
+
+                const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    form.innerHTML = '<p style="color:#fff; font-size:16px;">Спасибо! Проверьте почту.</p>';
+                    trackGoal('partner_form_submitted');
+                } else {
+                    throw new Error('Formspree error');
+                }
+            } catch (err) {
+                alert('Не удалось отправить. Попробуйте позже.');
+                btn.disabled = false;
+                btn.textContent = originalText;
             }
         }
 
