@@ -94,11 +94,25 @@
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 15px; }
         
-        /* Логотип в колонку */
-        .logo { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; color: var(--text-light); gap: 4px; }
+        /* Логотип: Название, разделитель, подпись */
+        .logo { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; color: var(--text-light); gap: 6px; }
         .logo-title { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
         .logo-title span { color: var(--accent); }
-        .logo-subtitle { font-size: 9px; letter-spacing: 3px; color: #A0A0A0; text-transform: uppercase; line-height: 1; }
+        
+        /* Тонкий медный разделитель под названием */
+        .logo-divider { width: 100%; height: 1px; background-color: var(--accent); opacity: 0.5; }
+        
+        /* Подпись, растянутая по ширине */
+        .logo-subtitle { 
+            display: flex; 
+            justify-content: space-between; 
+            width: 100%; 
+            font-size: 8.5px; 
+            letter-spacing: 2px; 
+            color: #A0A0A0; 
+            text-transform: uppercase; 
+            line-height: 1; 
+        }
 
         .nav-container { display: flex; align-items: center; gap: 20px; }
         nav { display: flex; gap: 20px; align-items: center; }
@@ -239,7 +253,6 @@
         .lead-magnet input { flex: 1; min-width: 200px; padding: 14px 16px; border: 1px solid #444; background: #fff; font-size: 15px; font-family: inherit; border-radius: 2px; }
         .lead-magnet .btn { padding: 14px 24px; }
 
-        /* FAQ - Аккордеон */
         .faq-block { max-width: 800px; margin: 0 auto; margin-bottom: 60px; }
         .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); margin-bottom: 10px; border-radius: 2px;}
         .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 16px;}
@@ -250,6 +263,7 @@
         .faq-item.active .faq-question span { transform: rotate(45deg); }
         .faq-question span { font-size: 24px; transition: transform 0.3s; color: var(--accent); }
 
+        /* --- ПОДВАЛ --- */
         footer {
             background-color: var(--header-footer-bg);
             color: var(--text-light);
@@ -257,8 +271,11 @@
             border-top: 2px solid var(--accent);
         }
         .footer-main { display: flex; gap: 60px; margin-bottom: 40px; }
-        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 10px; }
-        .footer-left img { width: 100%; max-width: 250px; height: auto; display: block; margin: 0 auto; filter: brightness(1.5); opacity: 0.95; }
+        
+        /* Увеличенный логотип в подвале */
+        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 15px; }
+        .footer-left img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; filter: brightness(1.4); opacity: 0.95; }
+
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .footer-block h4 {
             font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;
@@ -327,7 +344,6 @@
             .footer-bottom { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
             
-            /* КАРТОЧКА ТОВАРА НА ПЛАНШЕТАХ */
             .product-modal { 
                 flex-direction: column; 
                 max-height: 95vh; 
@@ -356,7 +372,6 @@
             .header-content { gap: 10px; }
             .logo { flex-direction: column; align-items: flex-start; gap: 4px; }
             .logo-title { font-size: 24px; }
-            /* Убрали стили .logo-subtitle, чтобы она выглядела как на ПК */
             
             .header-actions .btn { padding: 8px 12px; font-size: 12px; }
             .nav-container { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--header-footer-bg); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); border-bottom: 2px solid var(--accent); flex-direction: column; gap: 15px; }
@@ -376,19 +391,18 @@
             
             .skeleton-card { display: none; }
 
-            /* ПОДВАЛ НА ТЕЛЕФОНЕ (БЕЗ НАЕЗДОВ) */
-            footer { padding-top: 40px; padding-bottom: 20px; margin-top: 0; }
-            .footer-left img { max-width: 200px; margin-bottom: 20px; }
+            /* УВЕЛИЧЕННЫЙ ЛОГОТИП В ПОДВАЛЕ НА ТЕЛЕФОНЕ */
+            .footer-left img { max-width: 220px; margin-bottom: 15px; }
             .footer-left { padding-top: 10px; }
             .footer-main { margin-bottom: 25px; }
             .footer-bottom { padding-top: 15px; }
+            
             .b2b-block { flex-direction: column; text-align: center; }
             .seo-block, .lead-magnet { padding: 25px 20px; }
             
             .accordion-header { font-size: 20px; padding: 15px 20px; }
             .product-title { font-size: 18px; }
 
-            /* КНОПКА КРЕСТИК В КАРТОЧКЕ ТОВАРА НА МОБИЛЬНОМ */
             .product-modal .close-btn {
                 position: absolute;
                 top: 10px;
@@ -413,7 +427,8 @@
         <div class="container header-content">
             <a href="#top" class="logo">
                 <div class="logo-title">Столяр<span>-</span>Проект</div>
-                <div class="logo-subtitle">Чертежи и проектирование</div>
+                <div class="logo-divider"></div>
+                <div class="logo-subtitle"><span>Чертежи</span><span>и</span><span>проектирование</span></div>
             </a>
             <div class="nav-container" id="mobileMenu">
                 <nav>
@@ -886,13 +901,11 @@
 
         // Логика для скролла (Каталог и FAQ)
         window.addEventListener('scroll', () => {
-            // 1. Сворачиваем каталог, если он ушел вверх за экран
             const catalogSection = document.getElementById('catalog');
             if (catalogSection.getBoundingClientRect().bottom < 0) {
                 document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
             }
 
-            // 2. Сворачиваем FAQ, только если блок ушел из зоны видимости (вверх или вниз)
             const faqSection = document.querySelector('.faq-block');
             if (faqSection) {
                 const faqRect = faqSection.getBoundingClientRect();
@@ -1032,15 +1045,12 @@
             }
         }
 
-        // Логика для FAQ
         function toggleFaq(element) {
             const item = element.parentElement;
             const isActive = item.classList.contains('active');
             
-            // Закрываем все
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
             
-            // Если не был открыт - открываем
             if (!isActive) {
                 item.classList.add('active');
             }
