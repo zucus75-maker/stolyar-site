@@ -189,7 +189,6 @@
         .custom-order-block .btn { border-color: var(--accent); background-color: var(--accent); color: #fff; white-space: nowrap; padding: 15px 30px; font-size: 16px;}
         .custom-order-block .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
 
-        /* B2B блок */
         .b2b-block {
             background: #fff; border: 2px solid var(--accent); padding: 40px;
             margin: 60px auto 80px; max-width: 1000px; border-radius: 2px;
@@ -222,14 +221,12 @@
         .review-author { font-weight: bold; font-size: 16px; color: var(--text-main); }
         .review-location { font-size: 13px; color: #888; }
 
-        /* SEO-текст */
         .seo-block { max-width: 900px; margin: 0 auto 60px; background: #fff; border: 1px solid var(--border-color); padding: 40px; border-radius: 2px; }
         .seo-block h2 { font-size: 28px; margin-bottom: 20px; }
         .seo-block h3 { font-size: 20px; margin: 25px 0 10px; color: var(--accent); }
         .seo-block p, .seo-block li { font-size: 15px; color: var(--text-muted); margin-bottom: 12px; }
         .seo-block ul { padding-left: 20px; }
 
-        /* Лид-магнит */
         .lead-magnet {
             background: linear-gradient(135deg, var(--header-footer-bg) 0%, #2A2A2A 100%);
             color: #fff; padding: 50px 40px; margin: 60px auto; max-width: 1000px;
@@ -241,12 +238,16 @@
         .lead-magnet input { flex: 1; min-width: 200px; padding: 14px 16px; border: 1px solid #444; background: #fff; font-size: 15px; font-family: inherit; border-radius: 2px; }
         .lead-magnet .btn { padding: 14px 24px; }
 
+        /* FAQ - Аккордеон */
         .faq-block { max-width: 800px; margin: 0 auto; margin-bottom: 60px; }
         .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); margin-bottom: 10px; border-radius: 2px;}
         .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 16px;}
         .faq-answer { padding: 0 20px 20px; color: var(--text-muted); font-size: 15px; display: none; }
+        
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { color: var(--accent); }
+        .faq-item.active .faq-question span { transform: rotate(45deg); } /* Вращаем плюс в крестик */
+        .faq-question span { font-size: 24px; transition: transform 0.3s; color: var(--accent); }
 
         footer {
             background-color: var(--header-footer-bg);
@@ -314,7 +315,7 @@
         .included-block li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
         .sample-link { display: inline-block; margin-bottom: 20px; font-size: 14px; color: var(--accent); font-weight: 600; text-decoration: underline; cursor: pointer; }
 
-        /* ИСПРАВЛЕННЫЙ БЛОК ДЛЯ МОБИЛЬНЫХ */
+        /* --- ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ --- */
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; }
             .footer-main { flex-direction: column; text-align: center; gap: 30px; }
@@ -325,47 +326,29 @@
             .footer-bottom { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
             
-            /* ФИКС КАРТОЧКИ ТОВАРА */
+            /* КАРТОЧКА ТОВАРА НА ПЛАНШЕТАХ */
             .product-modal { 
                 flex-direction: column; 
-                padding: 10px; 
                 max-height: 95vh; 
                 position: relative;
             }
             .product-gallery { 
                 width: 100%; 
-                padding: 10px; 
-                background: transparent;
-            }
-            .main-image-container { 
-                height: 200px; 
-                margin-bottom: 10px;
+                padding: 20px; 
                 background: #fff;
             }
-            .thumbnails { display: none; }
+            .main-image-container { 
+                height: 250px; 
+                margin-bottom: 15px;
+            }
+            .thumbnails { justify-content: center; }
             .product-details { 
                 width: 100%; 
-                padding: 15px; 
-                background: transparent;
+                padding: 20px; 
             }
             .product-details h2 { font-size: 24px; margin-bottom: 10px; }
             .product-details .price { font-size: 26px; margin-bottom: 15px; }
             .product-details .desc { font-size: 14px; margin-bottom: 15px; }
-            .product-modal .close-btn { 
-                position: fixed; 
-                top: 20px; 
-                right: 20px; 
-                background: #fff; 
-                border-radius: 50%; 
-                width: 40px; 
-                height: 40px; 
-                display: flex; 
-                align-items: center; 
-                justify-content: center;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-                color: #000;
-                z-index: 100;
-            }
         }
 
         @media (max-width: 768px) {
@@ -391,6 +374,7 @@
             
             .skeleton-card { display: none; }
 
+            /* ПОДВАЛ НА ТЕЛЕФОНЕ (БЕЗ НАЕЗДОВ) */
             footer { padding-top: 40px; padding-bottom: 20px; margin-top: 0; }
             .footer-left img { max-width: 200px; margin-bottom: 20px; }
             .footer-left { padding-top: 10px; }
@@ -401,6 +385,23 @@
             
             .accordion-header { font-size: 20px; padding: 15px 20px; }
             .product-title { font-size: 18px; }
+
+            /* КНОПКА КРЕСТИК В КАРТОЧКЕ ТОВАРА НА МОБИЛЬНОМ */
+            .product-modal .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: #fff;
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                font-size: 24px;
+                z-index: 100;
+            }
         }
     </style>
 </head>
@@ -487,7 +488,6 @@
         </div>
     </div>
 
-    <!-- B2B -->
     <div class="container" id="b2b">
         <div class="b2b-block">
             <div>
@@ -577,7 +577,6 @@
         </div>
     </div>
 
-    <!-- SEO-текст -->
     <div class="container">
         <div class="seo-block">
             <h2>Что входит в проект</h2>
@@ -595,7 +594,6 @@
         </div>
     </div>
 
-    <!-- Лид-магнит -->
     <div class="container">
         <div class="lead-magnet">
             <h3>Бесплатный чертёж беседки 3х3 в PDF</h3>
@@ -610,7 +608,8 @@
     <div class="container">
         <h2 class="section-title">Оплата и получение</h2>
         <div class="faq-block">
-            <div class="faq-item">
+            <!-- Первый вопрос открыт по умолчанию -->
+            <div class="faq-item active">
                 <div class="faq-question" onclick="toggleFaq(this)">Можно ли изменить размеры готового чертежа? <span>+</span></div>
                 <div class="faq-answer">Да, мы можем адаптировать проект под ваши габариты. Стоимость услуги рассчитывается индивидуально после уточнения деталей.</div>
             </div>
@@ -732,8 +731,8 @@
 
     <script>
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAHnEYoeQDMfEoHQgH5Wa0S54gd2Ff4G8bkSEGCgTC6WxAg50v4Xgul-SFIJqTyVC37Np1gM0HCy6-/pub?gid=0&single=true&output=csv";
-        const FORMSPREE_ID = "ВАШ_ID"; // заменить
-        const METRIKA_ID = null; // вставить номер счётчика
+        const FORMSPREE_ID = "ВАШ_ID"; 
+        const METRIKA_ID = null; 
 
         let allProducts = [];
         let currentProductForBuy = "";
@@ -886,10 +885,18 @@
             }
         }
 
+        // Логика для скролла
         window.addEventListener('scroll', () => {
+            // Сворачиваем каталог
             const catalogSection = document.getElementById('catalog');
             if (catalogSection.getBoundingClientRect().bottom < 0) {
                 document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
+            }
+
+            // Сворачиваем FAQ
+            const faqSection = document.querySelector('.faq-block');
+            if (faqSection && faqSection.getBoundingClientRect().bottom < 0) {
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
             }
         });
 
@@ -1023,11 +1030,18 @@
             }
         }
 
+        // Логика для FAQ
         function toggleFaq(element) {
             const item = element.parentElement;
-            const span = element.querySelector('span');
-            item.classList.toggle('active');
-            span.textContent = item.classList.contains('active') ? '-' : '+';
+            const isActive = item.classList.contains('active');
+            
+            // Закрываем все
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            
+            // Если не был открыт - открываем
+            if (!isActive) {
+                item.classList.add('active');
+            }
         }
 
         document.addEventListener('DOMContentLoaded', fetchData);
