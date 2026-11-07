@@ -498,7 +498,6 @@
         }
 
         @media (max-width: 768px) {
-            /* УВЕЛИЧЕН ОТСТУП ДЛЯ ЯКОРЕЙ, ЧТОБЫ ЗАГОЛОВКИ НЕ ПРЯТАЛИСЬ ПОД ШАПКОЙ */
             [id]:not(#contacts) { scroll-margin-top: 110px; }
 
             .header-content { gap: 10px; }
@@ -1095,7 +1094,8 @@
             Object.keys(categories).forEach(catKey => {
                 const cat = categories[catKey];
                 const group = document.createElement('div');
-                group.className = 'accordion-group' + (first ? ' active' : '');
+                // ИЗМЕНЕНО: первая открывается только если намёк ещё не показывался
+                group.className = 'accordion-group' + (first && !isHintSeen() ? ' active' : '');
                 first = false;
 
                 const header = document.createElement('div');
@@ -1196,6 +1196,12 @@
                 const mobileMenu = document.getElementById('mobileMenu');
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
+                }
+
+                // ИЗМЕНЕНО: закрываем каталог, когда блок ушёл выше экрана
+                const catalogSection = document.getElementById('catalog');
+                if (catalogSection && catalogSection.getBoundingClientRect().bottom < 0) {
+                    document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
                 }
 
                 const faqBlock = document.querySelector('.faq-block');
@@ -1335,7 +1341,6 @@
             btn.textContent = 'Отправляем...';
 
             try {
-                // product уже передан через hidden input в HTML-форме
                 const formData = new FormData(form);
 
                 const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
@@ -1369,12 +1374,15 @@
             }
         }
 
+        // ИЗМЕНЕНО: при первом заходе ставим флаг "намёк показан",
+        // при повторных — принудительно закрываем первый FAQ, если он остался открыт в HTML
         document.addEventListener('DOMContentLoaded', () => {
             fetchData();
 
-            // Если пользователь уже кликал по вкладкам ранее в этой сессии — снимаем "стартовое" открытие FAQ
             if (isHintSeen()) {
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            } else {
+                markHintSeen();
             }
         });
 
