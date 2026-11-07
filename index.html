@@ -218,10 +218,10 @@
         footer { 
             background-color: var(--header-footer-bg); 
             color: var(--text-light); 
-            padding: 60px 0 30px; 
+            padding: 50px 0 30px; /* Сбалансированный отступ сверху и снизу */
             border-top: 2px solid var(--accent); 
         }
-        .footer-main { display: flex; gap: 60px; margin-bottom: 50px; }
+        .footer-main { display: flex; gap: 60px; margin-bottom: 40px; /* Отступ до юридической линии */ }
         
         .footer-left { 
             flex: 0 0 300px; 
@@ -229,7 +229,7 @@
             flex-direction: column; 
             justify-content: flex-start; 
             align-items: center;
-            padding-top: 10px; 
+            padding-top: 20px; /* Увеличили пробел между верхом блока и логотипом */
         }
         
         .footer-left img { 
@@ -295,10 +295,10 @@
             .scenarios-grid { grid-template-columns: 1fr; } 
             
             /* ПОДВАЛ НА ПЛАНШЕТАХ */
-            .footer-main { flex-direction: column; text-align: center; gap: 20px; }
-            .footer-left { flex: auto; align-items: center; margin-bottom: 10px; padding-top: 0;}
-            .footer-right { grid-template-columns: 1fr; gap: 20px; }
-            .footer-block h4 { display: block; border-bottom: none; margin-bottom: 10px;}
+            .footer-main { flex-direction: column; text-align: center; gap: 30px; }
+            .footer-left { flex: auto; align-items: center; padding-top: 0;}
+            .footer-right { grid-template-columns: 1fr; gap: 30px; }
+            .footer-block h4 { display: block; border-bottom: none; margin-bottom: 15px;}
             .footer-socials { justify-content: center; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
@@ -334,11 +334,12 @@
             
             .skeleton-card { display: none; }
 
-            /* УМЕНЬШАЕМ ЛОГОТИП И ОТСТУПЫ В ПОДВАЛЕ ДЛЯ ТЕЛЕФОНА */
-            .footer-left img { max-width: 140px; margin-bottom: 10px;}
-            footer { padding-top: 30px; padding-bottom: 20px;}
-            .footer-main { margin-bottom: 20px;}
-            .footer-bottom { padding-top: 15px;}
+            /* НАСТРОЙКА ПОДВАЛА ДЛЯ ТЕЛЕФОНА */
+            footer { padding-top: 40px; padding-bottom: 20px; }
+            .footer-left img { max-width: 180px; margin-bottom: 20px; } /* Увеличили логотип */
+            .footer-left { padding-top: 20px; } /* Увеличили пробел сверху */
+            .footer-main { margin-bottom: 25px; } /* Вернули нормальный зазор до нижней линии */
+            .footer-bottom { padding-top: 15px; }
         }
     </style>
 </head>
