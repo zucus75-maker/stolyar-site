@@ -890,7 +890,7 @@
             // Очищаем предыдущий таймер (если пользователь скроллит быстро)
             clearTimeout(scrollTimeout);
 
-            // Запускаем новый таймер на 150 мс
+            // Запускаем новый таймер на 40 мс
             scrollTimeout = setTimeout(() => {
                 // 1. Закрываем мобильное меню
                 const mobileMenu = document.getElementById('mobileMenu');
@@ -912,7 +912,7 @@
                         document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
                     }
                 }
-            }, 150); // Задержка 150 миллисекунд
+            }, 40); // Задержка 40 миллисекунд
         });
 
         const orderModal = document.getElementById('orderModal');
