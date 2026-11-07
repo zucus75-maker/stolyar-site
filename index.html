@@ -887,17 +887,20 @@
 
         // Логика для скролла
         // Логика для скролла (Каталог и FAQ)
+// Логика для скролла (Каталог и FAQ)
 window.addEventListener('scroll', () => {
-    // 1. Сворачиваем каталог, если он ушел вверх за экран
     const catalogSection = document.getElementById('catalog');
     if (catalogSection.getBoundingClientRect().bottom < 0) {
         document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
     }
 
-    // 2. Сворачиваем FAQ, только если нижняя граница блока ушла выше экрана
     const faqSection = document.querySelector('.faq-block');
-    if (faqSection && faqSection.getBoundingClientRect().bottom < 0) {
-        document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+    if (faqSection) {
+        const faqRect = faqSection.getBoundingClientRect();
+        // Если блок полностью ушел вверх или вниз за пределы экрана
+        if (faqRect.top > window.innerHeight || faqRect.bottom < 0) {
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+        }
     }
 });
 
