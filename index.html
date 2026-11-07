@@ -71,7 +71,10 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
-        
+
+        /* Отступ прокрутки для якорных секций под sticky-шапкой */
+        [id] { scroll-margin-top: 90px; }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
@@ -104,7 +107,6 @@
         
         .logo-divider { width: 100%; height: 1px; background-color: var(--accent); opacity: 0.5; }
         
-        /* Подпись (выровнена, без разрывов) */
         .logo-subtitle { 
             display: block;
             width: 100%; 
@@ -135,6 +137,8 @@
         .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
         .btn-outline-dark { background-color: transparent; color: var(--text-light); border-color: var(--text-light); }
         .btn-outline-dark:hover { background-color: var(--text-light); color: var(--header-footer-bg); }
+        .btn-outline { background-color: transparent; color: var(--text-main); border-color: var(--text-main); }
+        .btn-outline:hover { background-color: var(--text-main); color: var(--text-light); }
         .btn-buy { padding: 8px 15px; font-size: 12px; }
 
         .hero { padding: 90px 0; text-align: center; border-bottom: 1px dashed var(--border-color); }
@@ -206,14 +210,6 @@
         .custom-order-features li::before { content: '✓'; color: var(--accent); font-weight: bold; }
         .custom-order-block .btn { border-color: var(--accent); background-color: var(--accent); color: #fff; white-space: nowrap; padding: 15px 30px; font-size: 16px;}
         .custom-order-block .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
-
-        .b2b-block {
-            background: #fff; border: 2px solid var(--accent); padding: 40px;
-            margin: 60px auto 80px; max-width: 1000px; border-radius: 2px;
-            display: flex; gap: 30px; align-items: center; justify-content: space-between; flex-wrap: wrap;
-        }
-        .b2b-block h3 { font-size: 26px; margin-bottom: 10px; color: var(--text-main); }
-        .b2b-block p { color: var(--text-muted); font-size: 15px; max-width: 600px; }
 
         .scenarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 20px; }
         .scenario-card { background: var(--card-bg); padding: 40px; border: 1px solid var(--border-color); border-radius: 2px;}
@@ -313,6 +309,28 @@
         .success-screen h2 { color: var(--accent); margin-bottom: 15px; font-size: 24px;}
         .success-screen p { margin-bottom: 25px; color: var(--text-muted); font-size: 15px; line-height: 1.6;}
         .success-screen .btn { width: 100%; }
+
+        /* Inline-уведомления об ошибке */
+        .form-error {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: #FDECEA;
+            border: 1px solid #E6B8B2;
+            border-left: 3px solid #C0392B;
+            color: #7B241C;
+            font-size: 14px;
+            border-radius: 2px;
+            text-align: left;
+        }
+        .form-error.visible { display: block; }
+
+        /* Успешная подписка (для лид-магнитов) */
+        .form-success {
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 0;
+        }
 
         /* Карточка товара */
         .product-modal { background: var(--bg-color); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; position: relative; display: flex; flex-wrap: wrap; max-height: 90vh; overflow-y: auto; border-top: 4px solid var(--accent);}
@@ -485,7 +503,6 @@
             .logo { flex-direction: column; align-items: flex-start; gap: 4px; }
             .logo-title { font-size: 24px; }
             
-            /* Уменьшенный шрифт подписи на телефоне */
             .logo-subtitle { font-size: 7.5px; letter-spacing: 1.5px; }
             
             .header-actions .btn { padding: 8px 12px; font-size: 12px; }
@@ -511,7 +528,6 @@
             .footer-main { margin-bottom: 25px; }
             .footer-bottom { padding-top: 15px; }
             
-            .b2b-block { flex-direction: column; text-align: center; }
             .seo-block, .lead-magnet { padding: 25px 20px; }
             
             .accordion-header { font-size: 20px; padding: 15px 20px; }
@@ -568,6 +584,7 @@
                     <a href="#catalog" onclick="toggleMenu()">Готовые проекты</a>
                     <a href="#custom" onclick="toggleMenu()">На заказ</a>
                     <a href="#b2b" onclick="toggleMenu()">Для бизнеса</a>
+                    <a href="#engineering" onclick="toggleMenu()">Инженерные услуги</a>
                     <a href="#how-we-work" onclick="toggleMenu()">Как мы работаем</a>
                     <a href="#contacts" onclick="toggleMenu()">Контакты</a>
                 </nav>
@@ -641,7 +658,7 @@
     <!-- ===== БЛОК 1. B2B РАСШИРЕННЫЙ ===== -->
     <section class="container" id="b2b">
         <h2 class="section-title">Для организаций и бизнеса</h2>
-        <p class="section-subtitle">Работаем с юрлицами и ИП по договору. Предоставляем закрывающие документы, оплата на расчетный счет.</p>
+        <p class="section-subtitle">Работаем с юрлицами и ИП по договору: закрывающие документы, оплата по счёту, пакетные условия. Для разовых задач под частное лицо — см. «Индивидуальный чертёж».</p>
 
         <div class="b2b-cards">
             <div class="b2b-card">
@@ -671,7 +688,7 @@
     <!-- ===== БЛОК 2. ИНЖЕНЕРНЫЕ УСЛУГИ ===== -->
     <section class="container" id="engineering">
         <h2 class="section-title">Инженерные услуги по договору</h2>
-        <p class="section-subtitle">Выступаем как партнер по проектированию и техническому контролю. Оказываем услуги по счету-оферте с оплатой на расчетный счет ИП.</p>
+        <p class="section-subtitle">Выступаем подрядчиком по разработке КД и техническому контролю. Оказываем услуги по счёту-оферте с оплатой на расчётный счёт ИП.</p>
 
         <div class="engineering-grid">
             <div class="engineering-card">
@@ -682,7 +699,7 @@
             <div class="engineering-card">
                 <div class="engineering-icon">02</div>
                 <h3>Конструкторские услуги</h3>
-                <p>Разработка КД, адаптация чертежей, подготовка файлов для станков.</p>
+                <p>Разработка КД для серийного производства, адаптация чертежей под ваши станки и материалы.</p>
             </div>
             <div class="engineering-card">
                 <div class="engineering-icon">03</div>
@@ -799,6 +816,7 @@
             <form onsubmit="submitLeadMagnet(event)">
                 <input type="email" name="email" placeholder="Ваш email" required>
                 <button type="submit" class="btn">Получить чертёж</button>
+                <div class="form-error" role="alert"></div>
             </form>
         </div>
     </div>
@@ -838,6 +856,7 @@
                 <input type="email" name="email" placeholder="Ваш email" required>
                 <input type="hidden" name="product" value="База партнеров B2B">
                 <button type="submit" class="btn">Подписаться</button>
+                <div class="form-error" role="alert"></div>
             </form>
         </div>
     </section>
@@ -903,6 +922,7 @@
                         <label for="agree">Я согласен с <a href="privacy.html" style="color: var(--accent);">политикой обработки персональных данных</a></label>
                     </div>
                     <button type="submit" class="btn" style="width:100%;">Отправить заявку</button>
+                    <div class="form-error" role="alert"></div>
                 </form>
             </div>
 
@@ -911,7 +931,8 @@
                 <h2>Заявка отправлена!</h2>
                 <p>Мы свяжемся с вами в течение 2 часов в рабочее время.<br>Если вопрос срочный — напишите нам в Telegram.</p>
                 <a href="https://t.me/ВАШ_НИК" target="_blank" class="btn" style="margin-bottom: 15px;">Написать в Telegram</a>
-                <button onclick="closeModal()" class="btn btn-outline-dark">Закрыть окно</button>
+                <a href="#top" onclick="closeModal()" class="btn btn-outline" style="margin-bottom: 15px;">На главную</a>
+                <button onclick="closeModal()" class="btn btn-outline">Закрыть окно</button>
             </div>
         </div>
     </div>
@@ -951,6 +972,86 @@
         let allProducts = [];
         let currentProductForBuy = "";
         let scrollTimeout;
+
+        /* ============================================================
+           РЕФАКТОРИНГ openModal НА ОБЪЕКТНЫЙ API
+           ------------------------------------------------------------
+           Вместо сравнения строк — описание через объект.
+           Для обратной совместимости принимает и строку (старые вызовы).
+           ============================================================ */
+        const MODAL_PRESETS = {
+            'Индивидуальный проект':   { title: 'Индивидуальный проект',   needsDescription: true,  goal: 'modal_custom' },
+            'B2B-запрос':              { title: 'B2B-запрос',              needsDescription: true,  goal: 'modal_b2b' },
+            'Инженерные услуги':       { title: 'Инженерные услуги',       needsDescription: true,  goal: 'modal_engineering' },
+            'B2B: Мастерская':         { title: 'B2B: Мастерская',         needsDescription: true,  goal: 'modal_b2b_workshop' },
+            'B2B: Застройщик':         { title: 'B2B: Застройщик',         needsDescription: true,  goal: 'modal_b2b_developer' },
+            'B2B: Дизайнер':           { title: 'B2B: Дизайнер',           needsDescription: true,  goal: 'modal_b2b_designer' },
+            'Общая заявка':            { title: 'Общая заявка',            needsDescription: false, goal: 'modal_general' }
+        };
+
+        /**
+         * Открывает модалку заявки.
+         * @param {string|{title:string, needsDescription?:boolean, goal?:string}} product
+         *   Строка (старый API) или объект с настройками.
+         */
+        function openModal(product) {
+            let config;
+            if (typeof product === 'string') {
+                config = MODAL_PRESETS[product] || {
+                    title: product,
+                    // эвристика для неизвестных строк, чтобы не потерять прежнее поведение
+                    needsDescription: product === 'Индивидуальный проект'
+                        || product.startsWith('B2B:')
+                        || product === 'B2B-запрос'
+                        || product === 'Инженерные услуги',
+                    goal: 'modal_custom_title'
+                };
+            } else {
+                config = {
+                    title: product.title || 'Заявка',
+                    needsDescription: !!product.needsDescription,
+                    goal: product.goal || 'modal_custom_title'
+                };
+            }
+
+            document.getElementById('selectedProduct').textContent = config.title;
+            document.getElementById('formProduct').value = config.title;
+            document.getElementById('formContainer').style.display = 'block';
+            document.getElementById('successContainer').style.display = 'none';
+
+            const orderForm = document.getElementById('orderForm');
+            orderForm.reset();
+            clearFormError(orderForm);
+
+            const descField = document.getElementById('customProjectDesc');
+            descField.style.display = config.needsDescription ? 'block' : 'none';
+
+            orderModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            trackGoal(config.goal);
+        }
+
+        /* ============================================================
+           INLINE-УВЕДОМЛЕНИЯ ВМЕСТО alert()
+           ============================================================ */
+        function showFormError(form, message) {
+            const box = form.querySelector('.form-error');
+            if (!box) {
+                // fallback, если контейнера нет — хотя он есть в разметке
+                console.warn('[form-error]', message);
+                return;
+            }
+            box.textContent = message;
+            box.classList.add('visible');
+        }
+
+        function clearFormError(form) {
+            const box = form.querySelector('.form-error');
+            if (box) {
+                box.textContent = '';
+                box.classList.remove('visible');
+            }
+        }
 
         function trackGoal(name) {
             if (typeof ym === 'function' && METRIKA_ID) {
@@ -1032,6 +1133,7 @@
                     card.onclick = (e) => {
                         if (!e.target.closest('button')) openProductModal(product);
                     };
+                    // Для кнопки «Купить» передаём объект явно — название товара подставляется как есть
                     card.innerHTML = `
                         <div class="product-image">${imgHtml}</div>
                         <div class="product-info">
@@ -1039,7 +1141,7 @@
                             <div class="product-desc">${product.desc}</div>
                             <div class="product-bottom">
                                 <div class="product-price">${formattedPrice}</div>
-                                <button onclick="event.stopPropagation(); openModal('${product.title.replace(/'/g, "\\'")}')" class="btn btn-buy">Купить</button>
+                                <button data-product-title="${product.title.replace(/"/g, '&quot;')}" onclick="event.stopPropagation(); openModal(this.dataset.productTitle)" class="btn btn-buy">Купить</button>
                             </div>
                         </div>
                     `;
@@ -1100,7 +1202,6 @@
             }
         }
 
-        // Задержка 30 мс для скролла
         window.addEventListener('scroll', () => {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
@@ -1126,25 +1227,6 @@
 
         const orderModal = document.getElementById('orderModal');
         const productModal = document.getElementById('productModal');
-
-        function openModal(productName) {
-            document.getElementById('selectedProduct').textContent = productName;
-            document.getElementById('formProduct').value = productName;
-            document.getElementById('formContainer').style.display = 'block';
-            document.getElementById('successContainer').style.display = 'none';
-            document.getElementById('orderForm').reset();
-
-            const descField = document.getElementById('customProjectDesc');
-            const needsDesc = productName === 'Индивидуальный проект'
-                || productName === 'B2B-запрос'
-                || productName === 'Инженерные услуги'
-                || productName.startsWith('B2B:');
-            descField.style.display = needsDesc ? 'block' : 'none';
-
-            orderModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            trackGoal('open_order_modal');
-        }
 
         function closeModal() {
             orderModal.classList.remove('active');
@@ -1201,6 +1283,8 @@
         async function submitOrder(e) {
             e.preventDefault();
             const form = e.target;
+            clearFormError(form);
+
             const submitBtn = form.querySelector('button[type=submit]');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправляем...';
@@ -1221,7 +1305,7 @@
                     throw new Error('Formspree error');
                 }
             } catch (err) {
-                alert('Не удалось отправить заявку. Напишите нам в Telegram: https://t.me/ВАШ_НИК');
+                showFormError(form, 'Не удалось отправить заявку. Проверьте соединение и попробуйте ещё раз, либо напишите нам в Telegram: https://t.me/ВАШ_НИК');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Отправить заявку';
@@ -1231,7 +1315,9 @@
         async function submitLeadMagnet(e) {
             e.preventDefault();
             const form = e.target;
-            const btn = form.querySelector('button');
+            clearFormError(form);
+
+            const btn = form.querySelector('button[type="submit"]');
             const original = btn.textContent;
             btn.disabled = true;
             btn.textContent = 'Отправляем...';
@@ -1246,13 +1332,13 @@
                     headers: { 'Accept': 'application/json' }
                 });
                 if (res.ok) {
-                    form.innerHTML = '<p style="color:#fff; font-size:16px;">Готово! Проверьте почту в течение 10 минут.</p>';
+                    form.innerHTML = '<p class="form-success">Готово! Проверьте почту в течение 10 минут.</p>';
                     trackGoal('lead_magnet_submitted');
                 } else {
                     throw new Error('error');
                 }
             } catch (err) {
-                alert('Не удалось отправить. Попробуйте позже.');
+                showFormError(form, 'Не удалось отправить. Попробуйте позже.');
                 btn.disabled = false;
                 btn.textContent = original;
             }
@@ -1261,6 +1347,8 @@
         async function submitPartnerForm(e) {
             e.preventDefault();
             const form = e.target;
+            clearFormError(form);
+
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.textContent;
             btn.disabled = true;
@@ -1278,13 +1366,13 @@
                 });
 
                 if (res.ok) {
-                    form.innerHTML = '<p style="color:#fff; font-size:16px;">Спасибо! Проверьте почту.</p>';
+                    form.innerHTML = '<p class="form-success">Спасибо! Проверьте почту.</p>';
                     trackGoal('partner_form_submitted');
                 } else {
                     throw new Error('Formspree error');
                 }
             } catch (err) {
-                alert('Не удалось отправить. Попробуйте позже.');
+                showFormError(form, 'Не удалось отправить. Проверьте соединение и попробуйте ещё раз.');
                 btn.disabled = false;
                 btn.textContent = originalText;
             }
