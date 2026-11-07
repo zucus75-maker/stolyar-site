@@ -886,19 +886,20 @@
         }
 
         // Логика для скролла
-        window.addEventListener('scroll', () => {
-            // Сворачиваем каталог
-            const catalogSection = document.getElementById('catalog');
-            if (catalogSection.getBoundingClientRect().bottom < 0) {
-                document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
-            }
+        // Логика для скролла (Каталог и FAQ)
+window.addEventListener('scroll', () => {
+    // 1. Сворачиваем каталог, если он ушел вверх за экран
+    const catalogSection = document.getElementById('catalog');
+    if (catalogSection.getBoundingClientRect().bottom < 0) {
+        document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
+    }
 
-            // Сворачиваем FAQ
-            const faqSection = document.querySelector('.faq-block');
-            if (faqSection && faqSection.getBoundingClientRect().bottom < 0) {
-                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            }
-        });
+    // 2. Сворачиваем FAQ, только если нижняя граница блока ушла выше экрана
+    const faqSection = document.querySelector('.faq-block');
+    if (faqSection && faqSection.getBoundingClientRect().bottom < 0) {
+        document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+    }
+});
 
         const orderModal = document.getElementById('orderModal');
         const productModal = document.getElementById('productModal');
