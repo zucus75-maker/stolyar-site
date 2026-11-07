@@ -98,26 +98,23 @@
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 15px; }
         
-        /* Логотип */
         .logo { display: flex; flex-direction: column; text-decoration: none; color: var(--text-light); gap: 5px; align-items: flex-start; }
         .logo-title { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
         .logo-title span { color: var(--accent); }
         
-        /* Разделитель под названием */
         .logo-divider { width: 100%; height: 1px; background-color: var(--accent); opacity: 0.5; }
         
-        /* Подпись (выровнена по ширине без разрывов) */
+        /* ИСПРАВЛЕННЫЙ ШРИФТ ПОДПИСИ */
         .logo-subtitle { 
             display: block;
             width: 100%; 
-            font-size: 8.5px; 
+            font-size: 9px; 
             letter-spacing: 2px; 
             color: #A0A0A0; 
             text-transform: uppercase; 
             line-height: 1; 
             font-weight: 400;
-            text-align: justify;
-            text-align-last: justify;
+            white-space: nowrap; /* Запрещаем перенос строк */
         }
 
         .nav-container { display: flex; align-items: center; gap: 20px; }
@@ -309,9 +306,12 @@
         .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 25px; font-size: 12px; color: var(--text-muted); }
         .checkbox-group input { width: auto; margin-top: 3px; }
 
+        /* СТИЛИ ДЛЯ ОКНА "СПАСИБО" */
         .success-screen { text-align: center; padding: 30px 10px; }
-        .success-screen h2 { color: var(--accent); margin-bottom: 15px; }
-        .success-screen p { margin-bottom: 15px; color: var(--text-muted); }
+        .success-screen svg { width: 60px; height: 60px; color: var(--accent); margin-bottom: 20px; }
+        .success-screen h2 { color: var(--accent); margin-bottom: 15px; font-size: 24px;}
+        .success-screen p { margin-bottom: 25px; color: var(--text-muted); font-size: 15px; line-height: 1.6;}
+        .success-screen .btn { width: 100%; }
 
         .product-modal { background: var(--bg-color); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; position: relative; display: flex; flex-wrap: wrap; max-height: 90vh; overflow-y: auto; border-top: 4px solid var(--accent);}
         .product-gallery { width: 50%; padding: 40px; background: #fff; display: flex; flex-direction: column; }
@@ -336,7 +336,7 @@
         .included-block li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
         .sample-link { display: inline-block; margin-bottom: 20px; font-size: 14px; color: var(--accent); font-weight: 600; text-decoration: underline; cursor: pointer; }
 
-        /* --- ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ --- */
+        /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; }
             .footer-main { flex-direction: column; text-align: center; gap: 30px; }
@@ -362,8 +362,8 @@
             .logo { flex-direction: column; align-items: flex-start; gap: 4px; }
             .logo-title { font-size: 24px; }
             
-            /* Уменьшаем подпись на телефоне, чтобы не было разрывов */
-            .logo-subtitle { font-size: 8px; letter-spacing: 1px; }
+            /* УМЕНЬШЕННЫЙ ШРИФТ ПОДПИСИ НА ТЕЛЕФОНЕ */
+            .logo-subtitle { font-size: 7.5px; letter-spacing: 1.5px; }
             
             .header-actions .btn { padding: 8px 12px; font-size: 12px; }
             .nav-container { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--header-footer-bg); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); border-bottom: 2px solid var(--accent); flex-direction: column; gap: 15px; }
@@ -665,9 +665,12 @@
         </div>
     </footer>
 
+    <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
+            
+            <!-- Форма -->
             <div id="formContainer">
                 <h2 style="margin-bottom: 20px;">Оформление заявки</h2>
                 <p style="margin-bottom: 25px; font-size: 14px; color: var(--text-muted);">Вы выбрали: <strong id="selectedProduct" style="color: var(--text-main);"></strong></p>
@@ -686,14 +689,19 @@
                     <button type="submit" class="btn" style="width:100%;">Отправить заявку</button>
                 </form>
             </div>
+
+            <!-- Экран "Спасибо" -->
             <div id="successContainer" class="success-screen" style="display: none;">
-                <h2>Спасибо! Заявка отправлена</h2>
-                <p>Ответим в течение 2 часов в рабочее время. Если срочно — напишите в <a href="https://t.me/ВАШ_НИК" target="_blank" style="color: var(--accent); font-weight: 600;">Telegram</a>.</p>
-                <button onclick="closeModal()" class="btn" style="margin-top: 10px;">Понятно</button>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h2>Заявка отправлена!</h2>
+                <p>Мы свяжемся с вами в течение 2 часов в рабочее время.<br>Если вопрос срочный — напишите нам в Telegram.</p>
+                <a href="https://t.me/ВАШ_НИК" target="_blank" class="btn" style="margin-bottom: 15px;">Написать в Telegram</a>
+                <button onclick="closeModal()" class="btn btn-outline-dark">Закрыть окно</button>
             </div>
         </div>
     </div>
 
+    <!-- КАРТОЧКА ТОВАРА -->
     <div class="modal-overlay" id="productModal">
         <div class="product-modal">
             <button class="close-btn" onclick="closeProductModal()">&times;</button>
@@ -727,6 +735,7 @@
 
         let allProducts = [];
         let currentProductForBuy = "";
+        let scrollTimeout; // Переменная для задержки скролла
 
         function trackGoal(name) {
             if (typeof ym === 'function' && METRIKA_ID) {
@@ -876,27 +885,34 @@
             }
         }
 
+        // --- ЛОГИКА СКРОЛЛА С ЗАДЕРЖКОЙ ---
         window.addEventListener('scroll', () => {
-            // Закрываем мобильное меню при прокрутке
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (mobileMenu && mobileMenu.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
-            }
+            // Очищаем предыдущий таймер (если пользователь скроллит быстро)
+            clearTimeout(scrollTimeout);
 
-            // Закрываем каталог при прокрутке ниже него
-            const catalogSection = document.getElementById('catalog');
-            if (catalogSection.getBoundingClientRect().bottom < 0) {
-                document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
-            }
-
-            // Закрываем FAQ при уходе из зоны видимости
-            const faqSection = document.querySelector('.faq-block');
-            if (faqSection) {
-                const faqRect = faqSection.getBoundingClientRect();
-                if (faqRect.top > window.innerHeight || faqRect.bottom < 0) {
-                    document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            // Запускаем новый таймер на 150 мс
+            scrollTimeout = setTimeout(() => {
+                // 1. Закрываем мобильное меню
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
                 }
-            }
+
+                // 2. Сворачиваем каталог
+                const catalogSection = document.getElementById('catalog');
+                if (catalogSection.getBoundingClientRect().bottom < 0) {
+                    document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
+                }
+
+                // 3. Сворачиваем FAQ
+                const faqSection = document.querySelector('.faq-block');
+                if (faqSection) {
+                    const faqRect = faqSection.getBoundingClientRect();
+                    if (faqRect.top > window.innerHeight || faqRect.bottom < 0) {
+                        document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+                    }
+                }
+            }, 150); // Задержка 150 миллисекунд
         });
 
         const orderModal = document.getElementById('orderModal');
