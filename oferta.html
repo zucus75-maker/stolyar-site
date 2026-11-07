@@ -6,22 +6,61 @@
     <title>Публичная оферта | Столяр-Проект</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #B87333; --text: #2C2C2C; --bg: #F9F8F6; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 40px 20px; }
+        :root { 
+            --accent: #B87333; 
+            --text: #2C2C2C; 
+            --bg: #F9F8F6; 
+            --header-bg: #1A1A1A;
+        }
+        
+        /* Фиксированная шапка документа */
+        .doc-header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: var(--header-bg); border-bottom: 2px solid var(--accent);
+            z-index: 100; display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 30px; box-sizing: border-box;
+        }
+        .doc-header .logo-text {
+            font-family: 'Montserrat', sans-serif; font-weight: 800; color: #fff; text-transform: uppercase;
+            letter-spacing: 1px; font-size: 18px;
+        }
+        .doc-header .logo-text span { color: var(--accent); }
+        .doc-header .back-btn {
+            font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase;
+            color: #fff; text-decoration: none; border: 1px solid #444; padding: 8px 16px; border-radius: 2px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .doc-header .back-btn:hover { background: var(--accent); border-color: var(--accent); }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); 
+            line-height: 1.7; padding: 120px 20px 40px 20px; /* Отступ сверху для шапки */
+            box-sizing: border-box;
+        }
         .doc-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; border: 1px solid #D1CEC5; border-radius: 2px; }
         h1, h2 { font-family: 'PT Serif', serif; color: var(--text); }
         h1 { font-size: 28px; margin-bottom: 10px; }
         h2 { font-size: 20px; margin: 30px 0 10px; color: var(--accent); }
         p, li { font-size: 15px; color: #444; margin-bottom: 15px; }
         ul { padding-left: 20px; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-weight: 600; }
-        .back-link:hover { text-decoration: underline; }
         .date { font-size: 13px; color: #888; margin-bottom: 30px; display: block; }
+        
+        @media (max-width: 768px) {
+            .doc-header { padding: 15px 20px; }
+            .doc-header .logo-text { font-size: 16px; }
+            .doc-container { padding: 25px 20px; }
+            body { padding-top: 100px; }
+        }
     </style>
 </head>
 <body>
+    <!-- Фиксированная шапка -->
+    <div class="doc-header">
+        <div class="logo-text">Столяр<span>-</span>Проект</div>
+        <a href="index.html" class="back-btn">← На главную</a>
+    </div>
+
     <div class="doc-container">
-        <a href="index.html" class="back-link">← Вернуться на главную</a>
         <h1>Публичная оферта о продаже цифровых товаров</h1>
         <span class="date">Дата вступления в силу: 7 ноября 2026 г.</span>
 
