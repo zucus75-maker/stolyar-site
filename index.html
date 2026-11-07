@@ -22,38 +22,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Столяр-Проект",
-      "url": "https://аркадома.рф/",
-      "image": "https://аркадома.рф/logo.png",
-      "email": "[EMAIL]",
-      "telephone": "[ТЕЛЕФОН]",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "[ГОРОД-1]",
-        "streetAddress": "[АДРЕС]",
-        "addressCountry": "RU"
-      },
-      "description": "Чертежи и проекты беседок, лестниц и мебели. PDF + DXF для ЧПУ."
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type":"Question","name":"Можно ли изменить размеры готового чертежа?","acceptedAnswer":{"@type":"Answer","text":"Да, мы можем адаптировать проект под ваши габариты. Стоимость услуги рассчитывается индивидуально после уточнения деталей."}},
-        {"@type":"Question","name":"Что я получу после оплаты?","acceptedAnswer":{"@type":"Answer","text":"Вы получите письмо со ссылками: чертежи в формате PDF, файлы для ЧПУ и подробную спецификацию материалов."}},
-        {"@type":"Question","name":"Как происходит оплата?","acceptedAnswer":{"@type":"Answer","text":"Вы оставляете заявку на сайте. Мы связываемся с вами, высылаем ссылку на оплату (СБП, карта, счёт для юрлиц). После оплаты файлы приходят на почту."}},
-        {"@type":"Question","name":"А если я не разберусь в чертеже?","acceptedAnswer":{"@type":"Answer","text":"К каждому проекту прилагается пошаговая инструкция. Если возникнут вопросы — напишите нам в мессенджер, мы объясним."}}
-      ]
-    }
-    </script>
-
     <style>
         :root {
             --bg-color: #F9F8F6;
@@ -71,6 +39,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
+        
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
@@ -84,31 +53,33 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         h1, h2, h3 { font-family: 'PT Serif', serif; }
 
-        /* --- ШАПКА --- */
+        /* --- ИСПРАВЛЕННАЯ ШАПКА --- */
         header {
             padding: 15px 0;
             border-bottom: 2px solid var(--accent);
             background-color: var(--header-footer-bg);
             color: var(--text-light);
-            position: sticky; top: 0; z-index: 100;
+            position: -webkit-sticky; /* Для Safari/iOS */
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 15px; }
         
         /* Логотип в колонку */
-        .logo { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; color: var(--text-light); gap: 6px; }
+        .logo { display: inline-flex; flex-direction: column; text-decoration: none; color: var(--text-light); gap: 5px; align-items: stretch; }
         .logo-title { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
         .logo-title span { color: var(--accent); }
         
         /* Тонкий медный разделитель под названием */
         .logo-divider { width: 100%; height: 1px; background-color: var(--accent); opacity: 0.5; }
         
-        /* Подпись, растянутая по ширине (УВЕЛИЧЕНА И РАЗРЯЖЕНА) */
+        /* Подпись */
         .logo-subtitle { 
             display: flex; 
             justify-content: space-between; 
             width: 100%; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
+            font-size: 9px; 
             color: #A0A0A0; 
             text-transform: uppercase; 
             line-height: 1; 
@@ -272,11 +243,8 @@
             border-top: 2px solid var(--accent);
         }
         .footer-main { display: flex; gap: 60px; margin-bottom: 40px; }
-        
-        /* Увеличенный логотип в подвале */
         .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 15px; }
         .footer-left img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; filter: brightness(1.4); opacity: 0.95; }
-
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .footer-block h4 {
             font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;
@@ -345,25 +313,11 @@
             .footer-bottom { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
             
-            .product-modal { 
-                flex-direction: column; 
-                max-height: 95vh; 
-                position: relative;
-            }
-            .product-gallery { 
-                width: 100%; 
-                padding: 20px; 
-                background: #fff;
-            }
-            .main-image-container { 
-                height: 250px; 
-                margin-bottom: 15px;
-            }
+            .product-modal { flex-direction: column; max-height: 95vh; position: relative; }
+            .product-gallery { width: 100%; padding: 20px; background: #fff; }
+            .main-image-container { height: 250px; margin-bottom: 15px; }
             .thumbnails { justify-content: center; }
-            .product-details { 
-                width: 100%; 
-                padding: 20px; 
-            }
+            .product-details { width: 100%; padding: 20px; }
             .product-details h2 { font-size: 24px; margin-bottom: 10px; }
             .product-details .price { font-size: 26px; margin-bottom: 15px; }
             .product-details .desc { font-size: 14px; margin-bottom: 15px; }
@@ -372,10 +326,10 @@
         @media (max-width: 768px) {
             .header-content { gap: 10px; }
             .logo { flex-direction: column; align-items: flex-start; gap: 4px; }
-            .logo-title { font-size: 24px; }
+            .logo-title { font-size: 22px; }
             
-            /* УВЕЛИЧЕННАЯ ПОДПИСЬ НА ТЕЛЕФОНЕ */
-            .logo-subtitle { font-size: 11px; letter-spacing: 5px; }
+            /* Для телефона подпись делаем еще меньше, чтобы влезла */
+            .logo-subtitle { font-size: 7px; letter-spacing: 1px; }
             
             .header-actions .btn { padding: 8px 12px; font-size: 12px; }
             .nav-container { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--header-footer-bg); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); border-bottom: 2px solid var(--accent); flex-direction: column; gap: 15px; }
@@ -383,7 +337,7 @@
             nav { flex-direction: column; width: 100%; gap: 20px; }
             .burger-menu { display: block; }
             .hero { padding: 40px 0; }
-            .hero h1 { font-size: 34px; }
+            .hero h1 { font-size: 32px; }
             .custom-order-block { flex-direction: column; text-align: center; padding: 40px 20px;}
             .custom-order-features li { justify-content: center; text-align: left; }
             .features-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr; }
@@ -406,21 +360,7 @@
             .accordion-header { font-size: 20px; padding: 15px 20px; }
             .product-title { font-size: 18px; }
 
-            .product-modal .close-btn {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                background: #fff;
-                border-radius: 50%;
-                width: 36px;
-                height: 36px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-                font-size: 24px;
-                z-index: 100;
-            }
+            .product-modal .close-btn { position: absolute; top: 10px; right: 10px; background: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 24px; z-index: 100; }
         }
     </style>
 </head>
@@ -431,6 +371,7 @@
             <a href="#top" class="logo">
                 <div class="logo-title">Столяр<span>-</span>Проект</div>
                 <div class="logo-divider"></div>
+                <!-- Разделили слова тегами span для правильного отображения -->
                 <div class="logo-subtitle"><span>Чертежи</span><span>и</span><span>проектирование</span></div>
             </a>
             <div class="nav-container" id="mobileMenu">
