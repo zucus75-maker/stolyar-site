@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Профессиональные чертежи беседок, лестниц и мебели. Скачивайте готовые проекты или заказывайте индивидуальное проектирование деревянных конструкций.">
-    <title>Столяр-Проект | Чертежи и проектирование</title>
+    <meta name="description" content="Профессиональные чертежи и проекты беседок, лестниц и мебели. Скачивайте готовые решения или заказывайте индивидуальное проектирование под ваши размеры.">
+    <title>Чертежи и проекты беседок, лестниц и мебели | Столяр-Проект</title>
     
     <link rel="icon" type="image/png" href="logo.png" sizes="192x192">
     <link rel="apple-touch-icon" href="logo.png">
@@ -22,9 +22,9 @@
             --text-light: #F9F8F6; 
             --text-muted: #5A5A5A; 
             
-            --accent: #B87333; /* Медь */
-            --accent-light: #D19A66; /* Светлая медь для меню */
-            --accent-hover: #9C5F2A; /* Темная медь */
+            --accent: #B87333; 
+            --accent-light: #D19A66; 
+            --accent-hover: #9C5F2A; 
             
             --border-color: #D1CEC5;
             --card-bg: #FFFFFF;
@@ -34,7 +34,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
 
-        /* УБИРАЕМ СЕРЫЕ РАМКИ ПРИ КЛИКЕ */
+        /* Убираем серые рамки при клике */
         *:focus, a:focus, button:focus, input:focus, textarea:focus {
             outline: none !important;
             box-shadow: none !important;
@@ -73,7 +73,6 @@
         .nav-container { display: flex; align-items: center; gap: 20px; }
         nav { display: flex; gap: 20px; align-items: center; }
         
-        /* Светло-медные ссылки, при наведении темнеют */
         nav a { text-decoration: none; color: var(--accent-light); font-weight: 600; font-size: 14px; transition: color 0.3s; white-space: nowrap;}
         nav a:hover { color: var(--accent-hover); }
 
@@ -96,7 +95,7 @@
 
         /* --- Главный экран --- */
         .hero { padding: 100px 0; text-align: center; border-bottom: 1px dashed var(--border-color); }
-        .hero h1 { font-size: 46px; margin-bottom: 25px; line-height: 1.2; color: var(--text-main); }
+        .hero h1 { font-size: 46px; margin-bottom: 25px; line-height: 1.2; color: var(--text-main); max-width: 900px; margin-left: auto; margin-right: auto;}
         .hero p { font-size: 18px; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; font-weight: 400; }
         .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
@@ -164,11 +163,18 @@
         
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        /* --- Блок заказа --- */
-        .custom-order-block { background-color: var(--header-footer-bg); color: #fff; padding: 60px 50px; margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; border-radius: 2px; border-left: 4px solid var(--accent);}
+        /* --- Блок заказа (Индивидуальный) --- */
+        .custom-order-block { 
+            background-color: var(--header-footer-bg); color: #fff; padding: 60px 50px; 
+            margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between; 
+            gap: 40px; border-radius: 2px; border-left: 4px solid var(--accent);
+        }
         .custom-order-block h2 { font-size: 36px; margin-bottom: 20px; color: var(--text-light);}
-        .custom-order-block p { font-size: 16px; color: #A0A0A0; margin-bottom: 0; }
-        .custom-order-block .btn { border-color: var(--accent); background-color: var(--accent); color: #fff; white-space: nowrap; }
+        .custom-order-block p { font-size: 16px; color: #A0A0A0; margin-bottom: 20px; }
+        .custom-order-features { list-style: none; margin-bottom: 30px; }
+        .custom-order-features li { font-size: 15px; margin-bottom: 10px; color: #ddd; display: flex; gap: 10px; align-items: flex-start; }
+        .custom-order-features li::before { content: '✓'; color: var(--accent); font-weight: bold; }
+        .custom-order-block .btn { border-color: var(--accent); background-color: var(--accent); color: #fff; white-space: nowrap; padding: 15px 30px; font-size: 16px;}
         .custom-order-block .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
 
         /* --- Этапы --- */
@@ -178,10 +184,9 @@
         
         .step-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px; }
         
-        /* ЦИФРЫ В КРУЖОЧКАХ: БЕЛЫЕ И ЖИРНЫЕ */
         .step-number { 
             width: 45px; height: 45px; flex-shrink: 0; background: var(--accent); 
-            color: #FFFFFF !important; /* Принудительно белый цвет */
+            color: #FFFFFF !important; 
             border-radius: 50%; display: flex; align-items: center; justify-content: center; 
             font-size: 20px; font-weight: 800; font-family: 'Montserrat', sans-serif;
         }
@@ -218,37 +223,43 @@
         }
         .footer-main { display: flex; gap: 60px; margin-bottom: 50px; }
         
-        /* ЛЕВЫЙ БЛОК С ЛОГОТИПОМ: Жесткий отступ сверху, чтобы не уезжал под шапку */
         .footer-left { 
             flex: 0 0 300px; 
             display: flex; 
             flex-direction: column; 
             justify-content: flex-start; 
             align-items: center;
-            padding-top: 20px; /* Отступ от верхней границы подвала */
+            padding-top: 10px; 
         }
         
-        /* Убираем фильтры. Логотип будет как есть. */
         .footer-left img { 
             width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; 
             opacity: 0.9;
         }
 
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .footer-block h4 { font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600;}
         
-        .contact-list p { margin-bottom: 15px; font-size: 18px; font-weight: 500; color: #fff; }
+        /* Кликабельный заголовок */
+        .footer-block h4 { 
+            font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; 
+            margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 8px; 
+            display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600;
+            cursor: pointer; transition: color 0.3s;
+        }
+        .footer-block h4:hover { color: var(--accent-light); }
+        
+        .contact-list p { margin-bottom: 10px; font-size: 18px; font-weight: 500; color: #fff; }
         .contact-list a { color: #fff; text-decoration: none; transition: color 0.3s; }
         .contact-list a:hover { color: var(--accent); }
         .footer-address { font-size: 15px; font-weight: normal; color: #A0A0A0; }
         
-        .footer-socials { display: flex; gap: 15px; margin-top: 25px; justify-content: flex-start; }
+        .footer-socials { display: flex; gap: 15px; margin-top: 20px; justify-content: flex-start; }
         .social-btn { display: inline-block; padding: 10px 20px; background-color: #2A2A2A; color: #fff !important; border-radius: 2px; font-size: 13px; font-weight: 500; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         .social-btn:hover { background-color: var(--accent); }
 
-        .requisites-list p { font-size: 13px; color: #888; margin-bottom: 8px; line-height: 1.6; }
+        .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
 
-        .footer-bottom { border-top: 1px solid #333; padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; }
         .legal-links a { color: #777; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
         .legal-links a:hover { color: var(--accent); }
 
@@ -282,10 +293,12 @@
         /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; } 
-            .footer-main { flex-direction: column; text-align: center; gap: 40px; }
-            .footer-left { flex: auto; align-items: center; margin-bottom: 20px; padding-top: 0;}
-            .footer-right { grid-template-columns: 1fr; gap: 30px; }
-            .footer-block h4 { display: block; border-bottom: none; }
+            
+            /* ПОДВАЛ НА ПЛАНШЕТАХ */
+            .footer-main { flex-direction: column; text-align: center; gap: 20px; }
+            .footer-left { flex: auto; align-items: center; margin-bottom: 10px; padding-top: 0;}
+            .footer-right { grid-template-columns: 1fr; gap: 20px; }
+            .footer-block h4 { display: block; border-bottom: none; margin-bottom: 10px;}
             .footer-socials { justify-content: center; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
@@ -310,6 +323,7 @@
             .hero { padding: 60px 0; }
             .hero h1 { font-size: 34px; }
             .custom-order-block { flex-direction: column; text-align: center; padding: 40px 20px;}
+            .custom-order-features li { justify-content: center; text-align: left; }
             .features-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr; }
             
             /* МОБИЛЬНАЯ КАРУСЕЛЬ (СВАЙП) */
@@ -319,6 +333,12 @@
             .product-card { flex: 0 0 85%; scroll-snap-align: center; }
             
             .skeleton-card { display: none; }
+
+            /* УМЕНЬШАЕМ ЛОГОТИП И ОТСТУПЫ В ПОДВАЛЕ ДЛЯ ТЕЛЕФОНА */
+            .footer-left img { max-width: 140px; margin-bottom: 10px;}
+            footer { padding-top: 30px; padding-bottom: 20px;}
+            .footer-main { margin-bottom: 20px;}
+            .footer-bottom { padding-top: 15px;}
         }
     </style>
 </head>
@@ -347,10 +367,11 @@
         </div>
     </header>
 
+    <!-- 1. Главный экран (Hero) -->
     <section class="hero">
         <div class="container">
-            <h1>Готовые чертежи и проектирование столярных изделий</h1>
-            <p>Экономьте недели на расчетах. Скачивайте готовые проекты беседок, лестниц и мебели или закажите разработку под ваши размеры.</p>
+            <h1>Готовые чертежи и проекты беседок, лестниц и мебели</h1>
+            <p>Профессиональная документация для строительства без переделок. Скачивайте готовые решения или адаптируйте их под свои размеры.</p>
             <div class="hero-buttons">
                 <a href="#catalog" class="btn">Купить готовый чертеж</a>
                 <a href="#custom" class="btn" style="background: transparent; color: var(--text-main); border-color: var(--text-main);">Заказать свой проект</a>
@@ -358,60 +379,60 @@
         </div>
     </section>
 
-    <div class="container">
-        <h2 class="section-title">Надежная документация для строительства</h2>
-        <p class="section-subtitle">
-            Поиск чертежей в интернете часто заканчивается разочарованием: размеры не сходятся, нет спецификации материалов, непонятно, как крепить узлы. 
-            Мы создаем полные комплекты документации, по которым можно строить с первого раза без переделок и лишних затрат.
-        </p>
-    </div>
-
+    <!-- 2. Наши работы (Галерея) -->
     <div class="bg-alt" id="gallery">
         <div class="container">
             <h2 class="section-title">Наши работы</h2>
             <p class="section-subtitle">Примеры изделий, созданных по нашим проектам.</p>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1590066305644-1539177b4566?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Беседка">
+                    <img src="https://images.unsplash.com/photo-1590066305644-1539177b4566?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чертеж беседки">
                     <div class="gallery-caption">Беседка 3х4 с мангальной зоной</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Лестница">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Проект лестницы">
                     <div class="gallery-caption">Маршевая лестница из дуба</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Мебель">
+                    <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чертеж мебели">
                     <div class="gallery-caption">Корпусная мебель на заказ</div>
                 </div>
             </div>
             <div class="gallery-action">
-                <a href="#catalog" class="btn">Смотреть все проекты</a>
+                <a href="#catalog" class="btn">Смотреть каталог</a>
             </div>
         </div>
     </div>
 
+    <!-- 3. Каталог -->
     <div class="container" id="catalog">
-        <h2 class="section-title">Готовые проекты</h2>
+        <h2 class="section-title">Готовые проекты и цены</h2>
+        <p class="section-subtitle">Ниже представлены базовые проекты. Если вам нужны другие габариты (например, не 3х4, а 3х5) — свяжитесь с нами. Мы проконсультируем вас и рассчитаем стоимость адаптации чертежа под ваши задачи.</p>
+        
         <div class="catalog-accordion" id="catalog-accordion">
             <!-- Данные вставляются скриптом -->
         </div>
-        <div style="text-align: center; margin-bottom: 80px;">
-            <p style="margin-bottom: 20px; font-size: 18px; color: var(--text-muted);">Не нашли нужный размер или конфигурацию?</p>
-            <a href="#custom" class="btn">Мы спроектируем под вас</a>
-        </div>
     </div>
 
-    <div class="anchor" id="custom-anchor"></div>
+    <!-- 4. Уникальный проект (Индивидуальный заказ) -->
     <div class="container" id="custom">
         <div class="custom-order-block">
-            <div>
-                <h2>Уникальный проект под ваши задачи</h2>
-                <p>Сложный рельеф участка? Нестандартный проем для лестницы? Нужна мебель под конкретную нишу? Мы разработаем проект с нуля. Вы получите 3D-модель, полную деталировку и точную смету материалов.</p>
+            <div style="flex: 1;">
+                <h2>Индивидуальный чертеж под ваши задачи</h2>
+                <p>Не нашли нужный размер в каталоге? Сложный рельеф участка? Нестандартный проем для лестницы?</p>
+                <ul class="custom-order-features">
+                    <li>Адаптация типового проекта под ваши габариты</li>
+                    <li>Разработка уникального проекта с нуля</li>
+                    <li>Вы получаете 3D-модель, PDF-чертежи, файлы для ЧПУ и спецификацию материалов</li>
+                    <li>Сроки разработки: от 3 рабочих дней</li>
+                    <li>Предоплата: 50%</li>
+                </ul>
             </div>
             <button onclick="openModal('Индивидуальный проект')" class="btn">Обсудить задачу</button>
         </div>
     </div>
 
+    <!-- 5. Как мы работаем -->
     <div class="bg-alt" id="how-we-work">
         <div class="container">
             <h2 class="section-title">Как мы работаем</h2>
@@ -424,7 +445,7 @@
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <div><strong>Оплата и получение.</strong> Мы присылаем вам ссылку на оплату, и после оплаты вы получаете PDF-файлы и файлы для ЧПУ.</div>
+                        <div><strong>Оплата и получение.</strong> Мы присылаем ссылку на оплату, и после оплаты вы получаете PDF-файлы и файлы для ЧПУ.</div>
                     </div>
                 </div>
                 <div class="scenario-card" style="border-top: 4px solid var(--accent);">
@@ -435,17 +456,18 @@
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <div><strong>Разработка и оплата.</strong> Мы называем точную стоимость и сроки (от 3 дней). Вы вносите предоплату 50%.</div>
+                        <div><strong>Разработка и оплата.</strong> Мы называем точную стоимость и сроки. Вы вносите предоплату 50%.</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">3</div>
-                        <div><strong>Готовность и передача.</strong> После согласования макета и полной оплаты вы получаете готовые PDF и файлы для ЧПУ.</div>
+                        <div><strong>Готовность и передача.</strong> После согласования макета и полной оплаты вы получаете готовые файлы.</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 6. Почему нам доверяют -->
     <div class="container" id="features">
         <h2 class="section-title">Почему нам доверяют</h2>
         <div class="features-grid">
@@ -468,6 +490,7 @@
         </div>
     </div>
 
+    <!-- 7. Отзывы -->
     <div class="bg-alt" id="reviews">
         <div class="container">
             <h2 class="section-title">Отзывы клиентов</h2>
@@ -491,20 +514,21 @@
         </div>
     </div>
 
+    <!-- 8. FAQ -->
     <div class="container">
         <h2 class="section-title">Оплата и получение</h2>
         <div class="faq-block">
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">Как происходит оплата? <span>+</span></div>
-                <div class="faq-answer">Вы оставляете заявку на сайте. Мы связываемся с вами, высылаем ссылку на оплату (СБП, карта, счет для юрлиц). После оплаты файлы приходят на вашу почту.</div>
+                <div class="faq-question" onclick="toggleFaq(this)">Можно ли изменить размеры готового чертежа? <span>+</span></div>
+                <div class="faq-answer">Да, мы можем адаптировать проект под ваши габариты. Стоимость услуги рассчитывается индивидуально после уточнения деталей.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Что я получу после оплаты? <span>+</span></div>
                 <div class="faq-answer">Вы получите письмо со ссылками: 1. Чертежи в формате PDF (высокое качество для печати). 2. Файлы для ЧПУ (только для станка, без редактирования). 3. Подробная спецификация материалов.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">Могу ли я отредактировать файлы под свои размеры? <span>+</span></div>
-                <div class="faq-answer">Нет. Мы передаем файлы исключительно в формате PDF (для печати) и для ЧПУ (для станков). Если нужны другие размеры — закажите индивидуальный проект.</div>
+                <div class="faq-question" onclick="toggleFaq(this)">Как происходит оплата? <span>+</span></div>
+                <div class="faq-answer">Вы оставляете заявку на сайте. Мы связываемся с вами, высылаем ссылку на оплату (СБП, карта, счет для юрлиц). После оплаты файлы приходят на вашу почту.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">А если я не разберусь в чертеже? <span>+</span></div>
@@ -513,15 +537,16 @@
         </div>
     </div>
 
+    <!-- 9. ПОДВАЛ -->
     <footer id="contacts">
         <div class="container">
             <div class="footer-main">
                 <div class="footer-left">
-                    <img src="logo.png" alt="Столяр-Проект">
+                    <img src="logo.png" alt="Логотип Столяр-Проект">
                 </div>
                 <div class="footer-right">
                     <div class="footer-block">
-                        <h4>Свяжитесь с нами</h4>
+                        <h4 onclick="openModal('Общая заявка')">Свяжитесь с нами</h4>
                         <div class="contact-list">
                             <p><a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
                             <p><a href="mailto:info@stolyar-proekt.ru">info@stolyar-proekt.ru</a></p>
@@ -553,6 +578,7 @@
         </div>
     </footer>
 
+    <!-- Модальное окно заявки -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -566,7 +592,7 @@
                 <div class="form-group"><label>Телефон или Email</label><input type="text" name="contact" required></div>
                 
                 <div class="form-group" id="customProjectDesc" style="display: none;">
-                    <label>Опишите вашу задачу</label>
+                    <label>Опишите вашу задачу (размеры, материал)</label>
                     <textarea name="message" rows="4" placeholder="Например: нужна беседка 4х5 из бруса 150х150..."></textarea>
                 </div>
 
@@ -580,6 +606,7 @@
         </div>
     </div>
 
+    <!-- Карточка товара -->
     <div class="modal-overlay" id="productModal">
         <div class="product-modal">
             <button class="close-btn" onclick="closeProductModal()">&times;</button>
