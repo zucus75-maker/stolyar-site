@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Профессиональные чертежи и проекты беседок, лестниц и мебели. Скачивайте готовые решения или заказывайте индивидуальное проектирование под ваши размеры.">
+    <meta name="description" content="Профессиональные чертежи и проекты беседок, лестниц и мебели. PDF + DXF для ЧПУ. Скачивайте готовые решения или заказывайте индивидуальное проектирование под ваши размеры.">
     <title>Чертежи и проекты беседок, лестниц и мебели | Столяр-Проект</title>
-    
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Чертежи и проекты беседок, лестниц и мебели | Столяр-Проект">
+    <meta property="og:description" content="PDF + DXF для ЧПУ. Готовые проекты от 1 900 ₽ или индивидуальное проектирование под ваши размеры.">
+    <meta property="og:url" content="https://аркадома.рф/">
+    <meta property="og:image" content="https://аркадома.рф/logo.png">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="canonical" href="https://аркадома.рф/">
     <link rel="icon" type="image/png" href="logo.png" sizes="192x192">
     <link rel="apple-touch-icon" href="logo.png">
 
@@ -13,58 +23,90 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
+    <!-- JSON-LD: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Столяр-Проект",
+      "url": "https://аркадома.рф/",
+      "image": "https://аркадома.рф/logo.png",
+      "email": "[EMAIL]",
+      "telephone": "[ТЕЛЕФОН]",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "[ГОРОД-1]",
+        "streetAddress": "[АДРЕС]",
+        "addressCountry": "RU"
+      },
+      "description": "Чертежи и проекты беседок, лестниц и мебели. PDF + DXF для ЧПУ."
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Можно ли изменить размеры готового чертежа?","acceptedAnswer":{"@type":"Answer","text":"Да, мы можем адаптировать проект под ваши габариты. Стоимость услуги рассчитывается индивидуально после уточнения деталей."}},
+        {"@type":"Question","name":"Что я получу после оплаты?","acceptedAnswer":{"@type":"Answer","text":"Вы получите письмо со ссылками: чертежи в формате PDF, файлы для ЧПУ и подробную спецификацию материалов."}},
+        {"@type":"Question","name":"Как происходит оплата?","acceptedAnswer":{"@type":"Answer","text":"Вы оставляете заявку на сайте. Мы связываемся с вами, высылаем ссылку на оплату (СБП, карта, счёт для юрлиц). После оплаты файлы приходят на почту."}},
+        {"@type":"Question","name":"А если я не разберусь в чертеже?","acceptedAnswer":{"@type":"Answer","text":"К каждому проекту прилагается пошаговая инструкция. Если возникнут вопросы — напишите нам в мессенджер, мы объясним."}}
+      ]
+    }
+    </script>
+
+    <!-- Яндекс.Метрика (замените METRIKA_ID) -->
+    <!--
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(METRIKA_ID, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+    </script>
+    -->
+
     <style>
-        /* --- ЦВЕТОВАЯ ПАЛИТРА --- */
         :root {
-            --bg-color: #F9F8F6; 
-            --bg-alt: #EFECE6; 
-            --text-main: #2C2C2C; 
-            --text-light: #F9F8F6; 
-            --text-muted: #5A5A5A; 
-            
-            --accent: #B87333; 
-            --accent-light: #D19A66; 
-            --accent-hover: #9C5F2A; 
-            
+            --bg-color: #F9F8F6;
+            --bg-alt: #EFECE6;
+            --text-main: #2C2C2C;
+            --text-light: #F9F8F6;
+            --text-muted: #5A5A5A;
+            --accent: #B87333;
+            --accent-light: #D19A66;
+            --accent-hover: #9C5F2A;
             --border-color: #D1CEC5;
             --card-bg: #FFFFFF;
-            --header-footer-bg: #1A1A1A; 
+            --header-footer-bg: #1A1A1A;
         }
-        
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-
-        /* Убираем серые рамки при клике */
-        *:focus, a:focus, button:focus, input:focus, textarea:focus {
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
+        *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            background-image: linear-gradient(to right, rgba(44, 44, 44, 0.04) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(44, 44, 44, 0.04) 1px, transparent 1px);
+            background-image: linear-gradient(to right, rgba(44,44,44,0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(44,44,44,0.04) 1px, transparent 1px);
             background-size: 40px 40px;
             overflow-x: hidden;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
         h1, h2, h3 { font-family: 'PT Serif', serif; }
 
-        /* --- ШАПКА --- */
         header {
-            padding: 15px 0; 
-            border-bottom: 2px solid var(--accent); 
-            background-color: var(--header-footer-bg); 
+            padding: 15px 0;
+            border-bottom: 2px solid var(--accent);
+            background-color: var(--header-footer-bg);
             color: var(--text-light);
             position: sticky; top: 0; z-index: 100;
         }
-        
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 15px; }
-        
         .logo { display: flex; align-items: center; text-decoration: none; color: var(--text-light); }
         .logo-title { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
         .logo-title span { color: var(--accent); }
@@ -72,14 +114,12 @@
 
         .nav-container { display: flex; align-items: center; gap: 20px; }
         nav { display: flex; gap: 20px; align-items: center; }
-        
         nav a { text-decoration: none; color: var(--accent-light); font-weight: 600; font-size: 14px; transition: color 0.3s; white-space: nowrap;}
         nav a:hover { color: var(--accent-hover); }
 
         .header-actions { display: flex; align-items: center; gap: 15px; }
         .burger-menu { display: none; font-size: 30px; background: none; border: none; cursor: pointer; color: var(--text-light); padding: 0; line-height: 1; }
 
-        /* --- Кнопки --- */
         .btn {
             display: inline-block; padding: 12px 24px; background-color: var(--accent);
             color: #fff; text-decoration: none; font-weight: 600; border: 2px solid var(--accent);
@@ -87,39 +127,32 @@
             white-space: nowrap; text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;
         }
         .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
-        
         .btn-outline-dark { background-color: transparent; color: var(--text-light); border-color: var(--text-light); }
         .btn-outline-dark:hover { background-color: var(--text-light); color: var(--header-footer-bg); }
-        
         .btn-buy { padding: 8px 15px; font-size: 12px; }
 
-        /* --- Главный экран --- */
-        .hero { padding: 100px 0; text-align: center; border-bottom: 1px dashed var(--border-color); }
-        .hero h1 { font-size: 46px; margin-bottom: 25px; line-height: 1.2; color: var(--text-main); max-width: 900px; margin-left: auto; margin-right: auto;}
+        .hero { padding: 90px 0; text-align: center; border-bottom: 1px dashed var(--border-color); }
+        .hero h1 { font-size: 46px; margin-bottom: 20px; line-height: 1.2; color: var(--text-main); max-width: 900px; margin-left: auto; margin-right: auto;}
+        .hero-subline { display: inline-block; margin-bottom: 20px; padding: 6px 16px; background: rgba(184,115,51,0.1); color: var(--accent-hover); font-weight: 600; font-size: 14px; letter-spacing: 0.5px; border-radius: 2px;}
         .hero p { font-size: 18px; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; font-weight: 400; }
         .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-        /* --- Секции --- */
         .section-title { text-align: center; font-size: 36px; margin: 70px 0 40px; }
         .section-title::after { content: ''; display: block; width: 60px; height: 2px; background-color: var(--accent); margin: 15px auto 0; }
         .section-subtitle { text-align: center; font-size: 16px; color: var(--text-muted); max-width: 800px; margin: -20px auto 40px; }
-
         .bg-alt { background-color: var(--bg-alt); padding: 60px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 
-        /* --- Галерея --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .gallery-item { position: relative; overflow: hidden; border-radius: 2px; border: 1px solid var(--border-color); cursor: pointer; }
         .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.6s ease; }
         .gallery-item:hover img { transform: scale(1.03); }
-        .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(26, 26, 26, 0.9); color: #fff; padding: 12px; text-align: center; font-weight: 500; font-size: 14px;}
-        .gallery-item::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('logo.png'); background-size: 40%; background-position: center; background-repeat: no-repeat; opacity: 0.1; pointer-events: none; }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(26,26,26,0.9); color: #fff; padding: 12px; text-align: center; font-weight: 500; font-size: 14px;}
         .gallery-action { text-align: center; margin-bottom: 40px; }
 
-        /* --- КАТАЛОГ --- */
         .catalog-accordion { max-width: 1000px; margin: 0 auto 60px; }
         .accordion-group { background: var(--card-bg); border: 1px solid var(--border-color); margin-bottom: 15px; border-radius: 2px; overflow: hidden; }
-        .accordion-header { 
-            padding: 20px 30px; font-size: 22px; font-weight: 700; color: var(--text-main); 
+        .accordion-header {
+            padding: 20px 30px; font-size: 22px; font-weight: 700; color: var(--text-main);
             cursor: pointer; display: flex; justify-content: space-between; align-items: center;
             background-color: var(--card-bg); transition: background-color 0.3s;
         }
@@ -127,12 +160,10 @@
         .accordion-header span { font-size: 24px; color: var(--accent); font-weight: normal; transition: transform 0.3s; }
         .accordion-group.active .accordion-header { border-bottom: 1px solid var(--border-color); }
         .accordion-group.active .accordion-header span { transform: rotate(45deg); }
-        
         .accordion-content { display: none; padding: 20px; max-height: 550px; overflow-y: auto; }
         .accordion-group.active .accordion-content { display: block; }
 
         .product-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-
         .product-card {
             display: flex; flex-direction: column;
             background: #fff; border: 1px solid var(--border-color);
@@ -140,19 +171,14 @@
             cursor: pointer; overflow: hidden;
         }
         .product-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        
         .product-image { width: 100%; height: 200px; background: #f4f4f4; position: relative; display: flex; align-items: center; justify-content: center; color: #999; }
         .product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .product-image::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('logo.png'); background-size: 40%; background-position: center; background-repeat: no-repeat; opacity: 0.1; pointer-events: none; }
-        
         .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
         .product-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; font-family: 'PT Serif', serif;}
         .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
-        
         .product-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px dashed var(--border-color); padding-top: 15px;}
         .product-price { font-size: 22px; font-weight: 700; color: var(--accent); font-family: 'Montserrat', sans-serif; letter-spacing: -0.5px;}
 
-        /* --- Скелетон --- */
         .skeleton { background: #e0e0e0; border-radius: 2px; animation: pulse 1.5s infinite ease-in-out; }
         .skeleton-card { display: flex; flex-direction: column; gap: 10px; padding: 15px; border: 1px solid var(--border-color); border-radius: 2px; }
         .skeleton-img { width: 100%; height: 200px; background: #e0e0e0; border-radius: 2px; }
@@ -160,13 +186,11 @@
         .skeleton-line.title { width: 60%; height: 20px; }
         .skeleton-line.desc { width: 80%; }
         .skeleton-line.price { width: 30%; height: 20px; margin-top: 10px; }
-        
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        /* --- Блок заказа (Индивидуальный) --- */
-        .custom-order-block { 
-            background-color: var(--header-footer-bg); color: #fff; padding: 60px 50px; 
-            margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between; 
+        .custom-order-block {
+            background-color: var(--header-footer-bg); color: #fff; padding: 60px 50px;
+            margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between;
             gap: 40px; border-radius: 2px; border-left: 4px solid var(--accent);
         }
         .custom-order-block h2 { font-size: 36px; margin-bottom: 20px; color: var(--text-light);}
@@ -177,96 +201,96 @@
         .custom-order-block .btn { border-color: var(--accent); background-color: var(--accent); color: #fff; white-space: nowrap; padding: 15px 30px; font-size: 16px;}
         .custom-order-block .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
 
-        /* --- Этапы --- */
+        /* B2B блок */
+        .b2b-block {
+            background: #fff; border: 2px solid var(--accent); padding: 40px;
+            margin: 60px auto 80px; max-width: 1000px; border-radius: 2px;
+            display: flex; gap: 30px; align-items: center; justify-content: space-between; flex-wrap: wrap;
+        }
+        .b2b-block h3 { font-size: 26px; margin-bottom: 10px; color: var(--text-main); }
+        .b2b-block p { color: var(--text-muted); font-size: 15px; max-width: 600px; }
+
         .scenarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 20px; }
         .scenario-card { background: var(--card-bg); padding: 40px; border: 1px solid var(--border-color); border-radius: 2px;}
         .scenario-card h3 { text-align: center; color: var(--text-main); margin-bottom: 30px; font-size: 24px; }
-        
         .step-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px; }
-        
-        .step-number { 
-            width: 45px; height: 45px; flex-shrink: 0; background: var(--accent); 
-            color: #FFFFFF !important; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+        .step-number {
+            width: 45px; height: 45px; flex-shrink: 0; background: var(--accent);
+            color: #FFFFFF !important;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
             font-size: 20px; font-weight: 800; font-family: 'Montserrat', sans-serif;
         }
-        
         .step-item strong { display: block; margin-bottom: 5px; font-size: 16px; font-family: 'PT Serif', serif;}
         .step-item div { font-size: 14px; color: var(--text-muted); }
 
-        /* --- Преимущества и Отзывы --- */
         .features-grid, .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         .feature-card { background: var(--card-bg); padding: 40px 30px; border: 1px solid var(--border-color); text-align: center; border-radius: 2px;}
         .feature-card h3 { font-size: 22px; margin-bottom: 15px; color: var(--accent); }
         .feature-card p { font-size: 14px; color: var(--text-muted); }
-        
+
         .review-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--border-color); position: relative; border-radius: 2px;}
         .review-card::before { content: '“'; font-family: 'PT Serif', serif; font-size: 80px; color: var(--border-color); position: absolute; top: 0px; right: 20px; line-height: 1; }
         .review-text { font-style: italic; color: var(--text-muted); margin-bottom: 20px; position: relative; z-index: 1; font-size: 15px;}
         .review-author { font-weight: bold; font-size: 16px; color: var(--text-main); }
         .review-location { font-size: 13px; color: #888; }
 
-        /* --- FAQ --- */
-        .faq-block { max-width: 800px; margin: 0 auto; margin-bottom: 60px; /* Добавили отступ снизу, чтобы подвал не прилипал */ }
+        /* SEO-текст */
+        .seo-block { max-width: 900px; margin: 0 auto 60px; background: #fff; border: 1px solid var(--border-color); padding: 40px; border-radius: 2px; }
+        .seo-block h2 { font-size: 28px; margin-bottom: 20px; }
+        .seo-block h3 { font-size: 20px; margin: 25px 0 10px; color: var(--accent); }
+        .seo-block p, .seo-block li { font-size: 15px; color: var(--text-muted); margin-bottom: 12px; }
+        .seo-block ul { padding-left: 20px; }
+
+        /* Лид-магнит */
+        .lead-magnet {
+            background: linear-gradient(135deg, var(--header-footer-bg) 0%, #2A2A2A 100%);
+            color: #fff; padding: 50px 40px; margin: 60px auto; max-width: 1000px;
+            border-radius: 2px; text-align: center; border-top: 4px solid var(--accent);
+        }
+        .lead-magnet h3 { font-size: 28px; margin-bottom: 15px; color: var(--text-light); }
+        .lead-magnet p { color: #A0A0A0; margin-bottom: 25px; font-size: 16px; }
+        .lead-magnet form { display: flex; gap: 10px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+        .lead-magnet input { flex: 1; min-width: 200px; padding: 14px 16px; border: 1px solid #444; background: #fff; font-size: 15px; font-family: inherit; border-radius: 2px; }
+        .lead-magnet .btn { padding: 14px 24px; }
+
+        .faq-block { max-width: 800px; margin: 0 auto; margin-bottom: 60px; }
         .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); margin-bottom: 10px; border-radius: 2px;}
         .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 16px;}
         .faq-answer { padding: 0 20px 20px; color: var(--text-muted); font-size: 15px; display: none; }
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { color: var(--accent); }
 
-        /* --- ПОДВАЛ --- */
-        footer { 
-            background-color: var(--header-footer-bg); 
-            color: var(--text-light); 
-            padding: 60px 0 30px; 
-            border-top: 2px solid var(--accent); 
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--text-light);
+            padding: 60px 0 30px;
+            border-top: 2px solid var(--accent);
         }
         .footer-main { display: flex; gap: 60px; margin-bottom: 40px; }
-        
-        .footer-left { 
-            flex: 0 0 300px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: flex-start; 
-            align-items: center;
-            padding-top: 10px; 
-        }
-        
-        .footer-left img { 
-            width: 100%; max-width: 250px; height: auto; display: block; margin: 0 auto; 
-            filter: brightness(1.5); 
-            opacity: 0.95;
-        }
-
+        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 10px; }
+        .footer-left img { width: 100%; max-width: 250px; height: auto; display: block; margin: 0 auto; filter: brightness(1.5); opacity: 0.95; }
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        
-        .footer-block h4 { 
-            font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; 
-            margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 8px; 
+        .footer-block h4 {
+            font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 8px;
             display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600;
             cursor: pointer; transition: color 0.3s;
         }
         .footer-block h4:hover { color: var(--accent-light); }
-        
         .contact-list p { margin-bottom: 10px; font-size: 18px; font-weight: 500; color: #fff; }
         .contact-list a { color: #fff; text-decoration: none; transition: color 0.3s; }
         .contact-list a:hover { color: var(--accent); }
         .footer-address { font-size: 15px; font-weight: normal; color: #A0A0A0; }
-        
         .footer-socials { display: flex; gap: 15px; margin-top: 20px; justify-content: flex-start; }
         .social-btn { display: inline-block; padding: 10px 20px; background-color: #2A2A2A; color: #fff !important; border-radius: 2px; font-size: 13px; font-weight: 500; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         .social-btn:hover { background-color: var(--accent); }
-
         .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
-
         .footer-bottom { border-top: 1px solid #333; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; }
         .legal-links a { color: #777; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
         .legal-links a:hover { color: var(--accent); }
 
-        /* --- Модальные окна --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;}
         .modal-overlay.active { display: flex; }
-        
         .modal-content { background: var(--bg-color); padding: 40px; width: 100%; max-width: 500px; border: 2px solid var(--accent); position: relative; border-radius: 2px; max-height: 90vh; overflow-y: auto;}
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; background: none; border: none; cursor: pointer; color: var(--text-main); z-index: 10;}
         .form-group { margin-bottom: 20px; }
@@ -275,12 +299,14 @@
         .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 25px; font-size: 12px; color: var(--text-muted); }
         .checkbox-group input { width: auto; margin-top: 3px; }
 
-        /* --- КАРТОЧКА ТОВАРА --- */
+        .success-screen { text-align: center; padding: 30px 10px; }
+        .success-screen h2 { color: var(--accent); margin-bottom: 15px; }
+        .success-screen p { margin-bottom: 15px; color: var(--text-muted); }
+
         .product-modal { background: var(--bg-color); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; position: relative; display: flex; flex-wrap: wrap; max-height: 90vh; overflow-y: auto; border-top: 4px solid var(--accent);}
         .product-gallery { width: 50%; padding: 40px; background: #fff; display: flex; flex-direction: column; }
         .main-image-container { width: 100%; height: 400px; background: #f8f8f8; border-radius: 2px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative; }
         .main-image-container img { width: 100%; height: 100%; object-fit: contain; }
-        .main-image-container::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('logo.png'); background-size: 40%; background-position: center; background-repeat: no-repeat; opacity: 0.1; pointer-events: none; }
         .thumbnails { display: flex; gap: 15px; }
         .thumbnail { width: 80px; height: 80px; border-radius: 2px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s; background: #f4f4f4; }
         .thumbnail.active { border-color: var(--accent); }
@@ -288,11 +314,20 @@
         .product-details { width: 50%; padding: 40px; display: flex; flex-direction: column; }
         .product-details h2 { font-size: 32px; margin-bottom: 15px; line-height: 1.3; color: var(--text-main); }
         .product-details .price { font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 20px; font-family: 'Montserrat', sans-serif;}
-        .product-details .desc { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.8; }
-        
-        /* --- АДАПТИВНОСТЬ --- */
+        .product-details .desc { font-size: 16px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8; }
+
+        .included-block {
+            background: #F4F1EC; border-left: 3px solid var(--accent);
+            padding: 15px 20px; margin-bottom: 20px; border-radius: 2px;
+        }
+        .included-block h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; color: var(--text-main); font-family: 'Montserrat', sans-serif; }
+        .included-block ul { list-style: none; }
+        .included-block li { font-size: 14px; color: var(--text-muted); margin-bottom: 6px; padding-left: 20px; position: relative; }
+        .included-block li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .sample-link { display: inline-block; margin-bottom: 20px; font-size: 14px; color: var(--accent); font-weight: 600; text-decoration: underline; cursor: pointer; }
+
         @media (max-width: 900px) {
-            .scenarios-grid { grid-template-columns: 1fr; } 
+            .scenarios-grid { grid-template-columns: 1fr; }
             .footer-main { flex-direction: column; text-align: center; gap: 30px; }
             .footer-left { flex: auto; align-items: center; padding-top: 0;}
             .footer-right { grid-template-columns: 1fr; gap: 30px; }
@@ -305,43 +340,33 @@
             .main-image-container { height: 250px; }
             .product-details { width: 100%; padding: 20px; }
         }
-
         @media (max-width: 768px) {
             .header-content { gap: 10px; }
             .logo { flex-direction: column; align-items: flex-start; gap: 5px; }
             .logo-title { font-size: 24px; }
             .logo-subtitle { border-left: none; border-top: 1px solid #444; padding-left: 0; padding-top: 5px; margin-left: 0; font-size: 9px; letter-spacing: 2px;}
-            
             .header-actions .btn { padding: 8px 12px; font-size: 12px; }
             .nav-container { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--header-footer-bg); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); border-bottom: 2px solid var(--accent); flex-direction: column; gap: 15px; }
             .nav-container.active { display: flex; }
             nav { flex-direction: column; width: 100%; gap: 20px; }
-            .burger-menu { display: block; } 
-            
+            .burger-menu { display: block; }
             .hero { padding: 60px 0; }
             .hero h1 { font-size: 34px; }
             .custom-order-block { flex-direction: column; text-align: center; padding: 40px 20px;}
             .custom-order-features li { justify-content: center; text-align: left; }
             .features-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr; }
-            
-            /* МОБИЛЬНАЯ КАРУСЕЛЬ (СВАЙП) */
             .accordion-content { max-height: none; overflow-y: hidden; padding: 15px 0; }
             .product-list { display: flex; flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 15px 20px 15px; gap: 15px; -webkit-overflow-scrolling: touch; }
             .product-list::-webkit-scrollbar { display: none; }
             .product-card { flex: 0 0 85%; scroll-snap-align: center; }
-            
             .skeleton-card { display: none; }
-
-            /* НАСТРОЙКА ПОДВАЛА ДЛЯ ТЕЛЕФОНА (БЕЗ НАЕЗДОВ) */
-            footer { 
-                padding-top: 40px; 
-                padding-bottom: 20px; 
-                margin-top: 0; /* Убрали отрицательный отступ, который ломал верстку */
-            }
-            .footer-left img { max-width: 200px; margin-bottom: 20px; } 
-            .footer-left { padding-top: 10px; } 
-            .footer-main { margin-bottom: 25px; } 
+            footer { padding-top: 40px; padding-bottom: 20px; margin-top: 0; }
+            .footer-left img { max-width: 200px; margin-bottom: 20px; }
+            .footer-left { padding-top: 10px; }
+            .footer-main { margin-bottom: 25px; }
             .footer-bottom { padding-top: 15px; }
+            .b2b-block { flex-direction: column; text-align: center; }
+            .seo-block, .lead-magnet { padding: 25px 20px; }
         }
     </style>
 </head>
@@ -353,16 +378,15 @@
                 <div class="logo-title">Столяр<span>-</span>Проект</div>
                 <div class="logo-subtitle">Чертежи<br>и проектирование</div>
             </a>
-            
             <div class="nav-container" id="mobileMenu">
                 <nav>
                     <a href="#catalog" onclick="toggleMenu()">Готовые проекты</a>
                     <a href="#custom" onclick="toggleMenu()">На заказ</a>
+                    <a href="#b2b" onclick="toggleMenu()">Для бизнеса</a>
                     <a href="#how-we-work" onclick="toggleMenu()">Как мы работаем</a>
                     <a href="#contacts" onclick="toggleMenu()">Контакты</a>
                 </nav>
             </div>
-
             <div class="header-actions">
                 <button onclick="openModal('Общая заявка')" class="btn btn-outline-dark">Связаться</button>
                 <button class="burger-menu" onclick="toggleMenu()">☰</button>
@@ -370,34 +394,33 @@
         </div>
     </header>
 
-    <!-- 1. Главный экран (Hero) -->
     <section class="hero">
         <div class="container">
+            <div class="hero-subline">от 1 900 ₽ · PDF + DXF для ЧПУ · скачивание сразу после оплаты</div>
             <h1>Готовые чертежи и проекты беседок, лестниц и мебели</h1>
             <p>Профессиональная документация для строительства без переделок. Скачивайте готовые решения или адаптируйте их под свои размеры.</p>
             <div class="hero-buttons">
-                <a href="#catalog" class="btn">Купить готовый чертеж</a>
-                <a href="#custom" class="btn" style="background: transparent; color: var(--text-main); border-color: var(--text-main);">Заказать свой проект</a>
+                <a href="#catalog" class="btn" onclick="trackGoal('hero_catalog')">Смотреть цены</a>
+                <a href="#custom" class="btn" style="background: transparent; color: var(--text-main); border-color: var(--text-main);" onclick="trackGoal('hero_custom')">Заказать свой проект</a>
             </div>
         </div>
     </section>
 
-    <!-- 2. Наши работы (Галерея) -->
     <div class="bg-alt" id="gallery">
         <div class="container">
             <h2 class="section-title">Наши работы</h2>
             <p class="section-subtitle">Примеры изделий, созданных по нашим проектам.</p>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1590066305644-1539177b4566?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чертеж беседки">
+                    <img src="https://images.unsplash.com/photo-1590066305644-1539177b4566?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чертёж беседки 3х4 с мангальной зоной — проект PDF и DXF для ЧПУ" width="800" height="250" loading="lazy">
                     <div class="gallery-caption">Беседка 3х4 с мангальной зоной</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Проект лестницы">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Проект маршевой лестницы из дуба — чертежи PDF и файлы для ЧПУ" width="800" height="250" loading="lazy">
                     <div class="gallery-caption">Маршевая лестница из дуба</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чертеж мебели">
+                    <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чертёж корпусной мебели на заказ — спецификация и раскрой для ЧПУ" width="800" height="250" loading="lazy">
                     <div class="gallery-caption">Корпусная мебель на заказ</div>
                 </div>
             </div>
@@ -407,35 +430,40 @@
         </div>
     </div>
 
-    <!-- 3. Каталог -->
     <div class="container" id="catalog">
         <h2 class="section-title">Готовые проекты и цены</h2>
-        <p class="section-subtitle">Ниже представлены базовые проекты. Если вам нужны другие габариты (например, не 3х4, а 3х5) — свяжитесь с нами. Мы проконсультируем вас и рассчитаем стоимость адаптации чертежа под ваши задачи.</p>
-        
-        <div class="catalog-accordion" id="catalog-accordion">
-            <!-- Данные вставляются скриптом -->
-        </div>
+        <p class="section-subtitle">Ниже — базовые проекты. Нужны другие габариты (например, не 3х4, а 3х5)? Свяжитесь с нами: проконсультируем и рассчитаем адаптацию под ваши задачи.</p>
+        <div class="catalog-accordion" id="catalog-accordion"></div>
     </div>
 
-    <!-- 4. Уникальный проект (Индивидуальный заказ) -->
     <div class="container" id="custom">
         <div class="custom-order-block">
             <div style="flex: 1;">
-                <h2>Индивидуальный чертеж под ваши задачи</h2>
-                <p>Не нашли нужный размер в каталоге? Сложный рельеф участка? Нестандартный проем для лестницы?</p>
+                <h2>Индивидуальный чертёж под ваши задачи</h2>
+                <p>Не нашли нужный размер в каталоге? Сложный рельеф участка? Нестандартный проём для лестницы?</p>
                 <ul class="custom-order-features">
                     <li>Адаптация типового проекта под ваши габариты</li>
                     <li>Разработка уникального проекта с нуля</li>
-                    <li>Вы получаете 3D-модель, PDF-чертежи, файлы для ЧПУ и спецификацию материалов</li>
+                    <li>3D-модель, PDF-чертежи, файлы для ЧПУ и спецификация материалов</li>
                     <li>Сроки разработки: от 3 рабочих дней</li>
-                    <li>Предоплата: 50%</li>
+                    <li>Предоплата: 50%, остаток — после утверждения макета</li>
                 </ul>
             </div>
             <button onclick="openModal('Индивидуальный проект')" class="btn">Обсудить задачу</button>
         </div>
     </div>
 
-    <!-- 5. Как мы работаем -->
+    <!-- B2B -->
+    <div class="container" id="b2b">
+        <div class="b2b-block">
+            <div>
+                <h3>Застройщикам, мастерским и дизайнерам</h3>
+                <p>Нужны проекты под серию, адаптация под ваши материалы или регулярные чертежи для цеха? Работаем по договору с юрлицами и ИП, предоставляем закрывающие документы. Специальные условия на пакеты проектов.</p>
+            </div>
+            <button onclick="openModal('B2B-запрос')" class="btn">Обсудить сотрудничество</button>
+        </div>
+    </div>
+
     <div class="bg-alt" id="how-we-work">
         <div class="container">
             <h2 class="section-title">Как мы работаем</h2>
@@ -448,18 +476,18 @@
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <div><strong>Оплата и получение.</strong> Мы присылаем ссылку на оплату, и после оплаты вы получаете PDF-файлы и файлы для ЧПУ.</div>
+                        <div><strong>Оплата и получение.</strong> Присылаем ссылку на оплату — после оплаты вы получаете PDF-файлы и файлы для ЧПУ.</div>
                     </div>
                 </div>
                 <div class="scenario-card" style="border-top: 4px solid var(--accent);">
                     <h3>Заказ индивидуального проекта</h3>
                     <div class="step-item">
                         <div class="step-number">1</div>
-                        <div><strong>Заявка и ТЗ.</strong> Вы оставляете заявку, мы обсуждаем детали и согласовываем техническое задание.</div>
+                        <div><strong>Заявка и ТЗ.</strong> Оставляете заявку, мы обсуждаем детали и согласовываем техническое задание.</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <div><strong>Разработка и оплата.</strong> Мы называем точную стоимость и сроки. Вы вносите предоплату 50%.</div>
+                        <div><strong>Разработка и оплата.</strong> Называем точную стоимость и сроки. Предоплата 50%.</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">3</div>
@@ -470,7 +498,6 @@
         </div>
     </div>
 
-    <!-- 6. Почему нам доверяют -->
     <div class="container" id="features">
         <h2 class="section-title">Почему нам доверяют</h2>
         <div class="features-grid">
@@ -484,7 +511,7 @@
             </div>
             <div class="feature-card">
                 <h3>Защита файлов</h3>
-                <p>Передаем файлы только в форматах PDF и для ЧПУ. Редактирование проектов запрещено.</p>
+                <p>Передаём файлы в PDF и форматах для ЧПУ. Редактирование проектов запрещено.</p>
             </div>
             <div class="feature-card">
                 <h3>Поддержка</h3>
@@ -493,7 +520,6 @@
         </div>
     </div>
 
-    <!-- 7. Отзывы -->
     <div class="bg-alt" id="reviews">
         <div class="container">
             <h2 class="section-title">Отзывы клиентов</h2>
@@ -504,12 +530,12 @@
                     <div class="review-location">г. Томск</div>
                 </div>
                 <div class="review-card">
-                    <div class="review-text">Беру проекты на заказ, часто нужны готовые решения. Здесь понравилась деталировка — всё в миллиметрах, нет никаких «примерно». Скачал чертеж маршевой лестницы, отдал в цех, сделали без переделок.</div>
+                    <div class="review-text">Беру проекты на заказ, часто нужны готовые решения. Здесь понравилась деталировка — всё в миллиметрах, нет никаких «примерно». Скачал чертёж маршевой лестницы, отдал в цех, сделали без переделок.</div>
                     <div class="review-author">Дмитрий</div>
                     <div class="review-location">Столярная мастерская, г. Новосибирск</div>
                 </div>
                 <div class="review-card">
-                    <div class="review-text">Раньше тратила кучу времени на пересчеты вручную. Купила здесь проект шкафа. Дорого? Нет, это копейки по сравнению с тем временем, которое я сэкономила. Теперь клиенту показываю 3D-модель и точный раскрой.</div>
+                    <div class="review-text">Раньше тратила кучу времени на пересчёты вручную. Купила здесь проект шкафа. Дорого? Нет, это копейки по сравнению с тем временем, которое я сэкономила. Теперь клиенту показываю 3D-модель и точный раскрой.</div>
                     <div class="review-author">Анна</div>
                     <div class="review-location">Дизайнер интерьера, г. Кемерово</div>
                 </div>
@@ -517,7 +543,36 @@
         </div>
     </div>
 
-    <!-- 8. FAQ -->
+    <!-- SEO-текст -->
+    <div class="container">
+        <div class="seo-block">
+            <h2>Что входит в проект</h2>
+            <p>Каждый готовый проект — это комплект документации, достаточный для изготовления изделия без догадок и пересчётов «на глаз». В комплект входят:</p>
+            <ul>
+                <li><strong>PDF-чертежи высокого качества</strong> — общие виды, узлы, разрезы, схема сборки. Формат А3/А4, готов к печати.</li>
+                <li><strong>DXF-файлы для ЧПУ</strong> — контуры деталей для станка. Без возможности редактирования, только для производства.</li>
+                <li><strong>Спецификация материалов</strong> — перечень досок, крепежа, фурнитуры с размерами и количеством.</li>
+                <li><strong>Пошаговая инструкция</strong> — порядок сборки с пояснениями по узлам.</li>
+            </ul>
+            <h3>Для кого</h3>
+            <p>Для частных застройщиков, которые собирают беседку или лестницу своими руками; для столярных мастерских, которым нужен готовый раскрой; для дизайнеров интерьера, которым важно показать клиенту точный проект.</p>
+            <h3>Что можно сделать с чертежом</h3>
+            <p>Строить по нему без переделок, отдать в цех для раскроя, адаптировать под свои размеры (услуга «Индивидуальный проект»), использовать как основу для собственных доработок. Перепродажа и публикация файлов запрещены — это указано в оферте.</p>
+        </div>
+    </div>
+
+    <!-- Лид-магнит -->
+    <div class="container">
+        <div class="lead-magnet">
+            <h3>Бесплатный чертёж беседки 3х3 в PDF</h3>
+            <p>Оставьте email — пришлём готовый проект беседки 3х3 с узлами и спецификацией. Без спама, только полезное.</p>
+            <form onsubmit="submitLeadMagnet(event)">
+                <input type="email" name="email" placeholder="Ваш email" required>
+                <button type="submit" class="btn">Получить чертёж</button>
+            </form>
+        </div>
+    </div>
+
     <div class="container">
         <h2 class="section-title">Оплата и получение</h2>
         <div class="faq-block">
@@ -531,81 +586,86 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Как происходит оплата? <span>+</span></div>
-                <div class="faq-answer">Вы оставляете заявку на сайте. Мы связываемся с вами, высылаем ссылку на оплату (СБП, карта, счет для юрлиц). После оплаты файлы приходят на вашу почту.</div>
+                <div class="faq-answer">Вы оставляете заявку на сайте. Мы связываемся с вами, высылаем ссылку на оплату (СБП, карта, счёт для юрлиц). После оплаты файлы приходят на вашу почту.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">А если я не разберусь в чертеже? <span>+</span></div>
                 <div class="faq-answer">К каждому проекту прилагается пошаговая инструкция. Если возникнут вопросы — напишите нам в мессенджер, мы объясним.</div>
             </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Можно ли вернуть цифровой товар? <span>+</span></div>
+                <div class="faq-answer">Цифровой товар надлежащего качества возврату не подлежит после предоставления доступа к скачиванию. Если файл повреждён или не открывается — повторно предоставим доступ или вернём средства. Подробнее — в оферте.</div>
+            </div>
         </div>
     </div>
 
-    <!-- 9. ПОДВАЛ -->
     <footer id="contacts">
         <div class="container">
             <div class="footer-main">
                 <div class="footer-left">
-                    <img src="logo.png" alt="Логотип Столяр-Проект">
+                    <img src="logo.png" alt="Логотип Столяр-Проект — чертежи и проектирование">
                 </div>
                 <div class="footer-right">
                     <div class="footer-block">
                         <h4 onclick="openModal('Общая заявка')">Свяжитесь с нами</h4>
                         <div class="contact-list">
-                            <p><a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
-                            <p><a href="mailto:info@stolyar-proekt.ru">info@stolyar-proekt.ru</a></p>
-                            <p class="footer-address">г. Томск, ул. Строителей, д. 1</p>
+                            <p><a href="tel:+7XXXXXXXXXX">[ТЕЛЕФОН]</a></p>
+                            <p><a href="mailto:[EMAIL]">[EMAIL]</a></p>
+                            <p class="footer-address">[ГОРОД-1], [АДРЕС]</p>
                         </div>
                         <div class="footer-socials">
-                            <a href="https://t.me/ваш_ник" target="_blank" class="social-btn">Telegram</a>
-                            <a href="https://wa.me/79000000000" target="_blank" class="social-btn">WhatsApp</a>
+                            <a href="https://t.me/ВАШ_НИК" target="_blank" rel="noopener" class="social-btn">Telegram</a>
+                            <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" class="social-btn">WhatsApp</a>
                         </div>
                     </div>
                     <div class="footer-block">
                         <h4>Реквизиты</h4>
                         <div class="requisites-list">
-                            <p>ИП Александров Александр Анатольевич</p>
-                            <p>ИНН: 000000000000</p>
-                            <p>ОГРНИП: 000000000000000</p>
-                            <p>Юр. адрес: 634000, г. Томск, ул. Строителей, д. 1</p>
+                            <p>ИП [ИП-1]</p>
+                            <p>ИНН: [ИНН]</p>
+                            <p>ОГРНИП: [ОГРНИП]</p>
+                            <p>Юр. адрес: [ГОРОД-1], [АДРЕС]</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div>&copy; 2024 Столяр-Проект. Все права защищены.</div>
+                <div>&copy; 2026 Столяр-Проект. Все права защищены.</div>
                 <div class="legal-links">
-                    <a href="#">Договор-оферта</a>
-                    <a href="#">Сбор персональных данных</a>
+                    <a href="oferta.html">Договор-оферта</a>
+                    <a href="privacy.html">Политика обработки ПДн</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Модальное окно заявки -->
+    <!-- Модалка заявки -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
-            <h2 style="margin-bottom: 20px;">Оформление заявки</h2>
-            <p style="margin-bottom: 25px; font-size: 14px; color: var(--text-muted);">Вы выбрали: <strong id="selectedProduct" style="color: var(--text-main);"></strong></p>
-            
-            <form action="https://formspree.io/f/ВАШ_ID" method="POST">
-                <input type="hidden" name="product" id="formProduct" value="">
-                
-                <div class="form-group"><label>Ваше имя</label><input type="text" name="name" required></div>
-                <div class="form-group"><label>Телефон или Email</label><input type="text" name="contact" required></div>
-                
-                <div class="form-group" id="customProjectDesc" style="display: none;">
-                    <label>Опишите вашу задачу (размеры, материал)</label>
-                    <textarea name="message" rows="4" placeholder="Например: нужна беседка 4х5 из бруса 150х150..."></textarea>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="agree" required checked>
-                    <label for="agree">Я согласен с <a href="#" style="color: var(--accent);">политикой обработки персональных данных</a></label>
-                </div>
-
-                <button type="submit" class="btn" style="width:100%;">Отправить заявку</button>
-            </form>
+            <div id="formContainer">
+                <h2 style="margin-bottom: 20px;">Оформление заявки</h2>
+                <p style="margin-bottom: 25px; font-size: 14px; color: var(--text-muted);">Вы выбрали: <strong id="selectedProduct" style="color: var(--text-main);"></strong></p>
+                <form id="orderForm" onsubmit="submitOrder(event)">
+                    <input type="hidden" name="product" id="formProduct" value="">
+                    <div class="form-group"><label>Ваше имя</label><input type="text" name="name" required></div>
+                    <div class="form-group"><label>Телефон или Email</label><input type="text" name="contact" required></div>
+                    <div class="form-group" id="customProjectDesc" style="display: none;">
+                        <label>Опишите вашу задачу (размеры, материал)</label>
+                        <textarea name="message" rows="4" placeholder="Например: нужна беседка 4х5 из бруса 150х150..."></textarea>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agree" required>
+                        <label for="agree">Я согласен с <a href="privacy.html" style="color: var(--accent);">политикой обработки персональных данных</a></label>
+                    </div>
+                    <button type="submit" class="btn" style="width:100%;">Отправить заявку</button>
+                </form>
+            </div>
+            <div id="successContainer" class="success-screen" style="display: none;">
+                <h2>Спасибо! Заявка отправлена</h2>
+                <p>Ответим в течение 2 часов в рабочее время. Если срочно — напишите в <a href="https://t.me/ВАШ_НИК" target="_blank" style="color: var(--accent); font-weight: 600;">Telegram</a>.</p>
+                <button onclick="closeModal()" class="btn" style="margin-top: 10px;">Понятно</button>
+            </div>
         </div>
     </div>
 
@@ -613,17 +673,24 @@
     <div class="modal-overlay" id="productModal">
         <div class="product-modal">
             <button class="close-btn" onclick="closeProductModal()">&times;</button>
-            
             <div class="product-gallery">
                 <div class="main-image-container" id="mainImageContainer"></div>
                 <div class="thumbnails" id="thumbnailContainer"></div>
             </div>
-
             <div class="product-details">
                 <h2 id="prodTitle">Название</h2>
                 <div class="price" id="prodPrice">0 ₽</div>
                 <div class="desc" id="prodDesc">Описание...</div>
-                
+                <div class="included-block">
+                    <h4>В комплекте</h4>
+                    <ul>
+                        <li>PDF-чертежи (А3/А4, готовы к печати)</li>
+                        <li>DXF-файлы для ЧПУ</li>
+                        <li>Спецификация материалов</li>
+                        <li>Пошаговая инструкция сборки</li>
+                    </ul>
+                </div>
+                <a class="sample-link" onclick="trackGoal('sample_view'); alert('Пример страницы PDF будет доступен по ссылке после настройки.');">Посмотреть пример страницы PDF →</a>
                 <button onclick="buyFromProduct()" class="btn" style="margin-top: auto; width: 100%; font-size: 16px; padding: 18px;">Купить проект</button>
             </div>
         </div>
@@ -631,13 +698,21 @@
 
     <script>
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAHnEYoeQDMfEoHQgH5Wa0S54gd2Ff4G8bkSEGCgTC6WxAg50v4Xgul-SFIJqTyVC37Np1gM0HCy6-/pub?gid=0&single=true&output=csv";
-        
+        const FORMSPREE_ID = "ВАШ_ID"; // заменить
+        const METRIKA_ID = null; // вставить номер счётчика
+
         let allProducts = [];
         let currentProductForBuy = "";
 
+        function trackGoal(name) {
+            if (typeof ym === 'function' && METRIKA_ID) {
+                ym(METRIKA_ID, 'reachGoal', name);
+            }
+            console.log('[goal]', name);
+        }
+
         function toggleMenu() {
-            const nav = document.getElementById('mobileMenu');
-            nav.classList.toggle('active');
+            document.getElementById('mobileMenu').classList.toggle('active');
         }
 
         function parseCSV(text) {
@@ -659,12 +734,17 @@
             return rows;
         }
 
+        function formatPrice(rawPrice) {
+            const num = parseFloat(String(rawPrice).replace(/[^\d.]/g, ''));
+            return isNaN(num) ? (rawPrice || 'Цена по запросу') : (num.toLocaleString('ru-RU') + ' ₽');
+        }
+
         function renderAccordion(products) {
             const accordion = document.getElementById('catalog-accordion');
-            accordion.innerHTML = ''; 
+            accordion.innerHTML = '';
 
             if (products.length === 0) {
-                accordion.innerHTML = "<p style='text-align:center;'>В каталоге пока нет проектов.</p>";
+                accordion.innerHTML = "<p style='text-align:center;'>В каталоге пока нет проектов. <a href='#' onclick='fetchData();return false;' style='color:var(--accent);'>Обновить</a></p>";
                 return;
             }
 
@@ -674,21 +754,20 @@
                 categories[p.category].items.push(p);
             });
 
+            let first = true;
             Object.keys(categories).forEach(catKey => {
                 const cat = categories[catKey];
                 const group = document.createElement('div');
-                group.className = 'accordion-group';
-                
+                group.className = 'accordion-group' + (first ? ' active' : '');
+                first = false;
+
                 const header = document.createElement('div');
                 header.className = 'accordion-header';
                 header.innerHTML = `${cat.name} <span>+</span>`;
-                
                 header.onclick = () => {
                     const isActive = group.classList.contains('active');
                     document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
-                    if (!isActive) {
-                        group.classList.add('active');
-                    }
+                    if (!isActive) group.classList.add('active');
                 };
 
                 const content = document.createElement('div');
@@ -697,26 +776,22 @@
                 list.className = 'product-list';
 
                 cat.items.forEach(product => {
-                    const rawPrice = parseFloat(product.price.replace(/[^\d.]/g, ''));
-                    const formattedPrice = isNaN(rawPrice) ? (product.price || 'Цена по запросу') : (rawPrice.toLocaleString('ru-RU') + ' ₽');
-                    const imgHtml = product.image ? `<img src="${product.image}" alt="${product.title}" onerror="this.style.display='none'; this.parentElement.innerText='Нет фото';">` : 'Нет фото';
+                    const formattedPrice = formatPrice(product.price);
+                    const imgHtml = product.image ? `<img src="${product.image}" alt="${product.title} — чертёж ${cat.name} в PDF и DXF" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerText='Нет фото';">` : 'Нет фото';
 
                     const card = document.createElement('div');
                     card.className = 'product-card';
                     card.onclick = (e) => {
-                        if(e.target.tagName !== 'BUTTON') {
-                            openProductModal(product);
-                        }
+                        if (!e.target.closest('button')) openProductModal(product);
                     };
-                    
                     card.innerHTML = `
                         <div class="product-image">${imgHtml}</div>
                         <div class="product-info">
-                            <div class="product-title">${product.title}</div>
+                            <h3 class="product-title">${product.title}</h3>
                             <div class="product-desc">${product.desc}</div>
                             <div class="product-bottom">
                                 <div class="product-price">${formattedPrice}</div>
-                                <button onclick="openModal('${product.title}')" class="btn btn-buy">Купить</button>
+                                <button onclick="event.stopPropagation(); openModal('${product.title.replace(/'/g, "\\'")}')" class="btn btn-buy">Купить</button>
                             </div>
                         </div>
                     `;
@@ -731,30 +806,16 @@
         }
 
         async function fetchData() {
-            const skeleton = document.getElementById('skeleton-loader');
             const accordion = document.getElementById('catalog-accordion');
-
             accordion.innerHTML = `
                 <div class="accordion-group active" style="border:none; background:transparent;">
                     <div class="product-list" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-                        <div class="skeleton-card">
-                            <div class="skeleton skeleton-img"></div>
-                            <div class="skeleton skeleton-line title"></div>
-                            <div class="skeleton skeleton-line desc"></div>
-                            <div class="skeleton skeleton-line price"></div>
-                        </div>
-                        <div class="skeleton-card">
-                            <div class="skeleton skeleton-img"></div>
-                            <div class="skeleton skeleton-line title"></div>
-                            <div class="skeleton skeleton-line desc"></div>
-                            <div class="skeleton skeleton-line price"></div>
-                        </div>
+                        <div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-line title"></div><div class="skeleton skeleton-line desc"></div><div class="skeleton skeleton-line price"></div></div>
+                        <div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-line title"></div><div class="skeleton skeleton-line desc"></div><div class="skeleton skeleton-line price"></div></div>
                     </div>
-                </div>
-            `;
+                </div>`;
 
             const cachedData = sessionStorage.getItem('catalogData');
-            
             if (cachedData) {
                 allProducts = JSON.parse(cachedData);
                 renderAccordion(allProducts);
@@ -786,51 +847,45 @@
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
                 if (!cachedData) {
-                    accordion.innerHTML = "<p style='text-align:center;'>Не удалось загрузить каталог. Проверьте интернет.</p>";
+                    accordion.innerHTML = "<p style='text-align:center;'>Не удалось загрузить каталог. <a href='#' onclick='fetchData();return false;' style='color:var(--accent);'>Попробовать снова</a> или <a href='https://t.me/ВАШ_НИК' style='color:var(--accent);'>напишите нам в Telegram</a>.</p>";
                 }
             }
         }
 
         window.addEventListener('scroll', () => {
             const catalogSection = document.getElementById('catalog');
-            const rect = catalogSection.getBoundingClientRect();
-            if (rect.bottom < 0) {
+            if (catalogSection.getBoundingClientRect().bottom < 0) {
                 document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
             }
         });
 
         const orderModal = document.getElementById('orderModal');
         const productModal = document.getElementById('productModal');
-        
+
         function openModal(productName) {
             document.getElementById('selectedProduct').textContent = productName;
-            document.getElementById('formProduct').value = productName; 
-            
+            document.getElementById('formProduct').value = productName;
+            document.getElementById('formContainer').style.display = 'block';
+            document.getElementById('successContainer').style.display = 'none';
+            document.getElementById('orderForm').reset();
+
             const descField = document.getElementById('customProjectDesc');
-            if (productName === 'Индивидуальный проект') {
-                descField.style.display = 'block';
-            } else {
-                descField.style.display = 'none';
-            }
+            descField.style.display = (productName === 'Индивидуальный проект' || productName === 'B2B-запрос') ? 'block' : 'none';
+
             orderModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden';
+            trackGoal('open_order_modal');
         }
 
         function closeModal() {
             orderModal.classList.remove('active');
-            if (!productModal.classList.contains('active')) {
-                document.body.style.overflow = ''; 
-            }
+            if (!productModal.classList.contains('active')) document.body.style.overflow = '';
         }
 
         function openProductModal(product) {
             document.getElementById('prodTitle').textContent = product.title;
             document.getElementById('prodDesc').textContent = product.desc;
-            
-            const rawPrice = parseFloat(product.price.replace(/[^\d.]/g, ''));
-            const formattedPrice = isNaN(rawPrice) ? (product.price || 'Цена по запросу') : (rawPrice.toLocaleString('ru-RU') + ' ₽');
-            document.getElementById('prodPrice').textContent = formattedPrice;
-
+            document.getElementById('prodPrice').textContent = formatPrice(product.price);
             currentProductForBuy = product.title;
 
             const imgContainer = document.getElementById('mainImageContainer');
@@ -838,22 +893,20 @@
             thumbContainer.innerHTML = '';
 
             let images = [];
-            if(product.image) images.push(product.image);
-            if(product.imageChertezh) images.push(product.imageChertezh);
-            if(product.imageDetail) images.push(product.imageDetail);
+            if (product.image) images.push(product.image);
+            if (product.imageChertezh) images.push(product.imageChertezh);
+            if (product.imageDetail) images.push(product.imageDetail);
 
             if (images.length === 0) {
                 imgContainer.innerHTML = '<span style="color:#999;">Нет фото</span>';
             } else {
-                imgContainer.innerHTML = `<img src="${images[0]}" alt="${product.title}">`;
-
+                imgContainer.innerHTML = `<img src="${images[0]}" alt="${product.title} — общий вид">`;
                 images.forEach((imgSrc, index) => {
                     const thumb = document.createElement('div');
                     thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-                    thumb.innerHTML = `<img src="${imgSrc}" alt="Фото ${index+1}">`;
-                    
+                    thumb.innerHTML = `<img src="${imgSrc}" alt="${product.title} — фото ${index+1}" loading="lazy">`;
                     thumb.onclick = () => {
-                        imgContainer.innerHTML = `<img src="${imgSrc}" alt="${product.title}">`;
+                        imgContainer.innerHTML = `<img src="${imgSrc}" alt="${product.title} — фото ${index+1}">`;
                         document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
                         thumb.classList.add('active');
                     };
@@ -862,19 +915,78 @@
             }
 
             productModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden';
+            trackGoal('open_product_card');
         }
 
         function closeProductModal() {
             productModal.classList.remove('active');
-            if (!orderModal.classList.contains('active')) {
-                document.body.style.overflow = ''; 
-            }
+            if (!orderModal.classList.contains('active')) document.body.style.overflow = '';
         }
 
         function buyFromProduct() {
             closeProductModal();
             setTimeout(() => openModal(currentProductForBuy), 300);
+        }
+
+        async function submitOrder(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type=submit]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправляем...';
+
+            try {
+                const formData = new FormData(form);
+                const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    document.getElementById('formContainer').style.display = 'none';
+                    document.getElementById('successContainer').style.display = 'block';
+                    trackGoal('order_submitted');
+                } else {
+                    throw new Error('Formspree error');
+                }
+            } catch (err) {
+                alert('Не удалось отправить заявку. Напишите нам в Telegram: https://t.me/ВАШ_НИК');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить заявку';
+            }
+        }
+
+        async function submitLeadMagnet(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button');
+            const original = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Отправляем...';
+
+            try {
+                const formData = new FormData();
+                formData.append('email', form.email.value);
+                formData.append('product', 'Лид-магнит: чертёж беседки 3х3');
+                const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    form.innerHTML = '<p style="color:#fff; font-size:16px;">Готово! Проверьте почту в течение 10 минут.</p>';
+                    trackGoal('lead_magnet_submitted');
+                } else {
+                    throw new Error('error');
+                }
+            } catch (err) {
+                alert('Не удалось отправить. Попробуйте позже.');
+                btn.disabled = false;
+                btn.textContent = original;
+            }
         }
 
         function toggleFaq(element) {
@@ -884,15 +996,22 @@
             span.textContent = item.classList.contains('active') ? '-' : '+';
         }
 
-        document.body.addEventListener('mousemove', (e) => {
-            if (window.innerWidth > 768) {
-                const x = (e.clientX / window.innerWidth) * 10;
-                const y = (e.clientY / window.innerHeight) * 10;
-                document.body.style.backgroundPosition = `${x}px ${y}px`;
+        document.addEventListener('DOMContentLoaded', fetchData);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (orderModal.classList.contains('active')) closeModal();
+                if (productModal.classList.contains('active')) closeProductModal();
             }
         });
 
-        window.onload = fetchData;
+        if (window.innerWidth > 768) {
+            document.body.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth) * 10;
+                const y = (e.clientY / window.innerHeight) * 10;
+                document.body.style.backgroundPosition = `${x}px ${y}px`;
+            });
+        }
     </script>
 </body>
 </html>
