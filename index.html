@@ -89,9 +89,7 @@
             min-height: 100vh;
         }
 
-        /* Все прямые потомки body не сжимаются — секции сохраняют свою высоту */
         body > * { flex-shrink: 0; }
-        /* Футер прижимается к низу, если контента меньше экрана */
         body > footer { margin-top: auto; }
 
         *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
@@ -320,14 +318,12 @@
         .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 25px; font-size: 12px; color: var(--text-muted); }
         .checkbox-group input { width: auto; margin-top: 3px; }
 
-        /* Окно "Спасибо" */
         .success-screen { text-align: center; padding: 30px 10px; }
         .success-screen svg { width: 60px; height: 60px; color: var(--accent); margin-bottom: 20px; }
         .success-screen h2 { color: var(--accent); margin-bottom: 15px; font-size: 24px;}
         .success-screen p { margin-bottom: 25px; color: var(--text-muted); font-size: 15px; line-height: 1.6;}
         .success-screen .btn { width: 100%; }
 
-        /* Inline-уведомления об ошибке */
         .form-error {
             display: none;
             margin-top: 12px;
@@ -342,14 +338,12 @@
         }
         .form-error.visible { display: block; }
 
-        /* Успешная подписка (для лид-магнитов) */
         .form-success {
             color: #fff;
             font-size: 16px;
             padding: 10px 0;
         }
 
-        /* Карточка товара */
         .product-modal { background: var(--bg-color); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; position: relative; display: flex; flex-wrap: wrap; max-height: 90vh; overflow-y: auto; border-top: 4px solid var(--accent);}
         .product-gallery { width: 50%; padding: 40px; background: #fff; display: flex; flex-direction: column; }
         .main-image-container { width: 100%; height: 400px; background: #f8f8f8; border-radius: 2px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative; }
@@ -552,7 +546,6 @@
 
             .product-modal .close-btn { position: absolute; top: 10px; right: 10px; background: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 24px; z-index: 100; }
 
-            /* ===== Адаптив новых блоков ===== */
             .b2b-cards,
             .engineering-grid {
                 grid-template-columns: 1fr;
@@ -991,6 +984,20 @@
         let scrollTimeout;
 
         /* ============================================================
+           «НАМЁК» ОДИН РАЗ
+           Первая вкладка каталога / первый FAQ остаются открытыми,
+           пока пользователь сам не кликал по вкладкам. После первого
+           клика — флаг в sessionStorage, и больше мы ничего не трогаем.
+           ============================================================ */
+        const HINT_SEEN_KEY = 'hintSeen_v1';
+        function markHintSeen() {
+            try { sessionStorage.setItem(HINT_SEEN_KEY, '1'); } catch(e) {}
+        }
+        function isHintSeen() {
+            try { return sessionStorage.getItem(HINT_SEEN_KEY) === '1'; } catch(e) { return false; }
+        }
+
+        /* ============================================================
            ОБЪЕКТНЫЙ API ДЛЯ openModal
            ============================================================ */
         const MODAL_PRESETS = {
@@ -1121,6 +1128,7 @@
                 header.className = 'accordion-header';
                 header.innerHTML = `${cat.name} <span>+</span>`;
                 header.onclick = () => {
+                    markHintSeen();
                     const isActive = group.classList.contains('active');
                     document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
                     if (!isActive) group.classList.add('active');
@@ -1208,25 +1216,13 @@
             }
         }
 
+        /* Закрываем мобильное меню при скролле. Аккордеоны и FAQ НЕ схлопываем. */
         window.addEventListener('scroll', () => {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
                 const mobileMenu = document.getElementById('mobileMenu');
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
-                }
-
-                const catalogSection = document.getElementById('catalog');
-                if (catalogSection.getBoundingClientRect().bottom < 0) {
-                    document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
-                }
-
-                const faqSection = document.querySelector('.faq-block');
-                if (faqSection) {
-                    const faqRect = faqSection.getBoundingClientRect();
-                    if (faqRect.top > window.innerHeight || faqRect.bottom < 0) {
-                        document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-                    }
                 }
             }, 30);
         });
@@ -1385,6 +1381,7 @@
         }
 
         function toggleFaq(element) {
+            markHintSeen();
             const item = element.parentElement;
             const isActive = item.classList.contains('active');
 
