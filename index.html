@@ -233,15 +233,17 @@
         .review-author { font-weight: bold; font-size: 16px; color: var(--text-main); }
         .review-location { font-size: 13px; color: #888; }
 
-        .seo-block { max-width: 900px; margin: 0 auto 60px; background: #fff; border: 1px solid var(--border-color); padding: 40px; border-radius: 2px; }
+        /* ИСПРАВЛЕНО: уменьшен margin-bottom у seo-block */
+        .seo-block { max-width: 900px; margin: 0 auto 20px; background: #fff; border: 1px solid var(--border-color); padding: 40px; border-radius: 2px; }
         .seo-block h2 { font-size: 28px; margin-bottom: 20px; }
         .seo-block h3 { font-size: 20px; margin: 25px 0 10px; color: var(--accent); }
         .seo-block p, .seo-block li { font-size: 15px; color: var(--text-muted); margin-bottom: 12px; }
         .seo-block ul { padding-left: 20px; }
 
+        /* ИСПРАВЛЕНО: убран большой margin-top (было margin: 60px auto) */
         .lead-magnet {
             background: linear-gradient(135deg, var(--header-footer-bg) 0%, #2A2A2A 100%);
-            color: #fff; padding: 50px 40px; margin: 60px auto; max-width: 1000px;
+            color: #fff; padding: 50px 40px; margin: 0 auto 60px; max-width: 1000px;
             border-radius: 2px; text-align: center; border-top: 4px solid var(--accent);
         }
         .lead-magnet h3 { font-size: 28px; margin-bottom: 15px; color: var(--text-light); }
@@ -268,44 +270,45 @@
             border-top: 2px solid var(--accent);
         }
         
-        /* Десктопная раскладка подвала */
+        /* ИСПРАВЛЕНО: flex + stretch для выравнивания */
         .footer-main { 
             display: flex;
             gap: 40px;
-            align-items: stretch; /* Растягиваем колонки на одну высоту */
+            align-items: stretch; 
             margin-bottom: 0; 
         }
         .footer-left { 
-            flex: 0 0 250px; /* Фиксируем ширину левой колонки */
+            flex: 0 0 250px;
             display: flex; 
             flex-direction: column; 
-            justify-content: flex-start; /* Прижимает к верху */
+            justify-content: flex-start; 
             align-items: flex-start; 
             padding-top: 0;
             margin-top: 0;
-            height: auto; 
+            height: 100%; 
         }
         .footer-left img { 
             width: 100%;
-            height: auto; /* Масштабируется пропорционально ширине */
-            max-height: 100%; /* Не вылезает за пределы родителя по высоте */
+            height: 100%; 
+            max-height: 250px;
             object-fit: contain;
-            object-position: top left; /* Жестко привязан к верхнему левому углу */
+            object-position: top left; 
             display: block;
-            margin: 0;
+            margin: -15px 0 0 0; /* Небольшой сдвиг вверх для компенсации прозрачных полей */
+            padding: 0;
             filter: brightness(1.4); 
             opacity: 0.95; 
         }
         .footer-block { 
-            flex: 1; /* Текстовые колонки занимают оставшееся место */
-            margin-top: 0; /* Убираем возможные отступы сверху */
+            flex: 1;
+            margin-top: 0; 
         }
         .footer-block h4 {
             font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;
             margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 8px;
             display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600;
             cursor: pointer; transition: color 0.3s;
-            margin-top: 0; /* Выравниваем по верхнему краю логотипа */
+            margin-top: 0; 
         }
         .footer-block h4:hover { color: var(--accent-light); }
         .contact-list p { margin-bottom: 10px; font-size: 18px; font-weight: 500; color: #fff; }
@@ -317,7 +320,6 @@
         .social-btn:hover { background-color: var(--accent); }
         .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
 
-        /* Блок партнёров (в одну строку на десктопе) */
         .footer-partners {
             margin: 30px 0;
             padding-top: 20px;
@@ -351,7 +353,6 @@
             color: #fff;
         }
 
-        /* Нижняя панель */
         .footer-bottom {
             border-top: 1px solid #333;
             padding-top: 20px;
@@ -507,13 +508,6 @@
             letter-spacing: 0.3px;
         }
 
-        .partner-magnet {
-            margin-bottom: 60px;
-        }
-        .partner-magnet input[type="hidden"] {
-            display: none;
-        }
-
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; }
             
@@ -527,6 +521,7 @@
             }
             .footer-left img {
                 max-width: 250px;
+                margin: 0 auto;
             }
 
             .product-modal { flex-direction: column; max-height: 95vh; position: relative; }
@@ -593,13 +588,6 @@
                 gap: 12px;
                 padding: 20px;
                 margin-bottom: 40px;
-            }
-            .partner-magnet form {
-                flex-direction: column;
-            }
-            .partner-magnet form input[type="email"],
-            .partner-magnet form .btn {
-                width: 100%;
             }
             
             /* ===== Адаптив подвала ===== */
@@ -898,20 +886,7 @@
         </div>
     </div>
 
-    <section class="container">
-        <div class="lead-magnet partner-magnet">
-            <h3>Полезные материалы для мастерских и дизайнеров</h3>
-            <p>Оставьте email — раз в месяц будем присылать новые шаблоны DXF для ЧПУ, обзоры материалов и чек-листы по проектированию. Без спама.</p>
-            <form onsubmit="submitPartnerForm(event)">
-                <input type="email" name="email" placeholder="Ваш email" required>
-                <input type="hidden" name="product" value="База партнеров B2B">
-                <button type="submit" class="btn">Подписаться</button>
-                <div class="form-error" role="alert"></div>
-            </form>
-        </div>
-    </section>
-
-    <!-- ===== ОБНОВЛЕННЫЙ ПОДВАЛ (FOOTER) ===== -->
+    <!-- ===== ПОДВАЛ (FOOTER) ===== -->
     <footer id="contacts">
         <div class="container">
             <div class="footer-main">
