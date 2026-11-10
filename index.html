@@ -261,17 +261,44 @@
         .faq-item.active .faq-question span { transform: rotate(45deg); color: var(--accent); }
         .faq-question span { font-size: 24px; transition: transform 0.3s; color: var(--accent); }
 
-        /* --- ПОДВАЛ --- */
+        /* ===== ПОДВАЛ (FOOTER) ===== */
         footer {
             background-color: var(--header-footer-bg);
             color: var(--text-light);
             padding: 60px 0 30px;
             border-top: 2px solid var(--accent);
         }
-        .footer-main { display: flex; gap: 60px; margin-bottom: 40px; align-items: flex-start; }
-        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 0; }
-        .footer-left img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; filter: brightness(1.4); opacity: 0.95; }
-        .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .footer-main { 
+            display: flex; 
+            gap: 60px; 
+            margin-bottom: 0; /* убрали нижний отступ, т.к. партнеры теперь отдельно */
+            align-items: stretch; /* растягиваем колонки по высоте */
+        }
+        .footer-left { 
+            flex: 0 0 300px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+            height: 100%; 
+            align-items: center; 
+        }
+        .footer-left img { 
+            width: 100%; 
+            max-width: 280px; 
+            height: 100%; 
+            max-height: 100%; 
+            object-fit: contain; 
+            display: block; 
+            margin: 0 auto; 
+            filter: brightness(1.4); 
+            opacity: 0.95; 
+        }
+        .footer-right { 
+            flex: 1; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+        }
         .footer-block h4 {
             font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;
             margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 8px;
@@ -287,42 +314,64 @@
         .social-btn { display: inline-block; padding: 10px 20px; background-color: #2A2A2A; color: #fff !important; border-radius: 2px; font-size: 13px; font-weight: 500; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         .social-btn:hover { background-color: var(--accent); }
         .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
-        
-        .footer-partners-bottom {
-            margin-top: 10px;
-            margin-bottom: 40px;
+
+        /* Новый блок партнёров */
+        .footer-partners {
+            margin: 40px 0 30px;
+            padding-top: 25px;
             border-top: 1px solid #333;
-            padding-top: 20px;
         }
-        .footer-partners-bottom h4 {
+        .footer-partners h4 {
             font-size: 14px;
             color: var(--accent);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .footer-partners-bottom ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .footer-partners-bottom li { margin: 0; }
-        .footer-partners-bottom a {
-            color: #A0A0A0;
+        .footer-partners a {
+            color: var(--accent);
+            font-weight: 500;
+            margin-right: 30px;
+            transition: color 0.3s;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
+        }
+        .footer-partners a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Нижняя панель */
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #777;
+        }
+        .footer-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .legal-links a {
+            color: #777;
+            text-decoration: none;
+            margin-left: 20px;
             transition: color 0.3s;
         }
-        .footer-partners-bottom a:hover { color: var(--accent-light); }
-
-        .footer-bottom { border-top: 1px solid #333; padding-top: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #777; }
-        .footer-bottom-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .legal-links a { color: #777; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
-        .legal-links a:hover { color: var(--accent); }
-        .footer-disclaimer { font-size: 12px; color: #666; text-align: center; margin-top: 10px; border-top: 1px solid #2A2A2A; padding-top: 15px; }
+        .legal-links a:hover {
+            color: var(--accent);
+        }
+        .footer-disclaimer {
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
 
         /* --- МОДАЛЬНЫЕ ОКНА --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;}
@@ -458,13 +507,19 @@
 
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; }
+            
+            /* Адаптив футера */
             .footer-main { flex-direction: column; text-align: center; gap: 30px; }
-            .footer-left { flex: auto; align-items: center; padding-top: 0;}
+            .footer-left { flex: auto; align-items: center; height: auto; padding-top: 0; }
+            .footer-left img { max-height: 120px; width: auto; max-width: 100%; }
             .footer-right { grid-template-columns: 1fr; gap: 30px; }
             .footer-block h4 { display: block; border-bottom: none; margin-bottom: 15px;}
             .footer-socials { justify-content: center; }
-            .footer-bottom-top { flex-direction: column; text-align: center; }
+            
+            .footer-bottom-row { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
+            
+            .footer-partners a { display: block; margin-right: 0; margin-bottom: 10px; }
 
             .product-modal { flex-direction: column; max-height: 95vh; position: relative; }
             .product-gallery { width: 100%; padding: 20px; background: #fff; }
@@ -505,11 +560,6 @@
 
             .skeleton-card { display: none; }
 
-            .footer-left img { max-width: 220px; margin-bottom: 15px; }
-            .footer-left { padding-top: 10px; }
-            .footer-main { margin-bottom: 25px; }
-            .footer-bottom { padding-top: 15px; }
-
             .seo-block, .lead-magnet { padding: 25px 20px; }
 
             .accordion-header { font-size: 20px; padding: 15px 20px; }
@@ -542,11 +592,6 @@
             .partner-magnet form input[type="email"],
             .partner-magnet form .btn {
                 width: 100%;
-            }
-            
-            .footer-partners-bottom ul {
-                flex-direction: column;
-                gap: 10px;
             }
         }
     </style>
@@ -798,6 +843,7 @@
         </div>
     </section>
 
+    <!-- ===== ОБНОВЛЕННЫЙ ПОДВАЛ ===== -->
     <footer id="contacts">
         <div class="container">
             <div class="footer-main">
@@ -829,16 +875,16 @@
                 </div>
             </div>
             
-            <div class="footer-partners-bottom">
-                <h4>Изготовление под ключ:</h4>
-                <ul>
-                    <li><a href="#" target="_blank">— Лестницы в Томске</a></li>
-                    <li><a href="#" target="_blank">— Арки в Томске</a></li>
-                </ul>
+            <!-- Новый блок партнёров -->
+            <div class="footer-partners">
+                <h4>Изготовление и монтаж под ключ:</h4>
+                <a href="#">Лестницы в Томске</a>
+                <a href="#">Арки в Томске</a>
             </div>
 
+            <!-- Обновленная нижняя панель -->
             <div class="footer-bottom">
-                <div class="footer-bottom-top">
+                <div class="footer-bottom-row">
                     <div>&copy; 2026 Столяр-Проект. Все права защищены.</div>
                     <div class="legal-links">
                         <a href="oferta.html">Договор-оферта</a>
