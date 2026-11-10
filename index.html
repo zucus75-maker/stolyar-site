@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Профессиональные чертежи и проекты беседок, лестниц и мебели. PDF + DXF для ЧПУ. Скачивайте готовые решения или заказывайте индивидуальное проектирование под ваши размеры.">
-    <title>Чертежи и проекты беседок, лестниц и мебели | Столяр-Проект</title>
+    <meta name="description" content="Проекты лестниц по вашим размерам. Инженерные чертежи и 3D-модели для изготовления. PDF + DXF для ЧПУ. Работаем по всей России.">
+    <title>Проекты лестниц по вашим размерам | Столяр-Проект</title>
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Чертежи и проекты беседок, лестниц и мебели | Столяр-Проект">
-    <meta property="og:description" content="PDF + DXF для ЧПУ. Готовые проекты от 1 900 ₽ или индивидуальное проектирование под ваши размеры.">
-    <meta property="og:url" content="https://аркадома.рф/">
-    <meta property="og:image" content="https://аркадома.рф/logo.png">
+    <meta property="og:title" content="Проекты лестниц по вашим размерам | Столяр-Проект">
+    <meta property="og:description" content="Инженерные чертежи и 3D-модели для изготовления. PDF + DXF для ЧПУ. Работаем по всей России.">
+    <meta property="og:url" content="https://stolyarproekt.rf/">
+    <meta property="og:image" content="https://stolyarproekt.rf/logo.png">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="canonical" href="https://аркадома.рф/">
+    <link rel="canonical" href="https://stolyarproekt.rf/">
     <link rel="icon" type="image/png" href="logo.png" sizes="192x192">
     <link rel="apple-touch-icon" href="logo.png">
 
@@ -27,8 +27,8 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Столяр-Проект",
-      "url": "https://аркадома.рф/",
-      "image": "https://аркадома.рф/logo.png",
+      "url": "https://stolyarproekt.rf/",
+      "image": "https://stolyarproekt.rf/logo.png",
       "email": "[EMAIL]",
       "telephone": "[ТЕЛЕФОН]",
       "address": {
@@ -37,7 +37,7 @@
         "streetAddress": "[АДРЕС]",
         "addressCountry": "RU"
       },
-      "description": "Чертежи и проекты беседок, лестниц и мебели. PDF + DXF для ЧПУ."
+      "description": "Проекты лестниц по вашим размерам. PDF + DXF для ЧПУ."
     }
     </script>
 
@@ -93,12 +93,14 @@
 
         *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
 
+        /* Отступ прокрутки для якорных секций под sticky-шапкой */
         [id]:not(#contacts) { scroll-margin-top: 90px; }
         #contacts { scroll-margin-top: 0; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
         h1, h2, h3 { font-family: 'PT Serif', serif; }
 
+        /* --- ШАПКА --- */
         header {
             padding: 15px 0;
             border-bottom: 2px solid var(--accent);
@@ -137,6 +139,7 @@
         .header-actions { display: flex; align-items: center; gap: 15px; }
         .burger-menu { display: none; font-size: 30px; background: none; border: none; cursor: pointer; color: var(--text-light); padding: 0; line-height: 1; }
 
+        /* --- Кнопки --- */
         .btn {
             display: inline-block; padding: 12px 24px; background-color: var(--accent);
             color: #fff; text-decoration: none; font-weight: 600; border: 2px solid var(--accent);
@@ -207,19 +210,6 @@
         .skeleton-line.price { width: 30%; height: 20px; margin-top: 10px; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        .custom-order-block {
-            background-color: var(--header-footer-bg); color: #fff; padding: 60px 50px;
-            margin-bottom: 80px; display: flex; align-items: center; justify-content: space-between;
-            gap: 40px; border-radius: 2px; border-left: 4px solid var(--accent);
-        }
-        .custom-order-block h2 { font-size: 36px; margin-bottom: 20px; color: var(--text-light);}
-        .custom-order-block p { font-size: 16px; color: #A0A0A0; margin-bottom: 20px; }
-        .custom-order-features { list-style: none; margin-bottom: 30px; }
-        .custom-order-features li { font-size: 15px; margin-bottom: 10px; color: #ddd; display: flex; gap: 10px; align-items: flex-start; }
-        .custom-order-features li::before { content: '✓'; color: var(--accent); font-weight: bold; }
-        .custom-order-block .btn { border-color: var(--accent); background-color: var(--accent); color: #fff; white-space: nowrap; padding: 15px 30px; font-size: 16px;}
-        .custom-order-block .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
-
         .scenarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 20px; }
         .scenario-card { background: var(--card-bg); padding: 40px; border: 1px solid var(--border-color); border-radius: 2px;}
         .scenario-card h3 { text-align: center; color: var(--text-main); margin-bottom: 30px; font-size: 24px; }
@@ -271,6 +261,7 @@
         .faq-item.active .faq-question span { transform: rotate(45deg); color: var(--accent); }
         .faq-question span { font-size: 24px; transition: transform 0.3s; color: var(--accent); }
 
+        /* --- ПОДВАЛ --- */
         footer {
             background-color: var(--header-footer-bg);
             color: var(--text-light);
@@ -296,10 +287,19 @@
         .social-btn { display: inline-block; padding: 10px 20px; background-color: #2A2A2A; color: #fff !important; border-radius: 2px; font-size: 13px; font-weight: 500; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         .social-btn:hover { background-color: var(--accent); }
         .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
-        .footer-bottom { border-top: 1px solid #333; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #777; }
+        .footer-bottom-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .legal-links a { color: #777; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
         .legal-links a:hover { color: var(--accent); }
+        .footer-disclaimer { font-size: 12px; color: #666; text-align: center; margin-top: 10px; border-top: 1px solid #2A2A2A; padding-top: 15px; }
+        .footer-partners { margin-top: 20px; font-size: 13px; color: #888; }
+        .footer-partners h4 { font-size: 14px; color: var(--accent); margin-bottom: 10px; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-partners ul { list-style: none; }
+        .footer-partners li { margin-bottom: 5px; }
+        .footer-partners a { color: #A0A0A0; text-decoration: none; transition: color 0.3s; }
+        .footer-partners a:hover { color: var(--accent-light); }
 
+        /* --- МОДАЛЬНЫЕ ОКНА --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;}
         .modal-overlay.active { display: flex; }
         .modal-content { background: var(--bg-color); padding: 40px; width: 100%; max-width: 500px; border: 2px solid var(--accent); position: relative; border-radius: 2px; max-height: 90vh; overflow-y: auto;}
@@ -359,14 +359,15 @@
         .included-block li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
         .sample-link { display: inline-block; margin-bottom: 20px; font-size: 14px; color: var(--accent); font-weight: 600; text-decoration: underline; cursor: pointer; }
 
-        .b2b-cards {
+        /* ===== НОВЫЙ БЛОК ПРОЕКТ ЛЕСТНИЦЫ ===== */
+        .project-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             max-width: 1000px;
             margin: 0 auto 40px;
         }
-        .b2b-card {
+        .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-top: 4px solid var(--accent);
@@ -377,27 +378,33 @@
             border-radius: 2px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .b2b-card:hover {
+        .project-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
-        .b2b-card h3 {
+        .project-card h3 {
             font-size: 22px;
             color: var(--text-main);
         }
-        .b2b-card p {
+        .project-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .project-card p {
             font-size: 14px;
             color: var(--text-muted);
             flex-grow: 1;
             margin-bottom: 5px;
         }
-        .b2b-card .btn {
+        .project-card .btn {
             align-self: flex-start;
             font-size: 13px;
             padding: 12px 20px;
         }
 
-        .b2b-guarantees {
+        .project-guarantees {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -410,59 +417,11 @@
             margin: 0 auto 60px;
             border-radius: 2px;
         }
-        .b2b-guarantees span {
+        .project-guarantees span {
             font-size: 15px;
             font-weight: 600;
             color: var(--text-main);
             letter-spacing: 0.3px;
-        }
-
-        .engineering-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto 40px;
-        }
-        .engineering-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 40px 30px;
-            border-radius: 2px;
-            position: relative;
-            transition: border-color 0.3s;
-        }
-        .engineering-card:hover {
-            border-color: var(--accent);
-        }
-        .engineering-icon {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-color);
-            display: inline-block;
-        }
-        .engineering-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
-        .engineering-card p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .engineering-action {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .engineering-action .btn {
-            padding: 15px 32px;
-            font-size: 15px;
         }
 
         .partner-magnet {
@@ -479,7 +438,7 @@
             .footer-right { grid-template-columns: 1fr; gap: 30px; }
             .footer-block h4 { display: block; border-bottom: none; margin-bottom: 15px;}
             .footer-socials { justify-content: center; }
-            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-top { flex-direction: column; text-align: center; }
             .legal-links a { margin: 0 10px; }
 
             .product-modal { flex-direction: column; max-height: 95vh; position: relative; }
@@ -491,8 +450,7 @@
             .product-details .price { font-size: 26px; margin-bottom: 15px; }
             .product-details .desc { font-size: 14px; margin-bottom: 15px; }
 
-            .b2b-cards,
-            .engineering-grid {
+            .project-cards {
                 grid-template-columns: 1fr 1fr;
             }
         }
@@ -513,8 +471,6 @@
             .burger-menu { display: block; }
             .hero { padding: 40px 0; }
             .hero h1 { font-size: 34px; }
-            .custom-order-block { flex-direction: column; text-align: center; padding: 40px 20px;}
-            .custom-order-features li { justify-content: center; text-align: left; }
             .features-grid, .reviews-grid, .gallery-grid { grid-template-columns: 1fr; }
 
             .accordion-content { max-height: none; overflow-y: hidden; padding: 15px 0; }
@@ -536,24 +492,19 @@
 
             .product-modal .close-btn { position: absolute; top: 10px; right: 10px; background: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 24px; z-index: 100; }
 
-            .b2b-cards,
-            .engineering-grid {
+            /* ===== Адаптив новых блоков ===== */
+            .project-cards {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            .b2b-card,
-            .engineering-card {
+            .project-card {
                 padding: 30px 22px;
             }
-            .b2b-card .btn {
+            .project-card .btn {
                 width: 100%;
                 align-self: stretch;
             }
-            .engineering-action .btn {
-                width: 100%;
-                padding: 14px 20px;
-            }
-            .b2b-guarantees {
+            .project-guarantees {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 12px;
@@ -577,14 +528,12 @@
             <a href="#top" class="logo">
                 <div class="logo-title">Столяр<span>-</span>Проект</div>
                 <div class="logo-divider"></div>
-                <div class="logo-subtitle">Чертежи и проектирование</div>
+                <div class="logo-subtitle">Инженерные проекты</div>
             </a>
             <div class="nav-container" id="mobileMenu">
                 <nav>
                     <a href="#catalog" onclick="toggleMenu()">Готовые проекты</a>
-                    <a href="#custom" onclick="toggleMenu()">На заказ</a>
-                    <a href="#b2b" onclick="toggleMenu()">Для бизнеса</a>
-                    <a href="#engineering" onclick="toggleMenu()">Инженерные услуги</a>
+                    <a href="#project" onclick="toggleMenu()">На заказ</a>
                     <a href="#how-we-work" onclick="toggleMenu()">Как мы работаем</a>
                     <a href="#contacts" onclick="toggleMenu()">Контакты</a>
                 </nav>
@@ -598,12 +547,12 @@
 
     <section class="hero">
         <div class="container">
-            <div class="hero-subline">от 1 900 ₽ · PDF + DXF для ЧПУ · скачивание сразу после оплаты</div>
-            <h1>Готовые чертежи и проекты беседок, лестниц и мебели</h1>
-            <p>Профессиональная документация для строительства без переделок. Скачивайте готовые решения или адаптируйте их под свои размеры.</p>
+            <div class="hero-subline">Проектирование по всей России · PDF + DXF для ЧПУ · Точность до 0,5 мм</div>
+            <h1>Проекты лестниц по вашим размерам</h1>
+            <p>Инженерные чертежи и 3D-модели для изготовления. PDF + DXF для ЧПУ. Работаем по всей России. От 8 000 ₽.</p>
             <div class="hero-buttons">
-                <a href="#catalog" class="btn" onclick="trackGoal('hero_catalog')">Смотреть цены</a>
-                <a href="#custom" class="btn" style="background: transparent; color: var(--text-main); border-color: var(--text-main);" onclick="trackGoal('hero_custom')">Заказать свой проект</a>
+                <button onclick="openModal('Индивидуальный проект лестницы')" class="btn" onclick="trackGoal('hero_custom')">Заказать проект лестницы</button>
+                <a href="#catalog" class="btn" style="background: transparent; color: var(--text-main); border-color: var(--text-main);" onclick="trackGoal('hero_catalog')">Смотреть готовые проекты</a>
             </div>
         </div>
     </section>
@@ -615,15 +564,15 @@
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1590066305644-1539177b4566?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чертёж беседки 3х4 с мангальной зоной — проект PDF и DXF для ЧПУ" width="800" height="250" loading="lazy">
-                    <div class="gallery-caption">Беседка 3х4 с мангальной зоной</div>
+                    <div class="gallery-caption">Маршевая лестница</div>
                 </div>
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Проект маршевой лестницы из дуба — чертежи PDF и файлы для ЧПУ" width="800" height="250" loading="lazy">
-                    <div class="gallery-caption">Маршевая лестница из дуба</div>
+                    <div class="gallery-caption">Лестница на металлокаркасе</div>
                 </div>
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чертёж корпусной мебели на заказ — спецификация и раскрой для ЧПУ" width="800" height="250" loading="lazy">
-                    <div class="gallery-caption">Корпусная мебель на заказ</div>
+                    <div class="gallery-caption">Винтовая лестница</div>
                 </div>
             </div>
             <div class="gallery-action">
@@ -638,76 +587,37 @@
         <div class="catalog-accordion" id="catalog-accordion"></div>
     </div>
 
-    <div class="container" id="custom">
-        <div class="custom-order-block">
-            <div style="flex: 1;">
-                <h2>Индивидуальный чертёж под ваши задачи</h2>
-                <p>Не нашли нужный размер в каталоге? Сложный рельеф участка? Нестандартный проём для лестницы?</p>
-                <ul class="custom-order-features">
-                    <li>Адаптация типового проекта под ваши габариты</li>
-                    <li>Разработка уникального проекта с нуля</li>
-                    <li>3D-модель, PDF-чертежи, файлы для ЧПУ и спецификация материалов</li>
-                    <li>Сроки разработки: от 3 рабочих дней</li>
-                    <li>Предоплата: 50%, остаток — после утверждения макета</li>
-                </ul>
-            </div>
-            <button onclick="openModal('Индивидуальный проект')" class="btn">Обсудить задачу</button>
-        </div>
-    </div>
+    <!-- ===== БЛОК ПРОЕКТ ЛЕСТНИЦЫ (вместо B2B) ===== -->
+    <section class="container" id="project">
+        <h2 class="section-title">Заказать проект лестницы</h2>
+        <p class="section-subtitle">Разработаем чертёж под ваши размеры: проём, высоту этажа, материал. Вы получите PDF для печати, DXF для ЧПУ и спецификацию материалов.</p>
 
-    <section class="container" id="b2b">
-        <h2 class="section-title">Для организаций и бизнеса</h2>
-        <p class="section-subtitle">Работаем с юрлицами и ИП по договору: закрывающие документы, оплата по счёту, пакетные условия. Для разовых задач под частное лицо — см. «Индивидуальный чертёж».</p>
-
-        <div class="b2b-cards">
-            <div class="b2b-card">
-                <h3>Мастерским и цехам</h3>
-                <p>Готовые DXF-файлы для ЧПУ, адаптация под ваш станок, пакетные скидки от 3 проектов.</p>
-                <button onclick="openModal('B2B: Мастерская')" class="btn">Запросить прайс</button>
+        <div class="project-cards">
+            <div class="project-card">
+                <h3>Деревянная лестница</h3>
+                <div class="project-price">от 8 000 ₽</div>
+                <p>Классический проект из массива. Полный раскрой, узлы крепления, схема сборки.</p>
+                <button onclick="openModal('Проект: Деревянная лестница')" class="btn">Заказать</button>
             </div>
-            <div class="b2b-card">
-                <h3>Застройщикам</h3>
-                <p>Типовые проекты беседок и лестниц для серийного строительства. Разработка под ваши материалы.</p>
-                <button onclick="openModal('B2B: Застройщик')" class="btn">Обсудить серию</button>
+            <div class="project-card">
+                <h3>Лестница на металлокаркасе</h3>
+                <div class="project-price">от 12 000 ₽</div>
+                <p>Раскрой листового металла на ЧПУ, чертежи сварных узлов и обшивки.</p>
+                <button onclick="openModal('Проект: Металлокаркас')" class="btn">Заказать</button>
             </div>
-            <div class="b2b-card">
-                <h3>Дизайнерам интерьера</h3>
-                <p>3D-модели, PDF-чертежи и раскрой для ваших клиентов. Быстрые сроки.</p>
-                <button onclick="openModal('B2B: Дизайнер')" class="btn">Заказать проект</button>
+            <div class="project-card">
+                <h3>Индивидуальный проект</h3>
+                <div class="project-price">по запросу</div>
+                <p>Нестандартная геометрия, сложный рельеф, комбинированные материалы.</p>
+                <button onclick="openModal('Индивидуальный проект лестницы')" class="btn">Обсудить</button>
             </div>
         </div>
 
-        <div class="b2b-guarantees">
-            <span>✓ Договор и счет</span>
-            <span>✓ Закрывающие документы (акт)</span>
-            <span>✓ Оплата на р/с ИП</span>
-        </div>
-    </section>
-
-    <section class="container" id="engineering">
-        <h2 class="section-title">Инженерные услуги по договору</h2>
-        <p class="section-subtitle">Выступаем подрядчиком по разработке КД и техническому контролю. Оказываем услуги по счёту-оферте с оплатой на расчётный счёт ИП.</p>
-
-        <div class="engineering-grid">
-            <div class="engineering-card">
-                <div class="engineering-icon">01</div>
-                <h3>Агентские услуги</h3>
-                <p>Поиск и привлечение клиентов для вашего производства.</p>
-            </div>
-            <div class="engineering-card">
-                <div class="engineering-icon">02</div>
-                <h3>Конструкторские услуги</h3>
-                <p>Разработка КД для серийного производства, адаптация чертежей под ваши станки и материалы.</p>
-            </div>
-            <div class="engineering-card">
-                <div class="engineering-icon">03</div>
-                <h3>Технический контроль</h3>
-                <p>Сопровождение проектов, проверка узлов и контроль качества сборки.</p>
-            </div>
-        </div>
-
-        <div class="engineering-action">
-            <button onclick="openModal('Инженерные услуги')" class="btn">Обсудить условия сотрудничества</button>
+        <div class="project-guarantees">
+            <span>✓ Работаем по всей России</span>
+            <span>✓ PDF + DXF для ЧПУ</span>
+            <span>✓ Спецификация материалов</span>
+            <span>✓ Поддержка после покупки</span>
         </div>
     </section>
 
@@ -716,29 +626,29 @@
             <h2 class="section-title">Как мы работаем</h2>
             <div class="scenarios-grid">
                 <div class="scenario-card">
-                    <h3>Покупка готового чертежа</h3>
+                    <h3>Покупка готового проекта</h3>
                     <div class="step-item">
                         <div class="step-number">1</div>
-                        <div><strong>Выбор и заявка.</strong> Выбираете проект в каталоге и нажимаете «Купить».</div>
+                        <div><strong>Выбор и оплата.</strong> Выбираете проект в каталоге, оплачиваете удобным способом.</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <div><strong>Оплата и получение.</strong> Присылаем ссылку на оплату — после оплаты вы получаете PDF-файлы и файлы для ЧПУ.</div>
+                        <div><strong>Получение файлов.</strong> Сразу после оплаты получаете PDF, DXF и спецификацию на email.</div>
                     </div>
                 </div>
                 <div class="scenario-card" style="border-top: 4px solid var(--accent);">
-                    <h3>Заказ индивидуального проекта</h3>
+                    <h3>Индивидуальный проект</h3>
                     <div class="step-item">
                         <div class="step-number">1</div>
-                        <div><strong>Заявка и ТЗ.</strong> Оставляете заявку, мы обсуждаем детали и согласовываем техническое задание.</div>
+                        <div><strong>Заявка и ТЗ.</strong> Оставляете заявку, мы обсуждаем детали и согласовываем техническое задание и сроки.</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <div><strong>Разработка и оплата.</strong> Называем точную стоимость и сроки. Предоплата 50%.</div>
+                        <div><strong>Предоплата 50%.</strong> Вносите предоплату для старта работ.</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">3</div>
-                        <div><strong>Готовность и передача.</strong> После согласования макета и полной оплаты вы получаете готовые файлы.</div>
+                        <div><strong>Согласование и передача.</strong> Утверждаем макет, вносите остаток — получаете готовые файлы.</div>
                     </div>
                 </div>
             </div>
@@ -809,11 +719,11 @@
 
     <div class="container">
         <div class="lead-magnet">
-            <h3>Бесплатный чертёж беседки 3х3 в PDF</h3>
-            <p>Оставьте email — пришлём готовый проект беседки 3х3 с узлами и спецификацией. Без спама, только полезное.</p>
+            <h3>Бесплатный пример проекта лестницы в PDF</h3>
+            <p>Оставьте email — пришлём пример готового проекта лестницы с узлами и спецификацией. Без спама, только полезное.</p>
             <form onsubmit="submitLeadMagnet(event)">
                 <input type="email" name="email" placeholder="Ваш email" required>
-                <button type="submit" class="btn">Получить чертёж</button>
+                <button type="submit" class="btn">Получить проект</button>
                 <div class="form-error" role="alert"></div>
             </form>
         </div>
@@ -839,8 +749,8 @@
                 <div class="faq-answer">К каждому проекту прилагается пошаговая инструкция. Если возникнут вопросы — напишите нам в мессенджер, мы объясним.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">Можно ли вернуть цифровой товар? <span>+</span></div>
-                <div class="faq-answer">Цифровой товар надлежащего качества возврату не подлежит после предоставления доступа к скачиванию. Если файл повреждён или не открывается — повторно предоставим доступ или вернём средства. Подробнее — в оферте.</div>
+                <div class="faq-question" onclick="toggleFaq(this)">Что если проект не подойдёт под мои размеры? <span>+</span></div>
+                <div class="faq-answer">Мы можем адаптировать проект под ваши габариты. Стоимость адаптации рассчитывается индивидуально. Если файл повреждён или не открывается — повторно предоставим доступ. Подробнее — в оферте.</div>
             </div>
         </div>
     </div>
@@ -862,7 +772,7 @@
         <div class="container">
             <div class="footer-main">
                 <div class="footer-left">
-                    <img src="logo.png" alt="Логотип Столяр-Проект — чертежи и проектирование">
+                    <img src="logo.png" alt="Логотип Столяр-Проект — инженерные проекты лестниц">
                 </div>
                 <div class="footer-right">
                     <div class="footer-block">
@@ -875,6 +785,14 @@
                         <div class="footer-socials">
                             <a href="https://t.me/ВАШ_НИК" target="_blank" rel="noopener" class="social-btn">Telegram</a>
                             <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" class="social-btn">WhatsApp</a>
+                        </div>
+                        
+                        <div class="footer-partners">
+                            <h4>Изготовление под ключ:</h4>
+                            <ul>
+                                <li><a href="#" target="_blank">— Лестницы в Томске</a></li>
+                                <li><a href="#" target="_blank">— Арки в Томске</a></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="footer-block">
@@ -889,15 +807,21 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <div>&copy; 2026 Столяр-Проект. Все права защищены.</div>
-                <div class="legal-links">
-                    <a href="oferta.html">Договор-оферта</a>
-                    <a href="privacy.html">Политика обработки ПДн</a>
+                <div class="footer-bottom-top">
+                    <div>&copy; 2026 Столяр-Проект. Все права защищены.</div>
+                    <div class="legal-links">
+                        <a href="oferta.html">Договор-оферта</a>
+                        <a href="privacy.html">Политика обработки ПДн</a>
+                    </div>
+                </div>
+                <div class="footer-disclaimer">
+                    Сайт носит информационный характер и не является публичной офертой по изготовлению. Изготовление и монтаж — на партнёрских сайтах.
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -911,7 +835,7 @@
                     <div class="form-group"><label>Телефон или Email</label><input type="text" name="contact" required></div>
                     <div class="form-group" id="customProjectDesc" style="display: none;">
                         <label>Опишите вашу задачу (размеры, материал)</label>
-                        <textarea name="message" rows="4" placeholder="Например: нужна беседка 4х5 из бруса 150х150..."></textarea>
+                        <textarea name="message" rows="4" placeholder="Например: нужна лестница на второй этаж, проем 3х1..."></textarea>
                     </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="agree" required>
@@ -933,6 +857,7 @@
         </div>
     </div>
 
+    <!-- КАРТОЧКА ТОВАРА -->
     <div class="modal-overlay" id="productModal">
         <div class="product-modal">
             <button class="close-btn" onclick="closeProductModal()">&times;</button>
@@ -977,13 +902,16 @@
         }
 
         const MODAL_PRESETS = {
-            'Индивидуальный проект':   { title: 'Индивидуальный проект',   needsDescription: true,  goal: 'modal_custom' },
-            'B2B-запрос':              { title: 'B2B-запрос',              needsDescription: true,  goal: 'modal_b2b' },
-            'Инженерные услуги':       { title: 'Инженерные услуги',       needsDescription: true,  goal: 'modal_engineering' },
-            'B2B: Мастерская':         { title: 'B2B: Мастерская',         needsDescription: true,  goal: 'modal_b2b_workshop' },
-            'B2B: Застройщик':         { title: 'B2B: Застройщик',         needsDescription: true,  goal: 'modal_b2b_developer' },
-            'B2B: Дизайнер':           { title: 'B2B: Дизайнер',           needsDescription: true,  goal: 'modal_b2b_designer' },
-            'Общая заявка':            { title: 'Общая заявка',            needsDescription: false, goal: 'modal_general' }
+            'Индивидуальный проект':        { title: 'Индивидуальный проект',        needsDescription: true,  goal: 'modal_custom' },
+            'Индивидуальный проект лестницы':{ title: 'Индивидуальный проект лестницы', needsDescription: true,  goal: 'modal_custom_ladder' },
+            'Проект: Деревянная лестница':   { title: 'Проект: Деревянная лестница',   needsDescription: true,  goal: 'modal_wood_ladder' },
+            'Проект: Металлокаркас':         { title: 'Проект: Металлокаркас',         needsDescription: true,  goal: 'modal_metal_ladder' },
+            'B2B-запрос':                   { title: 'B2B-запрос',                   needsDescription: true,  goal: 'modal_b2b' },
+            'Инженерные услуги':            { title: 'Инженерные услуги',            needsDescription: true,  goal: 'modal_engineering' },
+            'B2B: Мастерская':              { title: 'B2B: Мастерская',              needsDescription: true,  goal: 'modal_b2b_workshop' },
+            'B2B: Застройщик':              { title: 'B2B: Застройщик',              needsDescription: true,  goal: 'modal_b2b_developer' },
+            'B2B: Дизайнер':                { title: 'B2B: Дизайнер',                needsDescription: true,  goal: 'modal_b2b_designer' },
+            'Общая заявка':                 { title: 'Общая заявка',                 needsDescription: false, goal: 'modal_general' }
         };
 
         function openModal(product) {
@@ -991,7 +919,9 @@
             if (typeof product === 'string') {
                 config = MODAL_PRESETS[product] || {
                     title: product,
-                    needsDescription: product === 'Индивидуальный проект'
+                    needsDescription: product === 'Индивидуальный проект' 
+                        || product === 'Индивидуальный проект лестницы'
+                        || product.startsWith('Проект:')
                         || product.startsWith('B2B:')
                         || product === 'B2B-запрос'
                         || product === 'Инженерные услуги',
@@ -1090,11 +1020,21 @@
                 categories[p.category].items.push(p);
             });
 
+            // Приоритетная сортировка: Лестницы всегда первыми
+            const categoryOrder = ["Лестницы", "Беседки", "Арки", "Мебель"];
+            const sortedKeys = Object.keys(categories).sort((a, b) => {
+                let indexA = categoryOrder.indexOf(categories[a].name);
+                let indexB = categoryOrder.indexOf(categories[b].name);
+                if (indexA === -1) indexA = 999;
+                if (indexB === -1) indexB = 999;
+                return indexA - indexB;
+            });
+
             let first = true;
-            Object.keys(categories).forEach(catKey => {
+            sortedKeys.forEach(catKey => {
                 const cat = categories[catKey];
                 const group = document.createElement('div');
-                // ИЗМЕНЕНО: первая открывается только если намёк ещё не показывался
+                // Первая открывается, если намёк ещё не показывался И это Лестницы
                 group.className = 'accordion-group' + (first && !isHintSeen() ? ' active' : '');
                 first = false;
 
@@ -1198,7 +1138,6 @@
                     mobileMenu.classList.remove('active');
                 }
 
-                // ИЗМЕНЕНО: закрываем каталог, когда блок ушёл выше экрана
                 const catalogSection = document.getElementById('catalog');
                 if (catalogSection && catalogSection.getBoundingClientRect().bottom < 0) {
                     document.querySelectorAll('.accordion-group').forEach(g => g.classList.remove('active'));
@@ -1311,7 +1250,7 @@
             try {
                 const formData = new FormData();
                 formData.append('email', form.email.value);
-                formData.append('product', 'Лид-магнит: чертёж беседки 3х3');
+                formData.append('product', 'Лид-магнит: пример проекта лестницы');
                 const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
                     method: 'POST',
                     body: formData,
@@ -1374,8 +1313,6 @@
             }
         }
 
-        // ИЗМЕНЕНО: при первом заходе ставим флаг "намёк показан",
-        // при повторных — принудительно закрываем первый FAQ, если он остался открыт в HTML
         document.addEventListener('DOMContentLoaded', () => {
             fetchData();
 
