@@ -233,14 +233,12 @@
         .review-author { font-weight: bold; font-size: 16px; color: var(--text-main); }
         .review-location { font-size: 13px; color: #888; }
 
-        /* ИСПРАВЛЕНО: уменьшен margin-bottom у seo-block */
         .seo-block { max-width: 900px; margin: 0 auto 20px; background: #fff; border: 1px solid var(--border-color); padding: 40px; border-radius: 2px; }
         .seo-block h2 { font-size: 28px; margin-bottom: 20px; }
         .seo-block h3 { font-size: 20px; margin: 25px 0 10px; color: var(--accent); }
         .seo-block p, .seo-block li { font-size: 15px; color: var(--text-muted); margin-bottom: 12px; }
         .seo-block ul { padding-left: 20px; }
 
-        /* ИСПРАВЛЕНО: убран большой margin-top (было margin: 60px auto) */
         .lead-magnet {
             background: linear-gradient(135deg, var(--header-footer-bg) 0%, #2A2A2A 100%);
             color: #fff; padding: 50px 40px; margin: 0 auto 60px; max-width: 1000px;
@@ -270,7 +268,6 @@
             border-top: 2px solid var(--accent);
         }
         
-        /* ИСПРАВЛЕНО: flex + stretch для выравнивания */
         .footer-main { 
             display: flex;
             gap: 40px;
@@ -294,7 +291,7 @@
             object-fit: contain;
             object-position: top left; 
             display: block;
-            margin: -15px 0 0 0; /* Небольшой сдвиг вверх для компенсации прозрачных полей */
+            margin: -15px 0 0 0;
             padding: 0;
             filter: brightness(1.4); 
             opacity: 0.95; 
@@ -592,7 +589,7 @@
             
             /* ===== Адаптив подвала ===== */
             .footer-left {
-                display: none; /* Скрываем логотип на мобильных */
+                display: none;
             }
             .footer-main {
                 gap: 30px;
@@ -607,7 +604,6 @@
                 margin-bottom: 5px;
             }
             
-            /* Сетка для соцсетей (MAX на всю ширину, остальные по 50%) */
             .footer-socials {
                 display: flex;
                 flex-wrap: wrap;
@@ -626,7 +622,6 @@
                 flex: 1 1 100%;
             }
 
-            /* Партнеры в столбик */
             .footer-partners {
                 flex-direction: column;
                 align-items: stretch;
@@ -1135,13 +1130,18 @@
                 categories[p.category].items.push(p);
             });
 
-            // Приоритетная сортировка: Лестницы всегда первыми
-            const categoryOrder = ['Лестница', 'Лестницы', 'Беседка', 'Беседки', 'Арка', 'Арки', 'Мебель'];
+            // НОВАЯ ЛОГИКА: Жесткая сортировка категорий по ключам
+            const categoryOrder = [
+                'wood_lestnitsy', 
+                'metal_lestnitsy', 
+                'besedki', 
+                'other'
+            ];
             const sortedKeys = Object.keys(categories).sort((a, b) => {
-                const indexA = categoryOrder.indexOf(categories[a].name);
-                const indexB = categoryOrder.indexOf(categories[b].name);
+                const indexA = categoryOrder.indexOf(a);
+                const indexB = categoryOrder.indexOf(b);
                 if (indexA === -1 && indexB === -1) return 0;
-                if (indexA === -1) return 1;
+                if (indexA === -1) return 1; // Неизвестные категории идут в конец
                 if (indexB === -1) return -1;
                 return indexA - indexB;
             });
@@ -1150,7 +1150,7 @@
             sortedKeys.forEach(catKey => {
                 const cat = categories[catKey];
                 const group = document.createElement('div');
-                // Первая вкладка всегда открыта по умолчанию
+                // Первая вкладка (wood_lestnitsy) всегда открыта по умолчанию
                 group.className = 'accordion-group' + (first ? ' active' : '');
                 first = false;
 
