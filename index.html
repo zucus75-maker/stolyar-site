@@ -268,8 +268,8 @@
             padding: 60px 0 30px;
             border-top: 2px solid var(--accent);
         }
-        .footer-main { display: flex; gap: 60px; margin-bottom: 40px; }
-        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 15px; }
+        .footer-main { display: flex; gap: 60px; margin-bottom: 40px; align-items: flex-start; }
+        .footer-left { flex: 0 0 300px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 0; }
         .footer-left img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; filter: brightness(1.4); opacity: 0.95; }
         .footer-right { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .footer-block h4 {
@@ -287,17 +287,42 @@
         .social-btn { display: inline-block; padding: 10px 20px; background-color: #2A2A2A; color: #fff !important; border-radius: 2px; font-size: 13px; font-weight: 500; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         .social-btn:hover { background-color: var(--accent); }
         .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
+        
+        .footer-partners-bottom {
+            margin-top: 10px;
+            margin-bottom: 40px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        .footer-partners-bottom h4 {
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer-partners-bottom ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-partners-bottom li { margin: 0; }
+        .footer-partners-bottom a {
+            color: #A0A0A0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer-partners-bottom a:hover { color: var(--accent-light); }
+
         .footer-bottom { border-top: 1px solid #333; padding-top: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #777; }
         .footer-bottom-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .legal-links a { color: #777; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
         .legal-links a:hover { color: var(--accent); }
         .footer-disclaimer { font-size: 12px; color: #666; text-align: center; margin-top: 10px; border-top: 1px solid #2A2A2A; padding-top: 15px; }
-        .footer-partners { margin-top: 20px; font-size: 13px; color: #888; }
-        .footer-partners h4 { font-size: 14px; color: var(--accent); margin-bottom: 10px; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-partners ul { list-style: none; }
-        .footer-partners li { margin-bottom: 5px; }
-        .footer-partners a { color: #A0A0A0; text-decoration: none; transition: color 0.3s; }
-        .footer-partners a:hover { color: var(--accent-light); }
 
         /* --- МОДАЛЬНЫЕ ОКНА --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;}
@@ -517,6 +542,11 @@
             .partner-magnet form input[type="email"],
             .partner-magnet form .btn {
                 width: 100%;
+            }
+            
+            .footer-partners-bottom ul {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -786,14 +816,6 @@
                             <a href="https://t.me/ВАШ_НИК" target="_blank" rel="noopener" class="social-btn">Telegram</a>
                             <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" class="social-btn">WhatsApp</a>
                         </div>
-                        
-                        <div class="footer-partners">
-                            <h4>Изготовление под ключ:</h4>
-                            <ul>
-                                <li><a href="#" target="_blank">— Лестницы в Томске</a></li>
-                                <li><a href="#" target="_blank">— Арки в Томске</a></li>
-                            </ul>
-                        </div>
                     </div>
                     <div class="footer-block">
                         <h4>Реквизиты</h4>
@@ -806,6 +828,15 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="footer-partners-bottom">
+                <h4>Изготовление под ключ:</h4>
+                <ul>
+                    <li><a href="#" target="_blank">— Лестницы в Томске</a></li>
+                    <li><a href="#" target="_blank">— Арки в Томске</a></li>
+                </ul>
+            </div>
+
             <div class="footer-bottom">
                 <div class="footer-bottom-top">
                     <div>&copy; 2026 Столяр-Проект. Все права защищены.</div>
@@ -815,13 +846,12 @@
                     </div>
                 </div>
                 <div class="footer-disclaimer">
-                    Сайт носит информационный характер и не является публичной офертой по изготовлению. Изготовление и монтаж — на партнёрских сайтах.
+                    Сайт носит информационный характер. Продажа цифровых проектов (PDF/DXF) осуществляется на условиях Договора-оферты. Услуги по изготовлению и монтажу оказываются на партнёрских сайтах.
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -857,7 +887,6 @@
         </div>
     </div>
 
-    <!-- КАРТОЧКА ТОВАРА -->
     <div class="modal-overlay" id="productModal">
         <div class="product-modal">
             <button class="close-btn" onclick="closeProductModal()">&times;</button>
@@ -1021,12 +1050,13 @@
             });
 
             // Приоритетная сортировка: Лестницы всегда первыми
-            const categoryOrder = ["Лестницы", "Беседки", "Арки", "Мебель"];
+            const categoryOrder = ['Лестница', 'Лестницы', 'Беседка', 'Беседки', 'Арка', 'Арки', 'Мебель'];
             const sortedKeys = Object.keys(categories).sort((a, b) => {
-                let indexA = categoryOrder.indexOf(categories[a].name);
-                let indexB = categoryOrder.indexOf(categories[b].name);
-                if (indexA === -1) indexA = 999;
-                if (indexB === -1) indexB = 999;
+                const indexA = categoryOrder.indexOf(categories[a].name);
+                const indexB = categoryOrder.indexOf(categories[b].name);
+                if (indexA === -1 && indexB === -1) return 0;
+                if (indexA === -1) return 1;
+                if (indexB === -1) return -1;
                 return indexA - indexB;
             });
 
@@ -1034,8 +1064,8 @@
             sortedKeys.forEach(catKey => {
                 const cat = categories[catKey];
                 const group = document.createElement('div');
-                // Первая открывается, если намёк ещё не показывался И это Лестницы
-                group.className = 'accordion-group' + (first && !isHintSeen() ? ' active' : '');
+                // Первая вкладка всегда открыта по умолчанию
+                group.className = 'accordion-group' + (first ? ' active' : '');
                 first = false;
 
                 const header = document.createElement('div');
@@ -1316,6 +1346,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             fetchData();
 
+            // Проверка только для FAQ (каталог управляется внутри renderAccordion)
             if (isHintSeen()) {
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
             } else {
