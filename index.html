@@ -93,7 +93,6 @@
 
         *:focus, a:focus, button:focus, input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
 
-        /* Отступ прокрутки для якорных секций под sticky-шапкой */
         [id]:not(#contacts) { scroll-margin-top: 90px; }
         #contacts { scroll-margin-top: 0; }
 
@@ -268,36 +267,28 @@
             padding: 60px 0 30px;
             border-top: 2px solid var(--accent);
         }
+        
+        /* Десктопная сетка подвала */
         .footer-main { 
-            display: flex; 
-            gap: 60px; 
-            margin-bottom: 0; /* убрали нижний отступ, т.к. партнеры теперь отдельно */
-            align-items: stretch; /* растягиваем колонки по высоте */
+            display: grid;
+            grid-template-columns: 250px 1fr 250px;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 0; 
         }
         .footer-left { 
-            flex: 0 0 300px; 
             display: flex; 
             flex-direction: column; 
             justify-content: flex-start; 
-            height: 100%; 
-            align-items: center; 
         }
         .footer-left img { 
             width: 100%; 
-            max-width: 280px; 
-            height: 100%; 
-            max-height: 100%; 
+            max-width: 250px; 
+            height: auto; 
             object-fit: contain; 
             display: block; 
-            margin: 0 auto; 
             filter: brightness(1.4); 
             opacity: 0.95; 
-        }
-        .footer-right { 
-            flex: 1; 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 40px; 
         }
         .footer-block h4 {
             font-size: 16px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;
@@ -311,14 +302,13 @@
         .contact-list a:hover { color: var(--accent); }
         .footer-address { font-size: 15px; font-weight: normal; color: #A0A0A0; }
         .footer-socials { display: flex; gap: 15px; margin-top: 20px; justify-content: flex-start; }
-        .social-btn { display: inline-block; padding: 10px 20px; background-color: #2A2A2A; color: #fff !important; border-radius: 2px; font-size: 13px; font-weight: 500; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .social-btn { display: inline-block; padding: 10px 20px; background-color: #2A2A2A; color: #fff !important; border-radius: 2px; font-size: 13px; font-weight: 500; transition: background-color 0.3s; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
         .social-btn:hover { background-color: var(--accent); }
         .requisites-list p { font-size: 13px; color: #888; margin-bottom: 5px; line-height: 1.5; }
 
-        /* Новый блок партнёров */
         .footer-partners {
-            margin: 40px 0 30px;
-            padding-top: 25px;
+            margin: 30px 0;
+            padding-top: 20px;
             border-top: 1px solid #333;
         }
         .footer-partners h4 {
@@ -337,12 +327,12 @@
             transition: color 0.3s;
             text-decoration: none;
             font-size: 15px;
+            display: inline-block;
         }
         .footer-partners a:hover {
             color: var(--accent-light);
         }
 
-        /* Нижняя панель */
         .footer-bottom {
             border-top: 1px solid #333;
             padding-top: 20px;
@@ -366,8 +356,8 @@
             color: var(--accent);
         }
         .footer-disclaimer {
-            font-size: 12px;
-            color: #777;
+            font-size: 11px;
+            color: #666;
             text-align: center;
             margin-top: 15px;
             line-height: 1.5;
@@ -508,18 +498,10 @@
         @media (max-width: 900px) {
             .scenarios-grid { grid-template-columns: 1fr; }
             
-            /* Адаптив футера */
-            .footer-main { flex-direction: column; text-align: center; gap: 30px; }
-            .footer-left { flex: auto; align-items: center; height: auto; padding-top: 0; }
-            .footer-left img { max-height: 120px; width: auto; max-width: 100%; }
-            .footer-right { grid-template-columns: 1fr; gap: 30px; }
-            .footer-block h4 { display: block; border-bottom: none; margin-bottom: 15px;}
-            .footer-socials { justify-content: center; }
-            
-            .footer-bottom-row { flex-direction: column; text-align: center; }
-            .legal-links a { margin: 0 10px; }
-            
-            .footer-partners a { display: block; margin-right: 0; margin-bottom: 10px; }
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
 
             .product-modal { flex-direction: column; max-height: 95vh; position: relative; }
             .product-gallery { width: 100%; padding: 20px; background: #fff; }
@@ -593,6 +575,54 @@
             .partner-magnet form .btn {
                 width: 100%;
             }
+            
+            /* ===== Адаптив подвала ===== */
+            .footer-left {
+                display: none; /* Скрываем логотип на мобильных */
+            }
+            .footer-main {
+                gap: 30px;
+            }
+            .footer-block h4 {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+            .contact-list p,
+            .requisites-list p {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            .social-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+                width: 100%;
+                display: block;
+                margin-bottom: 10px;
+            }
+            .footer-socials {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .footer-partners a {
+                display: block;
+                border: 1px solid #B87333;
+                padding: 8px 15px;
+                border-radius: 2px;
+                text-align: center;
+                margin-right: 0;
+                margin-bottom: 10px;
+                font-size: 14px;
+            }
+            .footer-disclaimer {
+                font-size: 10px;
+            }
+            .footer-bottom-row {
+                flex-direction: column;
+                text-align: center;
+            }
+            .legal-links a {
+                margin: 0 10px;
+            }
         }
     </style>
 </head>
@@ -662,7 +692,7 @@
         <div class="catalog-accordion" id="catalog-accordion"></div>
     </div>
 
-    <!-- ===== БЛОК ПРОЕКТ ЛЕСТНИЦЫ (вместо B2B) ===== -->
+    <!-- ===== БЛОК ПРОЕКТ ЛЕСТНИЦЫ ===== -->
     <section class="container" id="project">
         <h2 class="section-title">Заказать проект лестницы</h2>
         <p class="section-subtitle">Разработаем чертёж под ваши размеры: проём, высоту этажа, материал. Вы получите PDF для печати, DXF для ЧПУ и спецификацию материалов.</p>
@@ -843,52 +873,48 @@
         </div>
     </section>
 
-    <!-- ===== ОБНОВЛЕННЫЙ ПОДВАЛ ===== -->
+    <!-- ===== ОБНОВЛЕННЫЙ ПОДВАЛ (FOOTER) ===== -->
     <footer id="contacts">
         <div class="container">
             <div class="footer-main">
                 <div class="footer-left">
                     <img src="logo.png" alt="Логотип Столяр-Проект — инженерные проекты лестниц">
                 </div>
-                <div class="footer-right">
-                    <div class="footer-block">
-                        <h4 onclick="openModal('Общая заявка')">Свяжитесь с нами</h4>
-                        <div class="contact-list">
-                            <p><a href="tel:+7XXXXXXXXXX">[ТЕЛЕФОН]</a></p>
-                            <p><a href="mailto:[EMAIL]">[EMAIL]</a></p>
-                            <p class="footer-address">[ГОРОД-1], [АДРЕС]</p>
-                        </div>
-                        <div class="footer-socials">
-                            <a href="https://t.me/ВАШ_НИК" target="_blank" rel="noopener" class="social-btn">Telegram</a>
-                            <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" class="social-btn">WhatsApp</a>
-                        </div>
+                <div class="footer-block">
+                    <h4 onclick="openModal('Общая заявка')">Свяжитесь с нами</h4>
+                    <div class="contact-list">
+                        <p><a href="tel:+7XXXXXXXXXX">[ТЕЛЕФОН]</a></p>
+                        <p><a href="mailto:[EMAIL]">[EMAIL]</a></p>
+                        <p class="footer-address">[ГОРОД-1], [АДРЕС]</p>
                     </div>
-                    <div class="footer-block">
-                        <h4>Реквизиты</h4>
-                        <div class="requisites-list">
-                            <p>ИП [ИП-1]</p>
-                            <p>ИНН: [ИНН]</p>
-                            <p>ОГРНИП: [ОГРНИП]</p>
-                            <p>Юр. адрес: [ГОРОД-1], [АДРЕС]</p>
-                        </div>
+                    <div class="footer-socials">
+                        <a href="https://t.me/ВАШ_НИК" target="_blank" rel="noopener" class="social-btn">Telegram</a>
+                        <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" class="social-btn">WhatsApp</a>
+                    </div>
+                </div>
+                <div class="footer-block">
+                    <h4>Реквизиты</h4>
+                    <div class="requisites-list">
+                        <p>ИП [ИП-1]</p>
+                        <p>ИНН: [ИНН]</p>
+                        <p>ОГРНИП: [ОГРНИП]</p>
+                        <p>Юр. адрес: [ГОРОД-1], [АДРЕС]</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Новый блок партнёров -->
             <div class="footer-partners">
                 <h4>Изготовление и монтаж под ключ:</h4>
                 <a href="#">Лестницы в Томске</a>
                 <a href="#">Арки в Томске</a>
             </div>
 
-            <!-- Обновленная нижняя панель -->
             <div class="footer-bottom">
                 <div class="footer-bottom-row">
                     <div>&copy; 2026 Столяр-Проект. Все права защищены.</div>
                     <div class="legal-links">
                         <a href="oferta.html">Договор-оферта</a>
-                        <a href="privacy.html">Политика обработки ПДн</a>
+                        <a href="privacy.html">Политика ПДн</a>
                     </div>
                 </div>
                 <div class="footer-disclaimer">
